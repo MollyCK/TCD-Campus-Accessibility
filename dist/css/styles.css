@@ -12,6 +12,13 @@ html {
   /* 2 */
 }
 
+div.centerlogo {
+  display: block;
+  height: 175px;
+  background-color: rgb(61, 132, 173);
+
+}
+
 /* Sections
    ========================================================================== */
 /**
