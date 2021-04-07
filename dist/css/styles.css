@@ -18,49 +18,7 @@ div.centerlogo {
   background-color: rgb(61, 132, 173);
 
 }
-/* Style the buttons that are used to open and close the accordion panel */
-.accordion {
-  background-color: #9ffcff;
-  color: #444;
-  cursor: pointer;
-  padding: 18px;
-  width: 100%;
-  text-align: left;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-}
 
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-.active, .accordion:hover {
-  background-color: #4eeaff;
-}
-
-/* Style the accordion panel. Note: hidden by default */
-.panel {
-  padding: 0 18px;
-  background-color: white;
-  display: none;
-  overflow: hidden;
-}
-.btn-group button {
-  background-color: rgb(0, 214, 252); 
-  border: 1px solid #00d6fcc4; 
-  color: black; /* White text */
-  padding: 10px 24px; /* Some padding */
-  cursor: pointer; /* Pointer/hand icon */
-  width: 100%; /* Set a width if needed */
-  display: block; /* Make the buttons appear below each other */
-}
-
-.btn-group button:not(:last-child) {
-  border-bottom: none; /* Prevent double borders */
-}
-
-/* Add a background color on hover */
-.btn-group button:hover {
-  background-color: #47a1bd;
-}
 
 /* Sections
    ========================================================================== */
@@ -497,6 +455,27 @@ body {
 }
 #map #modal form button {
   display: block;
+}
+
+#filter form > label {
+  display: block;
+}
+#filter form > input {
+  width: 100%;
+  margin-bottom: 5px;
+}
+#filter form fieldset legend {
+  font-weight: bold;
+}
+#filter form fieldset > label {
+  display: flex;
+  justify-content: space-between;
+}
+#filter form fieldset > label span {
+  font-size: 0.6em;
+}
+#filter form fieldset input[type="range"] {
+  width: 100%;
 }
 
 /*# sourceMappingURL=styles.css.map */
