@@ -457,12 +457,44 @@ body {
   display: block;
 }
 
+#filter{
+  position: left;
+  width:275px;
+}
+
+#filter fieldset {
+  background-color: rgb(149, 211, 240);
+}
+
+#filter legend {
+  background-color: #27b7fa;
+  color:black;
+  padding: 5px 10px;
+  border: black;
+}
+
+#filter input {
+  margin: 5px;
+  width: 100px;
+  height: 25px;
+}
+#filter form fieldset > label span {
+  font-size: 1em;
+}
+
+#filter form fieldset input[type="range"] {
+  width: 100%;
+  height: 25px;
+}
+
 #filter form > label {
   display: block;
+
 }
 #filter form > input {
   width: 100%;
-  margin-bottom: 5px;
+  margin-bottom: 2px;
+  height: 25px;
 }
 #filter form fieldset legend {
   font-weight: bold;
@@ -471,11 +503,4 @@ body {
   display: flex;
   justify-content: space-between;
 }
-#filter form fieldset > label span {
-  font-size: 0.6em;
-}
-#filter form fieldset input[type="range"] {
-  width: 100%;
-}
-
 /*# sourceMappingURL=styles.css.map */
