@@ -20,6 +20,7 @@ div.centerlogo {
 }
 
 
+
 /* Sections
    ========================================================================== */
 /**
@@ -467,7 +468,7 @@ body {
   float:right;
   color: black;
   display:block;
-  width: 300px;
+  width: 400px;
   white-space: pre-line;
 }
 #txtHint{

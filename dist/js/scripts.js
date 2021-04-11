@@ -45,7 +45,12 @@ function openForm(data) {
 
 function myfunct(){
 	console.log("submitted");
-	
+	var noiserating = document.getElementById("noise1").value;
+	var lightrating = document.getElementById("light1").value;
+	var smellrating = document.getElementById("smells1").value;
+	console.log(noiserating);
+	console.log(lightrating);
+	console.log(smellrating);
 	$.ajax({
 		url: "data/dataExample.json?noise=3&light=2&smells="+4,	//Needs to be replaced with server url so that server knows to get data pertaining to the given location's id. Currently takes data from dummy data
 		dataType:"json"
@@ -111,6 +116,62 @@ function displaydata(btn){
 			answer="yes";
 		}
 		text = document.createTextNode("Is there a lot of light? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.lightBright <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is the light bright? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.lightFlickering <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is the light flickering? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.lightColourPeculiar <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is the light colour peculiar? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.smells <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Are there strong smells? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.floorSticky <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is the floor sticky? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.floorUneven <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is the floor uneven? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.seatsHard <=3){
+			answer ="soft";
+		}else{
+			answer="hard";
+		}
+		text = document.createTextNode("Are the seats hard/soft? " +answer+"\n");
+		item.appendChild(text);
+		if(data.score.seatsHard <=3){
+			answer ="smooth";
+		}else{
+			answer="rough";
+		}
+		text = document.createTextNode("Are the textures smooth/rough? \t" +answer+"\n");
 		item.appendChild(text);
 	});
 }
