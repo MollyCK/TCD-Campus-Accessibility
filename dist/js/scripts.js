@@ -53,9 +53,65 @@ function myfunct(){
 		console.log(data.placeName);
 		var test =document.getElementById("txtHint");
 		var para = document.createElement("BUTTON");
+		para.setAttribute("onclick","displaydata(this)");
+		para.setAttribute("id",data.id);
+		console.log($(para).attr("id"));
 		var node = document.createTextNode(data.placeName);
 		para.appendChild(node);
 		test.appendChild(para);
+	});
+}
+
+function displaydata(btn){
+	var answer;
+	var id = btn.getAttribute('id');
+	console.log(id);
+	$.ajax({
+		url: "data/dataExample.json?id="+id,	//Needs to be replaced with server url so that server knows to get data pertaining to the given location's id. Currently takes data from dummy data
+		dataType:"json"
+	}).done(function(data){
+		console.log(data.placeName);
+		var item = document.getElementById("content");
+		
+		var nameplace =document.createElement("H1");
+		var text =document.createTextNode(data.placeName);
+		nameplace.appendChild(text);
+		item.appendChild(nameplace);
+		if(data.score.people <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Are there usually a lot of people in this space? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.movement <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Are people moving chaotically? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.talking <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Are people talking a lot? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.noise <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is there a lot of background noise? \t" +answer+"\n");
+		item.appendChild(text);
+		if(data.score.light <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+		text = document.createTextNode("Is there a lot of light? \t" +answer+"\n");
+		item.appendChild(text);
 	});
 }
 openModal();

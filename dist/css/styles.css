@@ -358,7 +358,7 @@ ul, li {
 }
 
 h1 {
-  color: red;
+  color: black;
 }
 
 a {
@@ -462,11 +462,22 @@ body {
   width:275px;
   float:left;
 }
+
+#content{
+  float:right;
+  color: black;
+  display:block;
+  width: 300px;
+  white-space: pre-line;
+}
 #txtHint{
+  float:left;
  color: #0400ff;
+ display: block;
 }
 
 #txtHint button{
+  /*float:left;*/
   color: black;
   background-color: #98e5f8;
   width:250px;
