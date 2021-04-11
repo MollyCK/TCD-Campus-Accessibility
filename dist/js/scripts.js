@@ -45,6 +45,18 @@ function openForm(data) {
 
 function myfunct(){
 	console.log("submitted");
+	
+	$.ajax({
+		url: "data/dataExample.json?noise=3&light=2&smells="+4,	//Needs to be replaced with server url so that server knows to get data pertaining to the given location's id. Currently takes data from dummy data
+		dataType:"json"
+	}).done(function(data){
+		console.log(data.placeName);
+		var test =document.getElementById("txtHint");
+		var para = document.createElement("BUTTON");
+		var node = document.createTextNode(data.placeName);
+		para.appendChild(node);
+		test.appendChild(para);
+	});
 }
 openModal();
 closeModal();

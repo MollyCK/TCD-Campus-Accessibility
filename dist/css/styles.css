@@ -460,8 +460,22 @@ body {
 #filter{
   position: left;
   width:275px;
+  float:left;
+}
+#txtHint{
+ color: #0400ff;
 }
 
+#txtHint button{
+  color: black;
+  background-color: #98e5f8;
+  width:250px;
+  display: block;
+ }
+
+#txtHint button:hover {
+  background-color: hsl(202, 100%, 73%);
+}
 #filter fieldset {
   background-color: rgb(149, 211, 240);
 }
