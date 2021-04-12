@@ -1,7 +1,7 @@
 {
    "id":75,
    "placeName":"Arts Block",
-   "placeDescription":"Description Bla bla bla",
+   "placeDescription":"Old grey brick building. Access to Lecky Library. Mainly used for lectures and tutorials in the arts faculty.",
    "score":{
       "people":1,
       "movement":4,
@@ -40,7 +40,7 @@
             "seatsHard":4,
             "texturesRough":4
          },
-         "comments":"Comment 1 Bla bla bla bla"
+         "comments":"Lots of tourists and busy cafe area"
       },
       {
          "userName":"Fiona Gallagher",
@@ -61,7 +61,7 @@
             "seatsHard":4,
             "texturesRough":4
          },
-         "comments":"Comment 2 Bla bla bla bla"
+         "comments":"Lots of stairs but made accessible with lifts you just have to know where they are."
       }
    ]
 }

@@ -167,7 +167,7 @@
 	 				<h3>Comments</h3>
 	 				<ul class="comments"> <!-- an unordered list of comments to be filled later with the data from the server that the javascript code will get-->
 	 				</ul>
-	 				<button data-id="" class="openform">Take the survey for this location</button> <!-- calls the openform function from scripts.js when clicked-->
+	 				<button data-id="" class="openform">Take the survey for this location &rarr;</button> <!-- calls the openform function from scripts.js when clicked-->
  				</div>
 				 <!-- the below (form) deals with the survey pop-up for each location -->
  				<form>
@@ -279,7 +279,7 @@
  					</fieldset>
  					<label for="comments">Comments</label>
  					<textarea name="comments" id="comments" placeholder="Add a comment about this location here (optional)"></textarea>
- 					<button>Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+ 					<button class="openform" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
  				</form>
             </div>
 	   	</section>
