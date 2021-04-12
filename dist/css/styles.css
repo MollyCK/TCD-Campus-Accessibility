@@ -470,6 +470,9 @@ body {
   display:block;
   width: 400px;
   white-space: pre-line;
+  margin: auto;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 #3e95db33;
 }
 #txtHint{
   float:left;
