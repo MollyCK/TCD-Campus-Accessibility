@@ -56,6 +56,7 @@ function myfunct(){
 		dataType:"json"
 	}).done(function(data){
 		console.log(data.placeName);
+		cleardata2();
 		var test =document.getElementById("txtHint");
 		var para = document.createElement("BUTTON");
 		para.setAttribute("onclick","displaydata(this)");
@@ -64,6 +65,33 @@ function myfunct(){
 		var node = document.createTextNode(data.placeName);
 		para.appendChild(node);
 		test.appendChild(para);
+		/*dummy buttons for demo*/
+		para = document.createElement("BUTTON");
+		para.setAttribute("onclick","displaydata(this)");
+		para.setAttribute("id",data.id);
+		node = document.createTextNode("Buttery");
+		para.appendChild(node);
+		test.appendChild(para);
+		para = document.createElement("BUTTON");
+		para.setAttribute("onclick","displaydata(this)");
+		para.setAttribute("id",data.id);
+		node = document.createTextNode("Dining Hall");
+		para.appendChild(node);
+		test.appendChild(para);
+		para = document.createElement("BUTTON");
+		para.setAttribute("onclick","displaydata(this)");
+		para.setAttribute("id",data.id);
+		node = document.createTextNode("Cricket Pitch");
+		para.appendChild(node);
+		test.appendChild(para);
+		para = document.createElement("BUTTON");
+		para.setAttribute("onclick","displaydata(this)");
+		para.setAttribute("id",data.id);
+		node = document.createTextNode("Hamilton Building");
+		para.appendChild(node);
+		test.appendChild(para);
+		/*end dummy buttons*/
+		cleardata();
 	});
 }
 
@@ -175,5 +203,15 @@ function displaydata(btn){
 		item.appendChild(text);
 	});
 }
+
+function cleardata(){
+	document.getElementById("content").innerHTML="";
+	console.log("cleared");
+}
+function cleardata2(){
+	document.getElementById("txtHint").innerHTML="";
+	console.log("cleared2");
+}
+
 openModal();
 closeModal();
