@@ -9,8 +9,9 @@
 	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 
-<div class ="centerlogo">
+<div id ="centerlogo">
 		<img src="img/logo.png" alt="logo" style="height: 175px;">
+		<button id="addLocation" onclick="addLocationFunct()">Add a new location</button>
 </div>
 <div id="top">
 <h1>Select a location on the map: </h1>
@@ -283,7 +284,122 @@
  				</form>
             </div>
 	   	</section>
-
+		   <div id="addLocationForm">
+			<form class="form-container">
+				<button id="close" onclick="close1()">X</button>
+				<h2>Add a new location: </h2> <!-- span gets filled in with the location name from the data retrieved by the javascript code -->
+				<p>Please enter the name of this location:</p>
+				<input type="hidden" name="id" value="">
+				<label for="placeName">Location</label> <!-- This could be removed if the clients don't want names -->
+				<input type="text" name="placeName" id="placeName">
+				<fieldset>
+					<legend>Are there usually a lot of people in this space?</legend>
+					<label for="people"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="people" id="people" min="1" max="4" value="1"> <!-- the pointer starts at "No" -->
+				</fieldset>
+				<fieldset>
+					<legend>Are people moving chaotically?</legend>
+					<label for="movement"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="movement" id="movement" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Are people talking a lot?</legend>
+					<label for="talking"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="talking" id="talking" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Is there a lot of background noise?</legend>
+					<label for="noise"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="noise" id="noise" min="1" max="4" value="1">
+					<label for="noiseType">If so is it mostly [tick all that applies]</label>
+					<div class="options">
+						<div class="checkbox-field">
+							<input type="checkbox" name="noiseType" id="noiseType-voices" value="Voices"><label for="noiseType-voices">Voices</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="noiseType" id="noiseType-cutlery-furniture" value="Cutlery/Furniture"><label for="noiseType-cutlery-furniture">Cutlery/Furniture</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="noiseType" id="noiseType-media-music" value="Media/Music"><label for="noiseType-media-music">Media/Music</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="noiseType" id="noiseType-traffic-machinery" value="Traffic/Heavy machinery"><label for="noiseType-traffic-machinery">Traffic/Heavy machinery</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="noiseType" id="noiseType-other" value="Other"><label for="noiseType-other">Other</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Is there a lot of light?</legend>
+					<label for="light"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="light" id="light" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Is the light bright?</legend>
+					<label for="lightBright"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="lightBright" id="lightBright" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Is the light flickering?</legend>
+					<label for="lightFlickering"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="lightFlickering" id="lightFlickering" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Is the light colour peculiar?</legend>
+					<label for="lightColourPeculiar"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="lightColourPeculiar" id="lightColourPeculiar" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Are there strong smells?</legend>
+					<label for="smells"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="smells" id="smells" min="1" max="4" value="1">
+					<label for="smellType">If so is it mostly [tick all that applies]</label>
+					<div class="options">
+						<div class="checkbox-field">
+							<input type="checkbox" name="smellType" id="smellType-chemical" value="Chemical"><label for="smellType-checmical">Chemical</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="smellType" id="smellType-food" value="Food"><label for="smellType-food">Food</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="smellType" id="smellType-cosmetic" value="Cosmetic"><label for="smellType-cosmetic">Cosmetic</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="smellType" id="smellType-natural" value="Natural"><label for="smellType-natural">Natural</label>
+						</div>
+						<div class="checkbox-field">
+							<input type="checkbox" name="smellType" id="smellType-other" value="Other"><label for="smellType-other">Other</label>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend>Is the floor sticky?</legend>
+					<label for="floorSticky"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="floorSticky" id="floorSticky" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Is the floor uneven?</legend>
+					<label for="floorUneven"><span>No</span><span>Rarely</span><span>Sometimes</span><span>Yes</span></label>
+					<input type="range" name="floorUneven" id="floorUneven" min="1" max="4" value="1">
+				</fieldset>
+				<fieldset>
+					<legend>Are the seats hard/soft?</legend>
+					<label for="seatsHard"><span>Soft</span><span>Hard</span></label>
+					<input type="range" name="seatsHard" id="seatsHard" min="1" max="4" value="1" step="3"> <!-- input values buggy, can only go fully soft or fully hard-->
+				</fieldset>
+				<fieldset>
+					<legend>Are the textures smooth/rough?</legend>
+					<label for="texturesRough"><span>Smooth</span><span>Rough</span></label>
+					<input type="range" name="texturesRough" id="texturesRough" min="1" max="4" value="1" step="3"> <!-- input values buggy, can only fo fully smooth or fully rough-->
+				</fieldset>
+				<label for="directions">Directions</label>
+				<textarea name="directions" id="directions" placeholder="Add directions to this location"></textarea>
+				<label for="comments">Comments</label>
+				<textarea name="comments" id="comments" placeholder="Add a comment about this location here (optional)"></textarea>
+				<button class="addNew" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+			</form>
+		   </div>
    
 	  </div>
 	</main>

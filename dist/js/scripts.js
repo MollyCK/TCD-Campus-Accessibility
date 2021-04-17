@@ -213,5 +213,15 @@ function cleardata2(){
 	console.log("cleared2");
 }
 
+function addLocationFunct(){
+	console.log("logged");
+	document.getElementById("addLocationForm").style.display="block";
+}
+function close1(){
+	var form =document.getElementById("addLocationForm");
+	form.preventDefault();
+	form.style.display="none";
+	
+}
 openModal();
 closeModal();
