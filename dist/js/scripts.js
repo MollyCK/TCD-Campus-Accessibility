@@ -56,6 +56,7 @@ function myfunct(){
 		dataType:"json"
 	}).done(function(data){
 		console.log(data.placeName);
+		cleardata();
 		cleardata2();
 		var test =document.getElementById("txtHint");
 		var para = document.createElement("BUTTON");
@@ -65,47 +66,8 @@ function myfunct(){
 		var node = document.createTextNode(data.placeName);
 		para.appendChild(node);
 		test.appendChild(para);
-		/*dummy buttons for demo*/
-		para = document.createElement("BUTTON");
-		para.setAttribute("onclick","displaydata(this)");
-		para.setAttribute("id",data.id);
-		node = document.createTextNode("Buttery");
-		para.appendChild(node);
-		test.appendChild(para);
-		para = document.createElement("BUTTON");
-		para.setAttribute("onclick","displaydata(this)");
-		para.setAttribute("id",data.id);
-		node = document.createTextNode("Dining Hall");
-		para.appendChild(node);
-		test.appendChild(para);
-		para = document.createElement("BUTTON");
-		para.setAttribute("onclick","displaydata(this)");
-		para.setAttribute("id",data.id);
-		node = document.createTextNode("Cricket Pitch");
-		para.appendChild(node);
-		test.appendChild(para);
-		para = document.createElement("BUTTON");
-		para.setAttribute("onclick","displaydata(this)");
-		para.setAttribute("id",data.id);
-		node = document.createTextNode("Hamilton Building");
-		para.appendChild(node);
-		test.appendChild(para);
-		/*end dummy buttons*/
-		cleardata();
-	});
-}
-
-function displaydata(btn){
-	var answer;
-	var id = btn.getAttribute('id');
-	console.log(id);
-	$.ajax({
-		url: "data/dataExample.json?id="+id,	//Needs to be replaced with server url so that server knows to get data pertaining to the given location's id. Currently takes data from dummy data
-		dataType:"json"
-	}).done(function(data){
-		console.log(data.placeName);
+		document.getElementById("content").style.display="none";
 		var item = document.getElementById("content");
-		
 		var nameplace =document.createElement("H1");
 		var text =document.createTextNode(data.placeName);
 		nameplace.appendChild(text);
@@ -201,7 +163,20 @@ function displaydata(btn){
 		}
 		text = document.createTextNode("Are the textures smooth/rough? \t" +answer+"\n");
 		item.appendChild(text);
+		
+		
 	});
+}
+
+function displaydata(btn){
+	var id = btn.getAttribute('id');
+	var show = document.getElementById("content");
+	console.log(id);
+	if(show.style.display=="none"){
+		show.style.display="block";
+	}else if(show.style.display=="block"){
+		show.style.display="none";
+	}
 }
 
 function cleardata(){
