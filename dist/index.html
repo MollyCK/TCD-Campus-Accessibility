@@ -12,20 +12,21 @@
 	<link rel="stylesheet" type="text/css" href="./css/styles.css">
 </head>
 
+<!-- Header needs more added to it, colours and styles can be altered in styles.css-->
+<header class="header">
+	<div class="site-identity">
+		<img src="img/logo2.png" alt="logo">
+	</div>
+	<nav class="header-right">
+		<ul class="nav">
+			<li><button class="dyslexia-font">Dyslexia Font</button></li>
+			<li><button class="warm-background">Warm Background</button></li>
+			<li><button id="addLocation" onclick="addLocationFunct()">Add a new location</button></li>
+		</ul>
+	</nav>
+</header>
+
 <body> 
-	<!-- Header needs more added to it, colours and styles can be altered in styles.css-->
-	<header class="header">
-		<div class="site-identity">
-			<img src="img/logo.png" alt="logo">
-		</div>
-		<nav class="header-right">
-			<ul class="nav">
-				<li><button class="dyslexia-font">Dyslexia Font</button></li>
-				<li><button class="warm-background">Warm Background</button></li>
-				<li><button id="addLocation" onclick="addLocationFunct()">Add a new location</button></li>
-			</ul>
-		</nav>
-	</header>
 	<main>
 	  <div class="wrapper">
 		  <!-- the below map section covers everything to do with the map including clickable area mapping, location info pop-up, survey pop-up, submitting survey responses -->
