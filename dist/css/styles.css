@@ -658,18 +658,20 @@ body {
 }
 
 #content{
+  display: none;
   float:right;
-  color: black;
-  /*display:block;*/
+  color: white;
   width: 400px;
-  white-space: pre-line;
-  margin: auto;
-  text-align: center;
+  /*white-space: pre-line;*/
+  margin: 0;
+  text-align: left;
   background: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   color: hsl(0, 0%, 100%);
-  /*border: solid 1px black;*/
   border-radius: .8rem; 
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
+  white-space: pre;
+  padding-left: 20px;
+  padding-bottom: 20px;
 }
 #txtHint{
   float:left;

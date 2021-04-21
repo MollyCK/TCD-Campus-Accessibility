@@ -77,93 +77,98 @@ function myfunct(){
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Are there usually a lot of people in this space? \t" +answer+"\n");
+		text = document.createTextNode("Lots of people: \t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.movement <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Are people moving chaotically? \t" +answer+"\n");
+		text = document.createTextNode("People moving chaotically: \t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.talking <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Are people talking a lot? \t" +answer+"\n");
+		text = document.createTextNode("People talking a lot: \t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.noise <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is there a lot of background noise? \t" +answer+"\n");
+		text = document.createTextNode("Lots of background noise: \t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.light <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is there a lot of light? \t" +answer+"\n");
+		text = document.createTextNode("Lots of light: \t\t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.lightBright <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is the light bright? \t" +answer+"\n");
+		text = document.createTextNode("Bright light: \t\t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.lightFlickering <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is the light flickering? \t" +answer+"\n");
+		text = document.createTextNode("Flickering light: \t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.lightColourPeculiar <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is the light colour peculiar? \t" +answer+"\n");
+		text = document.createTextNode("Peculiar light colour: \t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.smells <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Are there strong smells? \t" +answer+"\n");
+		text = document.createTextNode("Strong smells: \t\t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.floorSticky <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is the floor sticky? \t" +answer+"\n");
+		text = document.createTextNode("Sticky floor: \t\t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.floorUneven <=2){
 			answer ="no";
 		}else{
 			answer="yes";
 		}
-		text = document.createTextNode("Is the floor uneven? \t" +answer+"\n");
+		text = document.createTextNode("Uneven floor: \t\t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.seatsHard <=3){
 			answer ="soft";
 		}else{
 			answer="hard";
 		}
-		text = document.createTextNode("Are the seats hard/soft? " +answer+"\n");
+		text = document.createTextNode("Seats hard or soft: \t\t\t\t\t\t" +answer+"\n");
 		item.appendChild(text);
 		if(data.score.seatsHard <=3){
 			answer ="smooth";
 		}else{
 			answer="rough";
 		}
-		text = document.createTextNode("Are the textures smooth/rough? \t" +answer+"\n");
+		text = document.createTextNode("Textures smooth or rough: \t\t\t" +answer+"\n");
 		item.appendChild(text);
-		
+		text = document.createTextNode("Comments: ");
+		item.appendChild(text);
+		data.opinions.forEach(function(opinion){
+			text=document.createTextNode(opinion.comments+"\n");
+			item.appendChild(text);
+		});
 		
 	});
 }
