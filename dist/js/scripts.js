@@ -45,12 +45,13 @@ function openForm(data) {
 
 function myfunct(){
 	console.log("submitted");
-	var noiserating = document.getElementById("noise1").value;
-	var lightrating = document.getElementById("light1").value;
-	var smellrating = document.getElementById("smells1").value;
-	console.log(noiserating);
-	console.log(lightrating);
-	console.log(smellrating);
+	var filter=$('.filterform').serializeArray();
+	var filterFormObject={};
+	$.each(filter,
+		function(i,v){
+			filterFormObject[v.name]=v.value;
+		});
+	console.log(filter);
 	$.ajax({
 		url: "data/dataExample.json?noise=3&light=2&smells="+4,	//Needs to be replaced with server url so that server knows to get data pertaining to the given location's id. Currently takes data from dummy data
 		dataType:"json"
@@ -196,6 +197,17 @@ function cleardata2(){
 function addLocationFunct(){
 	console.log("logged");
 	document.getElementById("addLocationForm").style.display="block";
+	
+}
+
+function addNewLocation(){
+	var addNewForm=$('.form-container').serializeArray();
+	var loginFormObject={};
+	$.each(addNewForm,
+		function(i,v){
+			loginFormObject[v.name]=v.value;
+		});
+	console.log(addNewForm);
 }
 function close1(){
 	var form =document.getElementById("addLocationForm");

@@ -142,7 +142,7 @@
             </map>
 			
 			<div id="filter">
-				<form class="filterform">
+				<form class="filterform" onsubmit="myfunct()">
 					<fieldset>
 						<legend>Filter Locations By:</legend>
 						<p>Noise:</p>
@@ -290,7 +290,7 @@
             </div>
 	   	</section>
 		   <div id="addLocationForm">
-			<form class="form-container">
+			<form class="form-container" onsubmit="addNewLocation()">
 				<button id="close" onclick="close1()">X</button>
 				<h2>Add a new location: </h2> <!-- span gets filled in with the location name from the data retrieved by the javascript code -->
 				<p>Please enter the name of this location:</p>
