@@ -76,13 +76,14 @@ function myfunct(){
 
 function displaydata(btn){
 	var id = btn.getAttribute('id');
-	var show = document.getElementById("content");
-	console.log(id);
-	if(show.style.display=="none"){
-		show.style.display="block";
-	}else if(show.style.display=="block"){
-		show.style.display="none";
+	document.getElementById("content").style.display="block";
+	var id = btn.getAttribute('id');
+	var show = document.getElementById("testing"+id);
+	var tabs=document.getElementsByClassName("tabs");
+	for(i=0;i<tabs.length;i++){
+		tabs[i].style.display="none";
 	}
+	show.style.display="block";
 }
 
 function cleardata(){
@@ -116,7 +117,11 @@ function close1(){
 	
 }
 function setText(data){
-	var item = document.getElementById("content");
+	var item1 = document.getElementById("content");
+	var item =document.createElement("P");
+	item.setAttribute("class","tabs");
+	item.setAttribute("id","testing"+data.id);
+	item.style.display="none";
 	var nameplace =document.createElement("H1");
 	var text =document.createTextNode(data.placeName);
 	nameplace.appendChild(text);
@@ -212,6 +217,9 @@ function setText(data){
 	}
 	text = document.createTextNode("Textures smooth or rough: \t\t\t" +answer+"\n");
 	item.appendChild(text);
+	item1.appendChild(item);
+	console.log(item);
+	console.log(item1);
 }
 openModal();
 closeModal();
