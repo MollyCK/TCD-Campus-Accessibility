@@ -704,6 +704,7 @@ body {
   white-space: pre;
   padding-left: 20px;
   padding-bottom: 20px;
+  overflow-x: scroll;
 }
 #txtHint{
   float:left;

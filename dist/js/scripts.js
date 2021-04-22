@@ -164,6 +164,10 @@ function myfunct(){
 		}
 		text = document.createTextNode("Textures smooth or rough: \t\t\t" +answer+"\n");
 		item.appendChild(text);
+		if(data.directions != null){
+		text=document.createTextNode("Directions: " + data.directions);
+		item.appendChild(text);
+		}
 		text = document.createTextNode("Comments: ");
 		item.appendChild(text);
 		data.opinions.forEach(function(opinion){
