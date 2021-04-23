@@ -138,14 +138,14 @@ function close1(){
 	form.style.display="none";	
 }
 
-function setText(data){
+function setText(data) {
 	var item1 = document.getElementById("content");
-	var item =document.createElement("P");
-	item.setAttribute("class","tabs");
-	item.setAttribute("id","testing"+data.id);
-	item.style.display="none";
-	var nameplace =document.createElement("H1");
-	var text =document.createTextNode(data.placeName);
+	var item = document.createElement("P");
+	item.setAttribute("class", "tabs");
+	item.setAttribute("id", "testing" + data.id);
+	item.style.display = "none";
+	var nameplace = document.createElement("H1");
+	var text = document.createTextNode(data.placeName);
 	nameplace.appendChild(text);
 	item.appendChild(nameplace);
 
@@ -204,30 +204,26 @@ function setText(data){
 		answer = "Yes";
 	}
 
-	text = document.createTextNode("People talking a lot: \t\t\t\t\t" +answer+"\n");
+	text = document.createTextNode("People talking a lot: \t\t\t\t\t" + answer + "\n");
 	item.appendChild(text);
-	if(data.score.noise <=2){
-		answer ="no";
-	}else{
-		answer="yes";
-	if(data.score.noise ==1){
-		answer ="No";
-	}else if(data.score.noise ==2){
-		answer="Rarely";
-	}
-	else if(data.score.noise ==3){
-		answer="Sometimes";
+		if (data.score.noise == 1) {
+			answer = "No";
+		} else if (data.score.noise == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.noise == 3) {
+			answer = "Sometimes";
 
-	}else if(data.score.noise ==4){
-		answer="Yes";
-	}
+		} else if (data.score.noise == 4) {
+			answer = "Yes";
+		}
 
-	text = document.createTextNode("Lots of background noise: \t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.light ==1){
-		answer ="No";
-	}else if(data.score.light ==2){
-		answer="Rarely";
+		text = document.createTextNode("Lots of background noise: \t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.light == 1) {
+			answer = "No";
+		} else if (data.score.light == 2) {
+			answer = "Rarely";
 		}
 		else if (data.score.light == 3) {
 			answer = "Sometimes";
@@ -278,68 +274,69 @@ function setText(data){
 			answer = "Yes";
 		}
 
-	text = document.createTextNode("Peculiar light colour: \t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.smells ==1){
-		answer ="No";
-	}else if(data.score.smells ==2){
-		answer="Rarely";
-	}
-	else if(data.score.smells ==3){
-		answer="Sometimes";
+		text = document.createTextNode("Peculiar light colour: \t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.smells == 1) {
+			answer = "No";
+		} else if (data.score.smells == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.smells == 3) {
+			answer = "Sometimes";
 
-	}else if(data.score.smells ==4){
-		answer="Yes";
+		} else if (data.score.smells == 4) {
+			answer = "Yes";
+		}
+
+		text = document.createTextNode("Strong smells: \t\t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.floorSticky == 1) {
+			answer = "No";
+		} else if (data.score.floorSticky == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.floorSticky == 3) {
+			answer = "Sometimes";
+
+		} else if (data.score.floorSticky == 4) {
+			answer = "Yes";
+		}
+
+		text = document.createTextNode("Sticky floor: \t\t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.floorUneven == 1) {
+			answer = "No";
+		} else if (data.score.floorUneven == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.floorUneven == 3) {
+			answer = "Sometimes";
+
+		} else if (data.score.floorUneven == 4) {
+			answer = "Yes";
+		}
+
+		text = document.createTextNode("Uneven floor: \t\t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.seatsHard <= 3) {
+			answer = "soft";
+		} else {
+			answer = "hard";
+		}
+		text = document.createTextNode("Seats hard or soft: \t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.seatsHard <= 3) {
+			answer = "smooth";
+		} else {
+			answer = "rough";
+		}
+		text = document.createTextNode("Textures smooth or rough: \t\t\t" + answer + "\n");
+		item.appendChild(text);
+		item1.appendChild(item);
+		console.log(item);
+		console.log(item1);
 	}
 
-	text = document.createTextNode("Strong smells: \t\t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.floorSticky ==1){
-		answer ="No";
-	}else if(data.score.floorSticky ==2){
-		answer="Rarely";
-	}
-	else if(data.score.floorSticky ==3){
-		answer="Sometimes";
-
-	}else if(data.score.floorSticky ==4){
-		answer="Yes";
-	}
-
-	text = document.createTextNode("Sticky floor: \t\t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.floorUneven ==1){
-		answer ="No";
-	}else if(data.score.floorUneven ==2){
-		answer="Rarely";
-	}
-	else if(data.score.floorUneven ==3){
-		answer="Sometimes";
-
-	}else if(data.score.floorUneven ==4){
-		answer="Yes";
-	}
-
-	text = document.createTextNode("Uneven floor: \t\t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.seatsHard <=3){
-		answer ="soft";
-	}else{
-		answer="hard";
-	}
-	text = document.createTextNode("Seats hard or soft: \t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.seatsHard <=3){
-		answer ="smooth";
-	}else{
-		answer="rough";
-	}
-	text = document.createTextNode("Textures smooth or rough: \t\t\t" +answer+"\n");
-	item.appendChild(text);
-	item1.appendChild(item);
-	console.log(item);
-	console.log(item1);
-}
 openModal();
 closeModal();
 closeaddLocation();
@@ -351,4 +348,12 @@ function changeFont() {
   });
 }
 
+function changeBackground() {
+	$(".warm-background").click(function(e){
+		e.preventDefault();
+		$("body").toggleClass("warm");
+	});
+}
+
+changeBackground();
 changeFont();

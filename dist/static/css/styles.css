@@ -380,6 +380,10 @@ body.dyslexic {
   font-size:0.8em;
 }
 
+body.warm {
+  background-color:hsla(236, 50%, 50%, 0.3);
+}
+
 .wrapper {
   width: 1000px;
   margin: 0 auto;
