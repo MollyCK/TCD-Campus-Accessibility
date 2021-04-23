@@ -636,6 +636,22 @@ body.warm {
   transform: translateY(-0.2rem);
 }
 
+#map #modal .submitform {
+  padding: 1rem 1.6rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+
+  color: inherit;
+  background: transparent;
+  transition: .2s;
+  cursor: pointer;
+}
+
+#map #modal .submitform:hover, .submitform:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
 #map #modal h3 {
   margin-bottom: 0;
   font-weight: normal;

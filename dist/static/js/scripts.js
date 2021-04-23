@@ -49,6 +49,88 @@ function openForm(data) {
 	});
 }
 
+$('.submitform').click(function(e){
+	e.preventDefault();
+	submitSurvey();
+});
+
+function submitSurvey() {
+	var placeID=$("#area").attr("id");
+	var userName=$("#userName").val();
+	var peopleRating=$("#people").val();
+	var movementRating=$("#movement").val();
+	var talkRating=$("#talking").val();
+	var noiseRating=$("#noise").val();
+	//noise tick boxes
+	var noiseType = 5;
+	if($("#noiseType-voices").val() != 0)
+	{
+		noiseType=1;
+	} else if ($("#noiseType-cutlery-furniture").val() != 0)
+	{
+		noiseType = 2;
+	} else if ($("#noiseType-media-music").val() != 0)
+	{
+		noiseType = 3;
+	} else if ($("#noiseType-traffic-machinery").val() != 0)
+	{
+		noiseType = 4;
+	}
+	var lightRating=$("#light").val();
+	var brightRating=$("#lightBright").val();
+	var flickerRating=$("#lightFlickering").val();
+	var colourRating=$("#lightColourPeculiar").val();
+	var smellRating=$("#smells").val();
+	// smell tick boxes
+	var smellType = 5;
+	if($("#smellType-chemical").val() != 0)
+	{
+		smellType=1;
+	} else if ($("#smellType-food").val() != 0)
+	{
+		smellType = 2;
+	} else if ($("#smellType-cosmetic").val() != 0)
+	{
+		smellType = 3;
+	} else if ($("#smellType-natural").val() != 0)
+	{
+		smellType = 4;
+	}
+	var stickyRating=$("#floorSticky").val();
+	var unevenRating=$("#floorUneven").val();
+	var seatsRating=$("#seatsHard").val();
+	var texturesRating=$("#texturesRough").val();
+	var comment=$("#comments").val();
+
+	var jsonString = {
+		"id":placeID,
+		"userName":userName,
+		"people":peopleRating,
+		"movement": movementRating,
+        "talking": talkRating,
+        "noise": noiseRating,
+        "noisesArray": noiseType,
+        "light":lightRating,
+        "lightBright": brightRating,
+        "lightFlickering": flickerRating,
+        "lightColourPeculiar": colourRating,
+        "smells": smellRating,
+        "smellArray": smellType,
+        "floorSticky": stickyRating,
+        "floorUneven": unevenRating,
+        "seatsHardBinary": seatsRating,
+        "texturesRoughBinary": texturesRating,
+        "comments": comment
+	}
+
+	$.ajax({
+		type: "POST",
+		url: "http://127.0.0.1:5000/survey/",
+		dataType: "json",
+		data: jsonString
+	})
+}
+
 $('.filterform input[type="submit"]').click(function(e){
 	e.preventDefault();
 	myfunct();
@@ -61,15 +143,6 @@ function myfunct(){
 	var lightrating=document.getElementById("light1").value;
 	var smellrating=document.getElementById("smells1").value;
 	var scores =""+noiserating+lightrating+smellrating;
-
-	/*
-	var jsonString = {
-		"score":noiserating,
-		"petecan":y,
-		"canalons":z
-	}
-	*/
-
 	/*send string to server*/
 	$.ajax({
 		type: "GET",
