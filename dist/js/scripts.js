@@ -222,5 +222,14 @@ function setText(data){
 	console.log(item);
 	console.log(item1);
 }
+
+function changeFont() {
+	$(".dyslexia-font").click(function(e){
+		e.preventDefault();
+		$("body").toggleClass("dyslexic");
+	});
+}
+
+changeFont();
 openModal();
 closeModal();

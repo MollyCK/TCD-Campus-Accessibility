@@ -362,6 +362,21 @@ body {
   font-size: 16px;
 }
 
+body .dyslexic {
+  font-family: 'OpenDyslexicMono';
+  font-size: 0.8em;
+}
+
+@font-face {
+  font-family: 'OpenDyslexicMono';
+  src: url('fonts/OpenDyslexicMono-Regular.woff2') format('woff2'),
+      url('fonts/OpenDyslexicMono-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 .wrapper {
   width: 1000px;
   margin: 0 auto;
@@ -740,8 +755,8 @@ body {
 }
 #txtHint{
   float:left;
- color: #0400ff;
- display: block;
+  color: #0400ff;
+  display: block;
 }
 
 #txtHint button{
