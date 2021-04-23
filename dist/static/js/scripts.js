@@ -111,6 +111,7 @@ function cleardata(){
 	document.getElementById("content").innerHTML="";
 	console.log("cleared");
 }
+
 function cleardata2(){
 	document.getElementById("txtHint").innerHTML="";
 	console.log("cleared2");
@@ -119,7 +120,6 @@ function cleardata2(){
 function addLocationFunct(){
 	console.log("logged");
 	document.getElementById("addLocationForm").style.display="block";
-	
 }
 
 function addNewLocation(){
@@ -131,12 +131,13 @@ function addNewLocation(){
 		});
 	console.log(addNewForm);
 }
+
 function close1(){
 	var form =document.getElementById("addLocationForm");
 	form.preventDefault();
-	form.style.display="none";
-	
+	form.style.display="none";	
 }
+
 function setText(data){
 	var item1 = document.getElementById("content");
 	var item =document.createElement("P");
@@ -163,81 +164,162 @@ function setText(data){
 	})
 	*/
 
-	if(data.score.people <=2){
-		answer ="no";
-	}else{
-		answer="yes";
+	if (data.score.people == 1) {
+		answer = "No";
+	} else if (data.score.people == 2) {
+		answer = "Rarely";
 	}
-	text = document.createTextNode("Lots of people: \t\t\t\t\t\t" +answer+"\n");
+	else if (data.score.people == 3) {
+		answer = "Sometimes";
+
+	} else if (data.score.people == 4) {
+		answer = "Yes";
+	}
+
+	text = document.createTextNode("Lots of people: \t\t\t\t\t\t" + answer + "\n");
 	item.appendChild(text);
-	if(data.score.movement <=2){
-		answer ="no";
-	}else{
-		answer="yes";
+	if (data.score.movement == 1) {
+		answer = "No";
+	} else if (data.score.movement == 2) {
+		answer = "Rarely";
 	}
-	text = document.createTextNode("People moving chaotically: \t\t\t" +answer+"\n");
+	else if (data.score.movement == 3) {
+		answer = "Sometimes";
+
+	} else if (data.score.movement == 4) {
+		answer = "Yes";
+	}
+
+	text = document.createTextNode("People moving chaotically: \t\t\t" + answer + "\n");
 	item.appendChild(text);
-	if(data.score.talking <=2){
-		answer ="no";
-	}else{
-		answer="yes";
+	if (data.score.talking == 1) {
+		answer = "No";
+	} else if (data.score.talking == 2) {
+		answer = "Rarely";
 	}
+	else if (data.score.talking == 3) {
+		answer = "Sometimes";
+
+	} else if (data.score.talking == 4) {
+		answer = "Yes";
+	}
+
 	text = document.createTextNode("People talking a lot: \t\t\t\t\t" +answer+"\n");
 	item.appendChild(text);
 	if(data.score.noise <=2){
 		answer ="no";
 	}else{
 		answer="yes";
+	if(data.score.noise ==1){
+		answer ="No";
+	}else if(data.score.noise ==2){
+		answer="Rarely";
 	}
+	else if(data.score.noise ==3){
+		answer="Sometimes";
+
+	}else if(data.score.noise ==4){
+		answer="Yes";
+	}
+
 	text = document.createTextNode("Lots of background noise: \t\t\t\t" +answer+"\n");
 	item.appendChild(text);
-	if(data.score.light <=2){
-		answer ="no";
-	}else{
-		answer="yes";
-	}
-	text = document.createTextNode("Lots of light: \t\t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.lightBright <=2){
-		answer ="no";
-	}else{
-		answer="yes";
-	}
-	text = document.createTextNode("Bright light: \t\t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.lightFlickering <=2){
-		answer ="no";
-	}else{
-		answer="yes";
-	}
-	text = document.createTextNode("Flickering light: \t\t\t\t\t\t" +answer+"\n");
-	item.appendChild(text);
-	if(data.score.lightColourPeculiar <=2){
-		answer ="no";
-	}else{
-		answer="yes";
-	}
+	if(data.score.light ==1){
+		answer ="No";
+	}else if(data.score.light ==2){
+		answer="Rarely";
+		}
+		else if (data.score.light == 3) {
+			answer = "Sometimes";
+
+		} else if (data.score.light == 4) {
+			answer = "Yes";
+		}
+
+		text = document.createTextNode("Lots of light: \t\t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.lightBright == 1) {
+			answer = "No";
+		} else if (data.score.lightBright == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.lightBright == 3) {
+			answer = "Sometimes";
+
+		} else if (data.score.lightBright == 4) {
+			answer = "Yes";
+		}
+
+		text = document.createTextNode("Bright light: \t\t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.lightFlickering == 1) {
+			answer = "No";
+		} else if (data.score.lightFlickering == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.lightFlickering == 3) {
+			answer = "Sometimes";
+
+		} else if (data.score.lightFlickering == 4) {
+			answer = "Yes";
+		}
+
+		text = document.createTextNode("Flickering light: \t\t\t\t\t\t" + answer + "\n");
+		item.appendChild(text);
+		if (data.score.lightColourPeculiar == 1) {
+			answer = "No";
+		} else if (data.score.lightColourPeculiar == 2) {
+			answer = "Rarely";
+		}
+		else if (data.score.lightColourPeculiar == 3) {
+			answer = "Sometimes";
+
+		} else if (data.score.lightColourPeculiar == 4) {
+			answer = "Yes";
+		}
+
 	text = document.createTextNode("Peculiar light colour: \t\t\t\t\t" +answer+"\n");
 	item.appendChild(text);
-	if(data.score.smells <=2){
-		answer ="no";
-	}else{
-		answer="yes";
+	if(data.score.smells ==1){
+		answer ="No";
+	}else if(data.score.smells ==2){
+		answer="Rarely";
 	}
+	else if(data.score.smells ==3){
+		answer="Sometimes";
+
+	}else if(data.score.smells ==4){
+		answer="Yes";
+	}
+
 	text = document.createTextNode("Strong smells: \t\t\t\t\t\t\t" +answer+"\n");
 	item.appendChild(text);
-	if(data.score.floorSticky <=2){
-		answer ="no";
-	}else{
-		answer="yes";
+	if(data.score.floorSticky ==1){
+		answer ="No";
+	}else if(data.score.floorSticky ==2){
+		answer="Rarely";
 	}
+	else if(data.score.floorSticky ==3){
+		answer="Sometimes";
+
+	}else if(data.score.floorSticky ==4){
+		answer="Yes";
+	}
+
 	text = document.createTextNode("Sticky floor: \t\t\t\t\t\t\t" +answer+"\n");
 	item.appendChild(text);
-	if(data.score.floorUneven <=2){
-		answer ="no";
-	}else{
-		answer="yes";
+	if(data.score.floorUneven ==1){
+		answer ="No";
+	}else if(data.score.floorUneven ==2){
+		answer="Rarely";
 	}
+	else if(data.score.floorUneven ==3){
+		answer="Sometimes";
+
+	}else if(data.score.floorUneven ==4){
+		answer="Yes";
+	}
+
 	text = document.createTextNode("Uneven floor: \t\t\t\t\t\t\t" +answer+"\n");
 	item.appendChild(text);
 	if(data.score.seatsHard <=3){
@@ -269,4 +351,4 @@ function changeFont() {
   });
 }
 
-changeFont()
+changeFont();
