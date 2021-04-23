@@ -817,6 +817,7 @@ body .dyslexic {
 /* Doesn't work for filter submit button*/
 #filter .filterform fieldset > input[type="button" i] {
   padding: 1rem 1.6rem;
+  padding-top: 2px;
   border: 1px solid hsla(0, 0%, 100%, 0.4);
   border-radius: 100rem;
 
