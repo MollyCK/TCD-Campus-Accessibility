@@ -722,7 +722,7 @@ body {
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
 }
 
-#content{
+#content {
   display: none;
   float:right;
   color: white;
