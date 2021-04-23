@@ -469,6 +469,22 @@ body {
   overflow: auto; /* Enable scroll if needed */
 }
 
+#addLocationForm .form-container .addNew {
+  padding: 1rem 1.6rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+
+  color: inherit;
+  background: transparent;
+  transition: .2s;
+  cursor: pointer;
+}
+
+#addLocationForm .form-container .addNew:hover, .addNew:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
 .form-container {
   background: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   border: solid 1px black;
@@ -480,7 +496,24 @@ body {
 }
 
 .form-container .close {
-  float:right;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+  color:inherit;
+
+  float: right;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.form-container .close:hover, .close:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
 }
 
 .form-container .title h2 {

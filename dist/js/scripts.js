@@ -189,6 +189,7 @@ function cleardata(){
 	document.getElementById("content").innerHTML="";
 	console.log("cleared");
 }
+
 function cleardata2(){
 	document.getElementById("txtHint").innerHTML="";
 	console.log("cleared2");
@@ -196,8 +197,7 @@ function cleardata2(){
 
 function addLocationFunct(){
 	console.log("logged");
-	document.getElementById("addLocationForm").style.display="block";
-	
+	document.getElementById("addLocationForm").style.display="block";	
 }
 
 function addNewLocation(){
@@ -209,11 +209,12 @@ function addNewLocation(){
 		});
 	console.log(addNewForm);
 }
+
 function close1(){
 	var form =document.getElementById("addLocationForm");
 	form.preventDefault();
-	form.style.display="none";
-	
+	form.style.display="none";	
 }
+
 openModal();
 closeModal();
