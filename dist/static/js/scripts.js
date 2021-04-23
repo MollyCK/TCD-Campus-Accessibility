@@ -32,6 +32,13 @@ function closeModal() {
 	});
 }
 
+function closeaddLocation() {
+	$("#close1").click(function(e){
+		e.preventDefault();
+		document.getElementById("addLocationForm").style.display="none";
+	});
+}
+
 function openForm(data) {
 	$("#modal button.openform").click(function(){
 		$("#modal").css({"top":"0.3%"})
@@ -42,18 +49,32 @@ function openForm(data) {
 	});
 }
 
+$('.filterform input[type="submit"]').click(function(e){
+	e.preventDefault();
+	myfunct();
+});
+
 function myfunct(){
 	console.log("submitted");
+	// var noiserating=$("#noise1").val(); with jQuery
 	var noiserating=document.getElementById("noise1").value;
 	var lightrating=document.getElementById("light1").value;
 	var smellrating=document.getElementById("smells1").value;
 	var scores =""+noiserating+lightrating+smellrating;
+
+	/*
+	var jsonString = {
+		"score":noiserating,
+		"petecan":y,
+		"canalons":z
+	}
+	*/
+
 	/*send string to server*/
 	$.ajax({
 		type: "GET",
-		/* url:server?string 				?? */
-		url: "http://127.0.0.1:5000/filter"+scores,	//Needs to be replaced with server url so that server knows to get data pertaining to the given location's id. Currently takes data from dummy data
-		// dataType:"json",
+		url: "http://127.0.0.1:5000/filter/"+scores,	
+		dataType:"json",
 		data: scores,
 	}).done(function(data){
 		console.log(data.placeName);
@@ -126,6 +147,22 @@ function setText(data){
 	var text =document.createTextNode(data.placeName);
 	nameplace.appendChild(text);
 	item.appendChild(nameplace);
+
+	console.log(data);
+
+
+	/*
+	data.forEach(function(d,i){
+
+		if(d.score.people <=2){
+			answer ="no";
+		}else{
+			answer="yes";
+		}
+
+	})
+	*/
+
 	if(data.score.people <=2){
 		answer ="no";
 	}else{
@@ -223,3 +260,13 @@ function setText(data){
 }
 openModal();
 closeModal();
+closeaddLocation();
+
+function changeFont() {
+  $(".dyslexia-font").click(function(e){
+    e.preventDefault();
+    $("body").toggleClass("dyslexic");
+  });
+}
+
+changeFont()

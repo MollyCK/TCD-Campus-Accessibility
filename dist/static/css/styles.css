@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
+ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -357,9 +357,27 @@ a {
   text-decoration: none;
 }
 
+@font-face {
+    font-family: 'OpenDyslexicMono';
+    src: url('fonts/OpenDyslexicMono-Regular.eot');
+    src: url('fonts/OpenDyslexicMono-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/OpenDyslexicMono-Regular.woff2') format('woff2'),
+        url('fonts/OpenDyslexicMono-Regular.woff') format('woff'),
+        url('fonts/OpenDyslexicMono-Regular.ttf') format('truetype'),
+        url('fonts/OpenDyslexicMono-Regular.svg#OpenDyslexicMono-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
+}
+
+body.dyslexic {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size:0.8em;
 }
 
 .wrapper {
