@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for, jsonify, request
-import os, json, sqlalchemy, arrayComputation
+import os, json, sqlalchemy
 import numpy as np
-from arrayComputation import array_maths
 from pymongo import MongoClient
 import pprint
 from bson import Binary, Code
