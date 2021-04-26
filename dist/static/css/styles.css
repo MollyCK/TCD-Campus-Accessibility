@@ -501,8 +501,25 @@ body.warm {
   width: 500px;
 }
 
-.form-container .close {
-  float:right;
+.form-container #close1 {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+  color:inherit;
+
+  float: right;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+.form-container #close1:hover, #close1:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
 }
 
 .form-container .title h2 {

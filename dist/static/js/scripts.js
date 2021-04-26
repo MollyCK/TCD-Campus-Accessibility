@@ -8,9 +8,11 @@ function openModal() {
 			  	url: "http://127.0.0.1:5000/place/"+id,	//Needs to be replaced with server url 
 			  	dataType:"json"
 			}).done(function(data) { //fills the modal with the location's data from database
+				console.log(data);
+
 				$("#modal .title h2, #modal div.score, #modal p.description, #modal ul.comments").html("");
 				$("#modal .title h2").html(data.placeName);
-				// $("#modal div.score").html("Average Score: "+data.score.average);
+				$("#modal div.score").html("Average Score: "+data.average);
 				$("#modal p.description").html(data.placeDescription);
 				$("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
 				// data.opinions.forEach(function(opinion){
@@ -49,9 +51,10 @@ function openForm(data) {
 	});
 }
 
-$('.submitform').click(function(e){
+$(".submitform").click(function(e){
 	e.preventDefault();
 	submitSurvey();
+
 });
 
 function submitSurvey() {
@@ -122,13 +125,17 @@ function submitSurvey() {
         "texturesRoughBinary": texturesRating,
         "comments": comment
 	}
-
+	$("#modal form").hide();
+	$("#modal .info").show();
 	$.ajax({
 		type: "POST",
-		url: "http://127.0.0.1:5000/survey/",
+		url: "http://127.0.0.1:5000/survey",
 		dataType: "json",
 		data: jsonString
-	})
+	}).done(function(data){
+		console.log(data);
+		
+	});
 }
 
 $('.filterform input[type="submit"]').click(function(e){
