@@ -1,7 +1,6 @@
 from flask import Flask, render_template, url_for, jsonify, request
-import os, json, sqlalchemy, arrayComputation
+import os, json, sqlalchemy
 import numpy as np
-from arrayComputation import array_maths
 from pymongo import MongoClient
 import pprint
 from bson import Binary, Code
@@ -25,7 +24,7 @@ def after_request(response):
 SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 
-#pprint.pprint(collection.find_one({"id": 75}))
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -38,7 +37,8 @@ def click_place_id(id):
 
 @app.route('/filter/<vals>', methods=['GET'])
 def filter_submit(vals):
-    return vals
+ 
+    return "rer"
 
 
 @app.route('/survey', methods=['POST'])
@@ -46,6 +46,7 @@ def submit_survey():
     data = request.json
     placeID = data["score"]["id"]
     doc = collection.find_one({"id":placeID})
+    print(doc.keys())
 
     peopleAnswer = data["score"]["people"]
     movementAnswer = data["score"]["movement"]
@@ -60,39 +61,43 @@ def submit_survey():
     floorUnevenAnswer = data["score"]["floorUneven"]
     seatsHardAnswer = data["score"]["seatsHardBinary"]
     texturesAnswer = data["score"]["texturesRoughBinary"]
-
-    peopleAnswer = data["score"]["people"]
-    movementAnswer = data["score"]["movement"]
-    talkingAnswer = data["score"]["talking"]
-    noiseAnswer = data["score"]["noise"]
-    lightAnswer = data["score"]["light"]
-    lightBrightAnswer = data["score"]["lightBright"]
-    lightFlickeringAnswer = data["score"]["lightFlickering"]
-    lightColourPeculiarAnswer = data["score"]["lightColourPeculiar"]
-    smellsAnswer = data["score"]["smells"]
-    floorStickyAnswer = data["score"]["floorSticky"]
-    floorUnevenAnswer = data["score"]["floorUneven"]
-    seatsHardAnswer = data["score"]["seatsHardBinary"]
-    texturesAnswer = data["score"]["texturesRoughBinary"]
-
-
 
     answersArray = [peopleAnswer, movementAnswer, talkingAnswer, noiseAnswer, lightAnswer, lightBrightAnswer, lightFlickeringAnswer, lightColourPeculiarAnswer, smellsAnswer, 
-    floorStickyAnswer, floorUnevenAnswer, seatsHardAnswer,texturesAnswer]
+    floorStickyAnswer, floorUnevenAnswer]
    
+    scoreKeys =  ['people', 'movement', 'talking', 'noise', 'light', 'lightBright', 'lightFlickering', 'lightColourPeculiar', 'smells', 'floorSticky', 'floorUneven',]
+
+    count = 0
     for surveyValue in answersArray:
-        count = 0
+        key = scoreKeys[count]
         if surveyValue == 1:
-            array = np.array([1, 0, 0, 0])
+            doc[key][0]["No"] = doc[key][0]["No"] + 1
         elif surveyValue == 2:
-            array = np.array([0, 1, 0 ,0])
+            doc[key][1]["Rarely"] = doc[key][1]["Rarely"] + 1
         elif surveyValue == 3:
-            array = np.array([0, 0, 1, 0])
+            doc[key][2]["Sometimes"] = doc[key][2]["Sometimes"] + 1
         else:
-            array = np.array([0, 0, 0, 1])
-        newArray = numpy.add(array,dbArray[count])
-        collection.insert_one({id:newArray})
+            doc[key][3]["Yes"] = doc[key][3]["Yes"] + 1
+
         count = count + 1
+
+    if seatsHardAnswer == 1: 
+        doc["seatsHard"][0]["Soft"] = doc["seatsHard"][0]["Soft"] + 1
+    else: 
+        doc["seatsHard"][1]["Hard"] = doc["seatsHard"][1]["Hard"] + 1
+
+    if texturesAnswer == 1: 
+        doc["texturesRough"][0]["Smooth"] = doc["texturesRough"][0]["Smooth"] + 1
+    else: 
+        doc["texturesRough"][1]["Rough"] = doc["texturesRough"][1]["Rough"] + 1
+
+    if data["score"]["noisesType"] == "Voices":
+        doc["noiseType"][0]["Voices"] = doc["noiseType"][0]["Voices"] + 1
+    elif data["score"]["noisesType"] == "Cutlery/Furniture":
+        doc["noiseType"][1]["Cutlery/Furniture"] = doc["noiseType"][1]["Cutlery/Furniture"] + 1
+
+
+
 
 
 
