@@ -127,7 +127,7 @@ function submitSurvey(locationData) {
 		$.ajax({
 			type: "POST",
 			url: "http://127.0.0.1:5000/survey",
-			dataType: "json",
+			dataType: "jsonp",
 			data: jsonString
 		}).done(function (data) {
 			console.log(data);

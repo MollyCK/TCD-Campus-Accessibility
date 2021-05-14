@@ -5,18 +5,20 @@ from pymongo import MongoClient
 import pprint
 from bson import Binary, Code
 from bson.json_util import dumps
+from flask_cors import CORS, cross_origin
 
 client = MongoClient('mongodb://rer:rer@123.56.68.67:7017/School')
 db = client['School']
 collection = db['Campus']
 
 app = Flask(__name__)
+
 @app.after_request
 def after_request(response):
     '''
     Allows for Cross Origin Requests.
     '''
-    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Origin', '*')    # the wildcard (*) only works for requests made with the crossorigin attribute set to anonymous, and it prevents sending credentials like cookies in requests
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
