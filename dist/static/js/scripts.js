@@ -97,7 +97,24 @@ function submitSurvey(locationData) {
 		var texturesRating = $("#texturesRough").val();
 		var comment = $("#comments").val();
 
-		var jsonString = {
+//trying something 
+/*
+		let xhr = new XMLHttpRequest();
+		let url = "http://127.0.0.1:5000/survey";
+
+		xhr.open("POST", url, true);
+
+		xhr.setRequestHeader("Content-Type", "application/json");
+
+		xhr.onreadystatechange = function () {
+			if (xhr.readyState === 4 && xhr.status === 200) {
+
+				//print received data from server
+				result.innerHTML = this.responseText;
+			}
+		};
+*/
+		var surveydata = JSON.stringify({
 			"score:": {
 				"id": placeID,
 				"people": peopleRating,
@@ -118,20 +135,22 @@ function submitSurvey(locationData) {
 			},
 			"comments": comment,
 			"userName": userName
-		};
+		});
 
-		console.log(jsonString);
+//		xhr.send(surveydata);
+		
+		console.log(surveydata);
 
 		$("#modal form").hide();
 		$("#modal .info").show();
 		$.ajax({
-			type: "POST",
-			url: "http://127.0.0.1:5000/survey",
-			dataType: "json",
-			data: jsonString
+			type: "GET",
+			url: "http://127.0.0.1:5000/survey?data="+surveydata,
+			contentType: "application/json",
+			dataType: "jsonp"
 		}).done(function (data) {
 			console.log(data);
-		});
+		}); 
 	});
 }
 

@@ -42,9 +42,11 @@ def filter_submit(vals):
     return vals
 
 
-@app.route('/survey', methods=['POST'])
+@app.route('/survey', methods=['GET'])
 def submit_survey():
+    print(request.json)
     data = request.json
+    
     placeID = data["score"]["id"]
     doc = collection.find_one({"id":placeID})
 
