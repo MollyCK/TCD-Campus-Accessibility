@@ -27,9 +27,7 @@
 		</ul>
 	</nav>
 </header>
-
-<body> 
-	
+	<h1>Select a Location: </h1>
 	<main>
 	  <div class="wrapper">
 		  <!-- the below map section covers everything to do with the map including clickable area mapping, location info pop-up, survey pop-up, submitting survey responses -->
@@ -145,7 +143,7 @@
             </map>
 			
 			<div id="filter">
-				<form class="filterform" onsubmit="myfunct()">
+				<form class="filterform" >
 					<fieldset>
 						<legend>Filter Locations By:</legend>
 						<p>Noise:</p>
@@ -157,7 +155,7 @@
 						 <p>Smell:</p>
 						 <br><br><label for="smell"><span>low</span><span>medium</span><span>high</span></label><br><br>
  						<input type="range" name="smell" id="smells1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
-						 <input type="button" onclick="myfunct()" value="Submit">
+						 <input type="submit" value="Submit">
 					</fieldset>
 				</form>
 			</div>
@@ -169,7 +167,7 @@
             	<div class="info">
 	            	<div class="title"> <!-- this div deals with the things above the black line in the pop-up-->
 	 					<h2></h2>
-	 					<div class="score"></div>
+	 					<div class="score"></div> <!-- This get filled in scripts.js -->
 	 				</div>
 	 				<hr> <!-- This tag puts in the black horizontal line. It's purpose is to define thematic changes in the content-->
 	 				<p class="description"></p> <!-- reserving a paragraph for the location's description that will be filled later with the data from the server that the javascript code will get -->
@@ -288,13 +286,13 @@
  					</fieldset>
  					<label for="comments">Comments</label>
  					<textarea name="comments" id="comments" placeholder="Add a comment about this location here (optional)"></textarea>
- 					<button class="openform" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+ 					<button class="submitform">Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
  				</form>
             </div>
 	   	</section>
 		   <div id="addLocationForm">
 			<form class="form-container" onsubmit="addNewLocation()">
-				<button id="close" onclick="close1()">X</button>
+				<a href="#" id="close1">X</a>
 				<h2>Add a new location: </h2> <!-- span gets filled in with the location name from the data retrieved by the javascript code -->
 				<p>Please enter the name of this location:</p>
 				<input type="hidden" name="id" value="">

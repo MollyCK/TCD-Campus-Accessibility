@@ -5,7 +5,7 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
-html {
+ html {
   line-height: 1.15;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -357,25 +357,32 @@ a {
   text-decoration: none;
 }
 
+@font-face {
+    font-family: 'OpenDyslexicMono';
+    src: url('fonts/OpenDyslexicMono-Regular.eot');
+    src: url('fonts/OpenDyslexicMono-Regular.eot?#iefix') format('embedded-opentype'),
+        url('fonts/OpenDyslexicMono-Regular.woff2') format('woff2'),
+        url('fonts/OpenDyslexicMono-Regular.woff') format('woff'),
+        url('fonts/OpenDyslexicMono-Regular.ttf') format('truetype'),
+        url('fonts/OpenDyslexicMono-Regular.svg#OpenDyslexicMono-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 body {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 16px;
 }
 
-body .dyslexic {
-  font-family: 'OpenDyslexicMono';
-  font-size: 0.8em;
+body.dyslexic {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size:0.8em;
 }
 
-@font-face {
-  font-family: 'OpenDyslexicMono';
-  src: url('fonts/OpenDyslexicMono-Regular.woff2') format('woff2'),
-      url('fonts/OpenDyslexicMono-Regular.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
+body.warm {
+  background-color: rgba(243, 210, 20, 0.726);
 }
-
 
 .wrapper {
   width: 1000px;
@@ -484,22 +491,6 @@ body .dyslexic {
   overflow: auto; /* Enable scroll if needed */
 }
 
-#addLocationForm .form-container .addNew {
-  padding: 1rem 1.6rem;
-  border: 1px solid hsla(0, 0%, 100%, 0.4);
-  border-radius: 100rem;
-
-  color: inherit;
-  background: transparent;
-  transition: .2s;
-  cursor: pointer;
-}
-
-#addLocationForm .form-container .addNew:hover, .addNew:focus {
-  border-color: hsla(0, 0%, 100%, 0.6);
-  transform: translateY(-0.2rem);
-}
-
 .form-container {
   background: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   border: solid 1px black;
@@ -510,7 +501,7 @@ body .dyslexic {
   width: 500px;
 }
 
-.form-container #close {
+.form-container #close1 {
   width: 3rem;
   height: 3rem;
   border: 1px solid hsla(0, 0%, 100%, 0.4);
@@ -526,7 +517,7 @@ body .dyslexic {
   transition: 0.2s;
 }
 
-.form-container #close:hover, #close:focus {
+.form-container #close1:hover, #close1:focus {
   border-color: hsla(0, 0%, 100%, 0.6);
   transform: translateY(-0.2rem);
 }
@@ -662,6 +653,22 @@ body .dyslexic {
   transform: translateY(-0.2rem);
 }
 
+#map #modal .submitform {
+  padding: 1rem 1.6rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+
+  color: inherit;
+  background: transparent;
+  transition: .2s;
+  cursor: pointer;
+}
+
+#map #modal .submitform:hover, .submitform:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
 #map #modal h3 {
   margin-bottom: 0;
   font-weight: normal;
@@ -755,8 +762,8 @@ body .dyslexic {
 }
 #txtHint{
   float:left;
-  color: #0400ff;
-  display: block;
+ color: #0400ff;
+ display: block;
 }
 
 #txtHint button{
@@ -812,22 +819,4 @@ body .dyslexic {
 #filter form fieldset > label {
   display: flex;
   justify-content: space-between;
-}
-
-/* Doesn't work for filter submit button*/
-#filter .filterform fieldset > input[type="button" i] {
-  padding: 1rem 1.6rem;
-  padding-top: 2px;
-  border: 1px solid hsla(0, 0%, 100%, 0.4);
-  border-radius: 100rem;
-
-  color: inherit;
-  background: transparent;
-  transition: .2s;
-  cursor: pointer;
-} 
-
-#filter .filterform fieldset > input[type="button"]:hover, input[type="button"]:focus {
-  border-color: hsla(0, 0%, 100%, 0.6);
-  transform: translateY(-0.2rem);
 }
