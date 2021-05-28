@@ -447,5 +447,13 @@ function changeBackground() {
 	});
 }
 
+function openFilter(){
+	var modal = document.getElementById("filtermodalid");
+	modal.style.display = "block";
+}
+function closeFilterModal(){
+	var modal = document.getElementById("filtermodalid");
+	modal.style.display = "none";
+}
 changeBackground();
 changeFont();
