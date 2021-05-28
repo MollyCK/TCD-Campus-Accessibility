@@ -1,24 +1,23 @@
 from flask import Flask, render_template, url_for, jsonify, request
 import os, json, sqlalchemy
 import numpy as np
-from pymongo import MongoClient
+from pymongo import MongoClient, database
 import pprint
 from bson import Binary, Code
 from bson.json_util import dumps
-from flask_cors import CORS, cross_origin
+#from flask_cors import CORS, cross_origin
 
 client = MongoClient('mongodb://rer:rer@123.56.68.67:7017/School')
 db = client['School']
 collection = db['Campus']
 
 app = Flask(__name__)
-
 @app.after_request
 def after_request(response):
     '''
     Allows for Cross Origin Requests.
     '''
-    response.headers.add('Access-Control-Allow-Origin', '*')    # the wildcard (*) only works for requests made with the crossorigin attribute set to anonymous, and it prevents sending credentials like cookies in requests
+    response.headers.add('Access-Control-Allow-Origin', '*')
     response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
@@ -39,32 +38,38 @@ def click_place_id(id):
 
 @app.route('/filter/<vals>', methods=['GET'])
 def filter_submit(vals):
- 
-    return "rer"
+    averageNoiseScore = vals(0)
+    averageLightScore = vals(1)
+    averageSmellScore = vals(2)
+    
+    for x in collection.find({"average sound score": averageNoiseScore, "average light score": averageLightScore, "average smell score": averageSmellScore}):
+        print(x)
 
-
-@app.route('/survey', methods=['GET'])
-def submit_survey():
-    data = request
-    placeID = data["id"]
-    doc = collection.find_one({"id":74})
-    print(data)
     return("done")
 
-    peopleAnswer = data["score"]["people"]
-    movementAnswer = data["score"]["movement"]
-    talkingAnswer = data["score"]["talking"]
-    noiseAnswer = data["score"]["noise"]
-    lightAnswer = data["score"]["light"]
-    lightBrightAnswer = data["score"]["lightBright"]
-    lightFlickeringAnswer = data["score"]["lightFlickering"]
-    lightColourPeculiarAnswer = data["score"]["lightColourPeculiar"]
-    smellsAnswer = data["score"]["smells"]
-    floorStickyAnswer = data["score"]["floorSticky"]
-    floorUnevenAnswer = data["score"]["floorUneven"]
-    seatsHardAnswer = data["score"]["seatsHardBinary"]
-    texturesAnswer = data["score"]["texturesRoughBinary"]
 
+@app.route('/survey/<results>', methods=['GET'])
+def submit_survey(results):
+    data = json.loads(results)
+    print(data)
+    placeID = data["score:"]["id"]
+    doc = collection.find_one({"id":placeID})
+
+    peopleAnswer = data["score:"]["people"]
+    movementAnswer = data["score:"]["movement"]
+    talkingAnswer = data["score:"]["talking"]
+    noiseAnswer = data["score:"]["noise"]
+    lightAnswer = data["score:"]["light"]
+    lightBrightAnswer = data["score:"]["lightBright"]
+    lightFlickeringAnswer = data["score:"]["lightFlickering"]
+    lightColourPeculiarAnswer = data["score:"]["lightColourPeculiar"]
+    smellsAnswer = data["score:"]["smells"]
+    floorStickyAnswer = data["score:"]["floorSticky"]
+    floorUnevenAnswer = data["score:"]["floorUneven"]
+    seatsHardAnswer = data["score:"]["seatsHardBinary"]
+    texturesAnswer = data["score:"]["texturesRoughBinary"]
+
+    
     answersArray = [peopleAnswer, movementAnswer, talkingAnswer, noiseAnswer, lightAnswer, lightBrightAnswer, lightFlickeringAnswer, lightColourPeculiarAnswer, smellsAnswer, 
     floorStickyAnswer, floorUnevenAnswer]
    
@@ -94,20 +99,19 @@ def submit_survey():
     else: 
         doc["texturesRough"][1]["Rough"] = doc["texturesRough"][1]["Rough"] + 1
 
-    if data["score"]["noisesType"] == "Voices":
+    if data["score:"]["noisesType"] == "Voices":
         doc["noiseType"][0]["Voices"] = doc["noiseType"][0]["Voices"] + 1
-    elif data["score"]["noisesType"] == "Cutlery/Furniture":
+    elif data["score:"]["noisesType"] == "Cutlery/Furniture":
         doc["noiseType"][1]["Cutlery/Furniture"] = doc["noiseType"][1]["Cutlery/Furniture"] + 1
 
-
-
-
-
-
-
+    pprint.pprint(doc)
+    
+    
     return("done")
+    
 
-    return ("done")
+
+
 
 
 if __name__ == "__main__":

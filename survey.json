@@ -1,0 +1,22 @@
+{
+    "score": {
+        "id":74,
+        "people": 1,
+        "movement": 2,
+        "talking": 3,
+        "noise": 4,
+        "noisesType": ["Voices"],
+        "light":1,
+        "lightBright": 1,
+        "lightFlickering": 2,
+        "lightColourPeculiar": 3,
+        "smells": 4,
+        "smellType": ["Chemical"],
+        "floorSticky": 1,
+        "floorUneven": 2,
+        "seatsHardBinary": 1,
+        "texturesRoughBinary": 2
+    },
+    "comments": "Hello I am making a comment",
+    "userName": "Mary"
+}

@@ -145,7 +145,7 @@ function submitSurvey(locationData) {
 		$("#modal .info").show();
 		$.ajax({
 			type: "GET",
-			url: "http://127.0.0.1:5000/survey?data="+surveydata,
+			url: "http://127.0.0.1:5000/survey/"+surveydata,
 			contentType: "application/json",
 			dataType: "jsonp"
 		}).done(function (data) {
