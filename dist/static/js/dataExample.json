@@ -1,5 +1,29 @@
 [
    {
+      "id": 46,
+      "placeName": "Library Square North",
+      "placeDescription": "Unknown",
+      "average": 2,
+      "average light score": 3,
+      "average smells score": 4,
+      "average sound score": 5,
+      "floorSticky": [{"No": 0.0},{"Rarely": 0.0},{"Sometimes": 0.0},{"Yes": 1.0}],
+      "floorUneven": [{"No": 0.0},    {"Rarely": 0.0},{"Sometimes": 0.0},{"Yes": 1.0}],
+      "light": [{"No": 0.0}, {"Rarely": 0.0}, {"Sometimes": 0.0}, {"Yes": 1.0}],"lightBright": [{"No": 0.0},{"Rarely": 0.0},{"Sometimes": 0.0},{"Yes": 1.0}],
+      "lightColourPeculiar": [{"No": 0.0},{"Rarely": 0.0},{"Sometimes": 0.0},{"Yes": 1.0}],
+      "lightFlickering": [{"No": 0.0},{"Rarely": 0.0},{"Sometimes": 0.0},{"Yes": 1.0}],
+      "movement": [{"No": 0.0}, {"Rarely": 0.0}, {"Sometimes": 0.0}, {"Yes": 1.0}],
+      "noise": [{"No": 0.0}, {"Rarely": 0.0}, {"Sometimes": 0.0}, {"Yes": 1.0}],
+      "noiseType": [{"Voices": 0.0},{"Cutlery/Furniture": 0.0}, {"Media/Music": 0.0},{"Traffic/Heavy machinery": 0.0},{"Other": 0.0}],
+      "people": [{"No": 0.0}, {"Rarely": 0.0}, {"Sometimes": 0.0}, {"Yes": 1.0}],
+      "seatsHard": [{"Soft": 0.0}, {"Hard": 1.0}],
+      "smellType": [{"Chemical": 0.0},{"Food": 0.0},  {"Cosmetic": 0.0},{"Natural": 0.0},{"Other": 0.0}],
+      "smells": [{"No": 0.0}, {"Rarely": 0.0}, {"Sometimes": 0.0}, {"Yes": 1.0}],
+      "talking": [{"No": 0.0}, {"Rarely": 0.0}, {"Sometimes": 0.0}, {"Yes": 1.0}],
+      "texturesRough": [{"Smooth": 0.0}, {"Rough": 1.0}]
+   }, 
+
+   {
       "id": 75,
       "placeName": "Arts Block",
       "placeDescription": "Old grey brick building. Access to Lecky Library. Mainly used for lectures and tutorials in the arts faculty.",
