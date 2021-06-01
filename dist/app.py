@@ -99,9 +99,9 @@ def submit_survey(results):
     else: 
         doc["texturesRough"][1]["Rough"] = doc["texturesRough"][1]["Rough"] + 1
 
-    if data["score:"]["noisesType"] == "Voices":
+    if data["score:"]["noiseType"][0] == "Voices":
         doc["noiseType"][0]["Voices"] = doc["noiseType"][0]["Voices"] + 1
-    elif data["score:"]["noisesType"] == "Cutlery/Furniture":
+    elif data["score:"]["noiseType"][1] == "Cutlery/Furniture":
         doc["noiseType"][1]["Cutlery/Furniture"] = doc["noiseType"][1]["Cutlery/Furniture"] + 1
 
     pprint.pprint(doc)
