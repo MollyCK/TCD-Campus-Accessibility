@@ -142,7 +142,7 @@ function submitSurvey(locationData) {
 			contentType: "application/json",
 			dataType: "jsonp"
 		}).done(function (data) {
-			//console.log(data);
+			//maybe reset all survey values here?
 		}); 
 	});
 }
@@ -414,20 +414,95 @@ function setText(data) {
 //						Add New Location
 //-----------------------------------------------------------------------------------------------------------------------------
 
-function addLocationFunct(){
-	console.log("logged");
+$("#addLocation").click(function(e){
+	e.preventDefault();
 	document.getElementById("addLocationForm").style.display="block";
-}
+	submitNewLocation();
+});
 
-function addNewLocation(){
-	var jsonString = {
+function submitNewLocation(){
+	$(".submitNewLocation").click(function (e) {
+		e.preventDefault();
+		var placeName = $("#placeName").val();
+		var peopleRating = $("#people").val();
+		var movementRating = $("#movement").val();
+		var talkRating = $("#talking").val();
+		var noiseRating = $("#noise").val();
+		//noise tick boxes
+		var noiseTypes = new Array(" ", " ", " ", " ", " ");
+		if ($("#noiseType-voices").is(":checked")) {
+			noiseTypes[0] = 'Voices';
+		} if ($("#noiseType-cutlery-furniture").is(":checked")) {
+			noiseTypes[1] = "Cutlery/Furniture";
+		} if ($("#noiseType-media-music").is(":checked")) {
+			noiseTypes[2] = "Media/Music";
+		} if ($("#noiseType-traffic-machinery").is(":checked")) {
+			noiseTypes[3] = "Traffic/Heavy machinery";
+		} if ($("#noiseType-other").is(":checked")) {
+			noiseTypes[4] = "Other";
+		}
+		var lightRating = $("#light").val();
+		var brightRating = $("#lightBright").val();
+		var flickerRating = $("#lightFlickering").val();
+		var colourRating = $("#lightColourPeculiar").val();
+		var smellRating = $("#smells").val();
+		// smell tick boxes
+		var smellTypes = new Array(" ", " ", " ", " ", " ");
+		if ($("#smellType-chemical").is(":checked")) {
+			smellTypes[0] = 'Chemical';
+		} if ($("#smellType-food").is(":checked")) {
+			smellTypes[1] = "Food";
+		} if ($("#smellType-cosmetic").is(":checked")) {
+			smellTypes[2] = "Cosmetic";
+		} if ($("#smellType-natural").is(":checked")) {
+			smellTypes[3] = "Natural";
+		} if ($("#smellType-other").is(":checked")) {
+			smellTypes[4] = "Other";
+		}
+		var stickyRating = $("#floorSticky").val();
+		var unevenRating = $("#floorUneven").val();
+		var seatsRating = $("#seatsHard").val();
+		var texturesRating = $("#texturesRough").val();
+		var directions = $("#directions").val();
+		var comment = $("#comments").val();
 
-	};
+		var newLocationData = JSON.stringify({
+			"placeName": placeName,
+			"people": peopleRating,
+			"movement": movementRating,
+			"talking": talkRating,
+			"noise": noiseRating,
+			"noiseType": noiseTypes,
+			"light": lightRating,
+			"lightBright": brightRating,
+			"lightFlickering": flickerRating,
+			"lightColourPeculiar": colourRating,
+			"smells": smellRating,				
+			"smellType": smellTypes,
+			"floorSticky": stickyRating,
+			"floorUneven": unevenRating,
+			"seatsHardBinary": seatsRating,
+			"texturesRoughBinary": texturesRating,
+			"directions": directions,
+			"comments": comment,
+		});
+
+		console.log(newLocationData);
+
+		$.ajax({
+			type: "GET",
+			url: "http://127.0.0.1:5000/newLocation/"+newLocationData,
+			contentType: "application/json",
+			dataType: "jsonp"
+		}).done(function (data) {
+			
+		});
+		close1();
+	});
 }
 
 function close1(){
 	var form =document.getElementById("addLocationForm");
-	form.preventDefault();
 	form.style.display="none";	
 }
 //-----------------------------------------------------------------------------------------------------------------------------

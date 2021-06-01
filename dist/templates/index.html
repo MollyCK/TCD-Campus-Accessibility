@@ -26,7 +26,7 @@
 		<ul class="nav">
 			<li><button class="dyslexia-font">Dyslexia Font</button></li>
 			<li><button class="warm-background">Warm Background</button></li>
-			<li><button id="addLocation" onclick="addLocationFunct()">Add a new location</button></li>
+			<li><button id="addLocation">Add a new location</button></li>
 		</ul>
 	</nav>
 </header>
@@ -289,12 +289,13 @@
  					</fieldset>
  					<label for="comments">Comments</label>
  					<textarea name="comments" id="comments" placeholder="Add a comment about this location here (optional)"></textarea>
- 					<button class="submitform">Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+ 					<button class="submitform">Submit</button>
  				</form>
             </div>
 	   	</section>
+<!-- This below div deals with the form for adding a new location-->
 		   <div id="addLocationForm">
-			<form class="form-container" onsubmit="addNewLocation()">
+			<form class="form-container">
 				<a href="#" id="close1">X</a>
 				<h2>Add a new location: </h2> <!-- span gets filled in with the location name from the data retrieved by the javascript code -->
 				<p>Please enter the name of this location:</p>
@@ -406,7 +407,7 @@
 				<textarea name="directions" id="directions" placeholder="Add directions to this location"></textarea>
 				<label for="comments">Comments</label>
 				<textarea name="comments" id="comments" placeholder="Add a comment about this location here (optional)"></textarea>
-				<button class="addNew" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+				<button class="submitNewLocation" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
 			</form>
 		   </div>
    

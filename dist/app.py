@@ -109,8 +109,15 @@ def submit_survey(results):
     
     return("done")
     
+@app.route('/newLocation/<information>', methods=['GET'])
+def submit_newLocation(information):
+    data = json.loads(information)
+    print(data)
 
+    #generate a placeID for this new location
+    #create a new space in the database for this new location
 
+    return("done")
 
 
 
