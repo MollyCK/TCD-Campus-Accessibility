@@ -65,15 +65,17 @@ function submitSurvey(locationData) {
 		var talkRating = $("#talking").val();
 		var noiseRating = $("#noise").val();
 		//noise tick boxes
-		var noiseType = 5;
-		if ($("#noiseType-voices").val() != 0) {
-			noiseType = 1;
-		} else if ($("#noiseType-cutlery-furniture").val() != 0) {
-			noiseType = 2;
-		} else if ($("#noiseType-media-music").val() != 0) {
-			noiseType = 3;
-		} else if ($("#noiseType-traffic-machinery").val() != 0) {
-			noiseType = 4;
+		var noiseTypes = new Array(" ", " ", " ", " ", " ");
+		if ($("#noiseType-voices").is(":checked")) {
+			noiseTypes[0] = 'Voices';
+		} if ($("#noiseType-cutlery-furniture").is(":checked")) {
+			noiseTypes[1] = "Cutlery/Furniture";
+		} if ($("#noiseType-media-music").is(":checked")) {
+			noiseTypes[2] = "Media/Music";
+		} if ($("#noiseType-traffic-machinery").is(":checked")) {
+			noiseTypes[3] = "Traffic/Heavy machinery";
+		} if ($("#noiseType-other").is(":checked")) {
+			noiseTypes[4] = "Other";
 		}
 		var lightRating = $("#light").val();
 		var brightRating = $("#lightBright").val();
@@ -81,15 +83,17 @@ function submitSurvey(locationData) {
 		var colourRating = $("#lightColourPeculiar").val();
 		var smellRating = $("#smells").val();
 		// smell tick boxes
-		var smellType = 5;
-		if ($("#smellType-chemical").val() != 0) {
-			smellType = 1;
-		} else if ($("#smellType-food").val() != 0) {
-			smellType = 2;
-		} else if ($("#smellType-cosmetic").val() != 0) {
-			smellType = 3;
-		} else if ($("#smellType-natural").val() != 0) {
-			smellType = 4;
+		var smellTypes = new Array(" ", " ", " ", " ", " ");
+		if ($("#smellType-chemical").is(":checked")) {
+			smellTypes[0] = 'Chemical';
+		} if ($("#smellType-food").is(":checked")) {
+			smellTypes[1] = "Food";
+		} if ($("#smellType-cosmetic").is(":checked")) {
+			smellTypes[2] = "Cosmetic";
+		} if ($("#smellType-natural").is(":checked")) {
+			smellTypes[3] = "Natural";
+		} if ($("#smellType-other").is(":checked")) {
+			smellTypes[4] = "Other";
 		}
 		var stickyRating = $("#floorSticky").val();
 		var unevenRating = $("#floorUneven").val();
@@ -97,23 +101,6 @@ function submitSurvey(locationData) {
 		var texturesRating = $("#texturesRough").val();
 		var comment = $("#comments").val();
 
-//trying something 
-/*
-		let xhr = new XMLHttpRequest();
-		let url = "http://127.0.0.1:5000/survey";
-
-		xhr.open("POST", url, true);
-
-		xhr.setRequestHeader("Content-Type", "application/json");
-
-		xhr.onreadystatechange = function () {
-			if (xhr.readyState === 4 && xhr.status === 200) {
-
-				//print received data from server
-				result.innerHTML = this.responseText;
-			}
-		};
-*/
 		var surveydata = JSON.stringify({
 			"score:": {
 				"id": placeID,
@@ -121,13 +108,13 @@ function submitSurvey(locationData) {
 				"movement": movementRating,
 				"talking": talkRating,
 				"noise": noiseRating,
-				"noisesArray": noiseType,
+				"noisesArray": noiseTypes,
 				"light": lightRating,
 				"lightBright": brightRating,
 				"lightFlickering": flickerRating,
 				"lightColourPeculiar": colourRating,
 				"smells": smellRating,
-				"smellArray": smellType,
+				"smellArray": smellTypes,
 				"floorSticky": stickyRating,
 				"floorUneven": unevenRating,
 				"seatsHardBinary": seatsRating,
@@ -136,8 +123,6 @@ function submitSurvey(locationData) {
 			"comments": comment,
 			"userName": userName
 		});
-
-//		xhr.send(surveydata);
 		
 		console.log(surveydata);
 
@@ -149,7 +134,7 @@ function submitSurvey(locationData) {
 			contentType: "application/json",
 			dataType: "jsonp"
 		}).done(function (data) {
-			console.log(data);
+			//console.log(data);
 		}); 
 	});
 }
@@ -160,7 +145,7 @@ $('.filterform input[type="submit"]').click(function(e){
 });
 
 function myfunct(){
-	console.log("submitted");
+	//console.log("submitted");
 	// var noiserating=$("#noise1").val(); with jQuery
 	var noiserating=document.getElementById("noise1").value;
 	var lightrating=document.getElementById("light1").value;
