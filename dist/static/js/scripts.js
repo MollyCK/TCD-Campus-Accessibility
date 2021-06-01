@@ -1,3 +1,7 @@
+//-----------------------------------------------------------------------------------------------------------------------------
+//						Map Modal
+//-----------------------------------------------------------------------------------------------------------------------------
+
 function openModal() { 
 	$("area").each(function(i){ 
 		$(this).click(function(e){
@@ -38,6 +42,10 @@ function closeaddLocation() {
 		document.getElementById("addLocationForm").style.display="none";
 	});
 }
+
+//-----------------------------------------------------------------------------------------------------------------------------
+//						Map Location Survey
+//-----------------------------------------------------------------------------------------------------------------------------
 
 function openForm(data) {
 	$("#modal button.openform").click(function(){
@@ -139,11 +147,16 @@ function submitSurvey(locationData) {
 	});
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------
+//						Filter Locations
+//-----------------------------------------------------------------------------------------------------------------------------
+
 $('.filterform input[type="submit"]').click(function(e){
 	e.preventDefault();
 	myfunct();
 });
 
+//This is for the filter list (?) submitting it's filter's values and getting the appropriate JSON (just one JSON at the moment)
 function myfunct(){
 	//console.log("submitted");
 	// var noiserating=$("#noise1").val(); with jQuery
@@ -196,23 +209,6 @@ function cleardata(){
 function cleardata2(){
 	document.getElementById("txtHint").innerHTML="";
 	console.log("cleared2");
-}
-
-function addLocationFunct(){
-	console.log("logged");
-	document.getElementById("addLocationForm").style.display="block";
-}
-
-function addNewLocation(){
-	var jsonString = {
-
-	};
-}
-
-function close1(){
-	var form =document.getElementById("addLocationForm");
-	form.preventDefault();
-	form.style.display="none";	
 }
 
 function setText(data) {
@@ -414,9 +410,29 @@ function setText(data) {
 		console.log(item1);
 	}
 
-openModal();
-closeModal();
-closeaddLocation();
+//-----------------------------------------------------------------------------------------------------------------------------
+//						Add New Location
+//-----------------------------------------------------------------------------------------------------------------------------
+
+function addLocationFunct(){
+	console.log("logged");
+	document.getElementById("addLocationForm").style.display="block";
+}
+
+function addNewLocation(){
+	var jsonString = {
+
+	};
+}
+
+function close1(){
+	var form =document.getElementById("addLocationForm");
+	form.preventDefault();
+	form.style.display="none";	
+}
+//-----------------------------------------------------------------------------------------------------------------------------
+//						Styles Altering Buttons
+//-----------------------------------------------------------------------------------------------------------------------------
 
 function changeFont() {
   $(".dyslexia-font").click(function(e){
@@ -432,5 +448,11 @@ function changeBackground() {
 	});
 }
 
+//-----------------------------------------------------------------------------------------------------------------------------
+//						Function Calls
+//-----------------------------------------------------------------------------------------------------------------------------
+openModal();
+closeModal();
+closeaddLocation();
 changeBackground();
 changeFont();
