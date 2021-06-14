@@ -28,15 +28,25 @@ SITE_ROOT = os.path.realpath(os.path.dirname(__file__))
 
 
 
+#-----------------------------------------------------------------------------------------
+#                  Home Page
+#-----------------------------------------------------------------------------------------
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     return render_template('index.html')
 
+#-----------------------------------------------------------------------------------------
+#                  Map Modal: Location Data Request
+#-----------------------------------------------------------------------------------------
 
 @app.route('/place/<id>')
 def click_place_id(id):
     return dumps(collection.find_one({"id":int(id)}))
+
+#-----------------------------------------------------------------------------------------
+#                  Filter List: Location(s) Data Request
+#-----------------------------------------------------------------------------------------
 
 @app.route('/filter/<vals>', methods=['GET'])
 def filter_submit(vals):
@@ -49,6 +59,9 @@ def filter_submit(vals):
 
     return("done")
 
+#-----------------------------------------------------------------------------------------
+#                  Map Modal: Survey Data Processing
+#-----------------------------------------------------------------------------------------
 
 @app.route('/survey/<results>', methods=['GET'])
 def submit_survey(results):
@@ -165,6 +178,10 @@ def submit_survey(results):
     
     return("done")
 
+#-----------------------------------------------------------------------------------------
+#                  Adding New Location: Data Processing
+#-----------------------------------------------------------------------------------------
+
 @app.route('/newLocation/<information>', methods=['GET'])
 def submit_newLocation(information):
     data = json.loads(information)
@@ -175,7 +192,9 @@ def submit_newLocation(information):
 
     return("done")
 
-
+#-----------------------------------------------------------------------------------------
+#                  Other
+#-----------------------------------------------------------------------------------------
 
 if __name__ == "__main__":
     app.run(debug=True)
