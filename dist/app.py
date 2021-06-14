@@ -57,6 +57,28 @@ def filter_submit(vals):
     for x in collection.find({"average sound score": averageNoiseScore, "average light score": averageLightScore, "average smell score": averageSmellScore}):
         print(x)
 
+    #Test Data
+    testLocation = {
+        'id': 75,
+        'place_name': 'Arts Block',
+        'people':1,
+        'movement':1,
+        'talking':1,
+        'noise': 3,
+        'noiseType': ['Voices','','','',''],
+        'light': 2,
+        'lightBright': 1,
+        'lightFlickering': 2,
+        'lightColourPeculiar': 4,
+        'smells': 4,
+        'smellType': ['','Food','','',''],
+        'floorSticky': 1,
+        'floorUneven': 1,
+        'seatsHard': 4,
+        'texturesRough': 4
+    }
+    print(testLocation)
+
     return("done")
 
 #-----------------------------------------------------------------------------------------

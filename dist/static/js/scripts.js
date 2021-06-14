@@ -171,7 +171,6 @@ function myfunct(){
 		contentType: "application/json",
 		dataType: "jsonp"
 	}).done(function(data){
-		console.log(data.placeName);
 		cleardata();
 		cleardata2();
 		/*data.location.forEach(location){};					HAVE TO LOOP*/
@@ -433,11 +432,11 @@ function submitNewLocation(){
 		if ($("#noiseType-voices").is(":checked")) {
 			noiseTypes[0] = 'Voices';
 		} if ($("#noiseType-cutlery-furniture").is(":checked")) {
-			noiseTypes[1] = "Cutlery/Furniture";
+			noiseTypes[1] = "CutleryFurniture";
 		} if ($("#noiseType-media-music").is(":checked")) {
-			noiseTypes[2] = "Media/Music";
+			noiseTypes[2] = "MediaMusic";
 		} if ($("#noiseType-traffic-machinery").is(":checked")) {
-			noiseTypes[3] = "Traffic/Heavy machinery";
+			noiseTypes[3] = "TrafficHeavy machinery";
 		} if ($("#noiseType-other").is(":checked")) {
 			noiseTypes[4] = "Other";
 		}
