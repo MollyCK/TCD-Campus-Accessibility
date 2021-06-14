@@ -106,11 +106,11 @@ def submit_survey(results):
 
     if noiseTypeAnswer[0] == "Voices":
         collection.update_one({"id":placeID},{"$inc": {"noiseType.0.Voices": 1}})
-    if noiseTypeAnswer[1] == "Cutlery/Furniture":
+    if noiseTypeAnswer[1] == "CutleryFurniture":
         collection.update_one({"id":placeID},{"$inc": {"noiseType.1.Cutlery/Furniture": 1}})
-    if noiseTypeAnswer[2] == "Media/Music":
+    if noiseTypeAnswer[2] == "MediaMusic":
         collection.update_one({"id":placeID},{"$inc": {"noiseType.2.Media/Music": 1}})
-    if noiseTypeAnswer[3] == "Traffic/Heavy machinery":
+    if noiseTypeAnswer[3] == "TrafficHeavy machinery":
         collection.update_one({"id":placeID},{"$inc": {"noiseType.3.Traffic/Heavy machinery": 1}})
     if noiseTypeAnswer[4] == "Other":
         collection.update_one({"id":placeID},{"$inc": {"noiseType.4.Other": 1}})
