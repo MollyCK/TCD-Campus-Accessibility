@@ -168,8 +168,8 @@ function myfunct(){
 	$.ajax({
 		type: "GET",
 		url: "http://127.0.0.1:5000/filter/"+scores,	
-		dataType:"json",
-		data: scores,
+		contentType: "application/json",
+		dataType: "jsonp"
 	}).done(function(data){
 		console.log(data.placeName);
 		cleardata();

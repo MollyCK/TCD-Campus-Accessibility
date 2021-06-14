@@ -50,9 +50,9 @@ def click_place_id(id):
 
 @app.route('/filter/<vals>', methods=['GET'])
 def filter_submit(vals):
-    averageNoiseScore = vals(0)
-    averageLightScore = vals(1)
-    averageSmellScore = vals(2)
+    averageNoiseScore = vals[0:1]
+    averageLightScore = vals[1:2]
+    averageSmellScore = vals[2:3]
     
     for x in collection.find({"average sound score": averageNoiseScore, "average light score": averageLightScore, "average smell score": averageSmellScore}):
         print(x)
