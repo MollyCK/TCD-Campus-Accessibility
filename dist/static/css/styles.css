@@ -475,6 +475,22 @@ body.warm {
   transform: translateY(-0.2rem);
 }
 
+#openFilterModal {
+  padding: 1rem 1.6rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+
+  color: inherit;
+  background: transparent;
+  transition: .2s;
+  cursor: pointer;
+}
+
+#openFilterModal button:focus, button:hover {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
 /*  April
     ==================================================================================================================*/
 
@@ -726,10 +742,12 @@ body.warm {
 }
 
 
-#filter{
-  position: left;
+#filterModal{
+  position: absolute;
+  display: none;
+  top:0%;
+  left:35%;
   width:275px;
-  float:left;
   background: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   background-color: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   color: hsl(0, 0%, 100%);
@@ -737,6 +755,28 @@ body.warm {
   border-radius: .8rem; 
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
 }
+
+#filterModal .closeFilter {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+  color:inherit;
+
+  float: right;
+  font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.2s;
+}
+
+#filterModal .closeFilter:hover, .closeFilter:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
 .filterform{
   background: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   color: hsl(0, 0%, 100%);
@@ -744,7 +784,7 @@ body.warm {
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
 }
 
-#content {
+#filterLocationInfo {
   display: none;
   float:right;
   color: white;
@@ -760,13 +800,13 @@ body.warm {
   padding-left: 20px;
   padding-bottom: 20px;
 }
-#txtHint{
+#filterLocationNames{
   float:left;
  color: #0400ff;
  display: block;
 }
 
-#txtHint button{
+#filterLocationNames button{
   /*float:left;*/
   color: black;
   background-color: #98e5f8;
@@ -775,48 +815,48 @@ body.warm {
   border-radius: 8px;
  }
 
-#txtHint button:hover {
+#filterLocationNames button:hover {
   background-color: hsl(202, 100%, 73%);
 }
-#filter fieldset {
+#filterModal fieldset {
   background-color: linear-gradient(to right bottom, hsl(236, 49%, 52%), hsl(195, 50%, 50%));;
   border: none;
 }
 
-#filter legend {
+#filterModal legend {
   color:white;
   font-size: 1.3em;
   padding: 5px 10px;
   border:none;
 }
 
-#filter input {
+#filterModal input {
   margin: 5px;
   width: 100px;
   height: 25px;
 }
-#filter form fieldset > label span {
+#filterModal form fieldset > label span {
   font-size: 1em;
 }
 
-#filter form fieldset input[type="range"] {
+#filterModal form fieldset input[type="range"] {
   width: 100%;
   height: 25px;
 }
 
-#filter form > label {
+#filterModal form > label {
   display: block;
 
 }
-#filter form > input {
+#filterModal form > input {
   width: 100%;
   margin-bottom: 2px;
   height: 25px;
 }
-#filter form fieldset legend {
+#filterModal form fieldset legend {
   font-weight: bold;
 }
-#filter form fieldset > label {
+#filterModal form fieldset > label {
   display: flex;
   justify-content: space-between;
 }

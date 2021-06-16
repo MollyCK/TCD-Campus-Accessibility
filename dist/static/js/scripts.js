@@ -36,13 +36,6 @@ function closeModal() {
 	});
 }
 
-function closeaddLocation() {
-	$("#close1").click(function(e){
-		e.preventDefault();
-		document.getElementById("addLocationForm").style.display="none";
-	});
-}
-
 //-----------------------------------------------------------------------------------------------------------------------------
 //						Map Location Survey
 //-----------------------------------------------------------------------------------------------------------------------------
@@ -151,6 +144,18 @@ function submitSurvey(locationData) {
 //						Filter Locations
 //-----------------------------------------------------------------------------------------------------------------------------
 
+$("#openFilterModal").click(function(e){
+	e.preventDefault();
+	document.getElementById("filterModal").style.display="block";
+});
+
+function closeModal() {
+	$("#filterModal .closeFilter").click(function(e){
+		e.preventDefault();
+		$("#filterModal").hide(100);
+	});
+}
+
 $('.filterform input[type="submit"]').click(function(e){
 	e.preventDefault();
 	myfunct();
@@ -174,7 +179,7 @@ function myfunct(){
 		cleardata();
 		cleardata2();
 		/*data.location.forEach(location){};					HAVE TO LOOP*/
-		var test =document.getElementById("txtHint");
+		var test =document.getElementById("filterLocationNames");
 		var para = document.createElement("BUTTON");
 		para.setAttribute("onclick","displaydata(this)");
 		para.setAttribute("id",data.id);
@@ -182,7 +187,7 @@ function myfunct(){
 		var node = document.createTextNode(data.placeName);
 		para.appendChild(node);
 		test.appendChild(para);
-		document.getElementById("content").style.display="none";
+		document.getElementById("filterLocationInfo").style.display="none";
 		setText(data);
 		
 	});
@@ -190,7 +195,7 @@ function myfunct(){
 
 function displaydata(btn){
 	var id = btn.getAttribute('id');
-	document.getElementById("content").style.display="block";
+	document.getElementById("filterLocationInfo").style.display="block";
 	var id = btn.getAttribute('id');
 	var show = document.getElementById("testing"+id);
 	var tabs=document.getElementsByClassName("tabs");
@@ -201,17 +206,17 @@ function displaydata(btn){
 }
 
 function cleardata(){
-	document.getElementById("content").innerHTML="";
+	document.getElementById("filterLocationInfo").innerHTML="";
 	console.log("cleared");
 }
 
 function cleardata2(){
-	document.getElementById("txtHint").innerHTML="";
+	document.getElementById("filterLocationNames").innerHTML="";
 	console.log("cleared2");
 }
 
 function setText(data) {
-	var item1 = document.getElementById("content");
+	var item1 = document.getElementById("filterLocationInfo");
 	var item = document.createElement("P");
 	item.setAttribute("class", "tabs");
 	item.setAttribute("id", "testing" + data.id);
@@ -504,6 +509,14 @@ function close1(){
 	var form =document.getElementById("addLocationForm");
 	form.style.display="none";	
 }
+
+function closeaddLocation() {
+	$("#close1").click(function(e){
+		e.preventDefault();
+		document.getElementById("addLocationForm").style.display="none";
+	});
+}
+
 //-----------------------------------------------------------------------------------------------------------------------------
 //						Styles Altering Buttons
 //-----------------------------------------------------------------------------------------------------------------------------
