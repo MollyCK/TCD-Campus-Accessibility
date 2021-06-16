@@ -149,7 +149,7 @@ $("#openFilterModal").click(function(e){
 	document.getElementById("filterModal").style.display="block";
 });
 
-function closeModal() {
+function closeFilterModal() {
 	$("#filterModal .closeFilter").click(function(e){
 		e.preventDefault();
 		$("#filterModal").hide(100);
@@ -541,5 +541,6 @@ function changeBackground() {
 openModal();
 closeModal();
 closeaddLocation();
+closeFilterModal();
 changeBackground();
 changeFont();
