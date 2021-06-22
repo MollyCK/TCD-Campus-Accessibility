@@ -146,27 +146,7 @@
 				<area  alt="UndConstW" 			id="100" href="#" shape="poly" coords="355,132,422,142,437,99,359,72">
 				<area  alt="WstlndRwOffices" 	id="101" href="#" shape="poly" coords="839,583,914,366,931,373,851,588">
             </map>
-			
-			<div id="filterModal">
-				<a href="#" class="closeFilter">X</a>
-				<form class="filterform" >
-					<fieldset>
-						<legend>Filter Locations By:</legend>
-						<p>Noise:</p>
-						<label for="noise"><span>low</span><span>medium</span><span>high</span></label><br><br>
- 						<input type="range" name="noise" id="noise1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
-						 <p>Light:</p>
-						 <br><br><label for="light"><span>low</span><span>medium</span><span>high</span></label><br><br>
- 						<input type="range" name="light" id="light1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
-						 <p>Smell:</p>
-						 <br><br><label for="smell"><span>low</span><span>medium</span><span>high</span></label><br><br>
- 						<input type="range" name="smell" id="smells1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
-						 <input type="submit" value="Submit">
-					</fieldset>
-				</form>
-			</div>
-			<div id="filterLocationNames">Filtered locations will be displayed here:      </div>
-			<div id="filterLocationInfo"></div>
+		
 			<!-- The below (modal) deals with the pop-up of information for each location -->
             <div id="modal">
             	<a href="#" class="close">X</a>
@@ -296,6 +276,73 @@
  				</form>
             </div>
 	   	</section>
+		   <div id="filterModal">
+			<a href="#" class="closeFilter">X</a>
+			<form class="filterform" >
+				<fieldset>
+					<legend>Filter Locations By:</legend>
+					<p>Noise:</p>
+					<label for="noise"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <input type="range" name="noise" id="noise1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
+					 <p>Light:</p>
+					 <br><br><label for="light"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <input type="range" name="light" id="light1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
+					 <p>Smell:</p>
+					 <br><br><label for="smell"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <input type="range" name="smell" id="smells1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
+					 <input type="submit" value="Submit">
+				</fieldset>
+			</form>
+		</div>
+		<div id="filterLocationNames" class="filter-container">
+			<div class="accordion">
+				<div class="accordion-item" id="question1">
+					<a class="accordion-link"  href="#question1">
+						Dummy text for location name 1
+						<i class="add-icon">+</i>
+						<i class="remove-icon">-</i>
+					</a>
+					<div class="answer">
+						<p>Dummy text for location information 1</p>
+					</div>
+				</div>
+
+				<div class="accordion-item" id="question2">
+					<a class="accordion-link"  href="#question2">
+						Dummy text for location name 2
+						<i class="add-icon">+</i>
+						<i class="remove-icon">-</i>
+					</a>
+					<div class="answer">
+						<p>Dummy text for location information 2</p>
+					</div>
+				</div>
+
+				<div class="accordion-item" id="question3">
+					<a class="accordion-link"  href="#question3">
+						Dummy text for location name 3
+						<i class="add-icon">+</i>
+						<i class="remove-icon">-</i>
+					</a>
+					<div class="answer">
+						<p>Dummy text for location information 3</p>
+					</div>
+				</div>
+
+				<div class="accordion-item" id="question4">
+					<a class="accordion-link"  href="#question4">
+						Dummy text for location name 4
+						<i class="add-icon">+</i>
+						<i class="remove-icon">-</i>
+					</a>
+					<div class="answer">
+						<p>Dummy text for location information 4</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div id="filterLocationInfo"></div>
 <!-- This below div deals with the form for adding a new location-->
 		   <div id="addLocationForm">
 			<form class="form-container">
