@@ -945,22 +945,22 @@ body.warm .answer p {
   max-width: 340px;
   height: 100%;
   margin: 0 auto;
-  border: 1px solid rgb(61, 132, 173);
+  border: 1px solid rgb(216, 184, 109);
   border-radius: 40px;
 }
 
 .filter-container .list-title {
-  border: 1px solid rgb(61, 132, 173);
+  border: 1px solid rgb(216, 184, 109);
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
-  background: rgb(61, 132, 173);
+  background: rgb(216, 184, 109);
 }
 
 .filter-container h3 {
   font-family: 'Oswald', sans-serif;
   font-size: 1.4rem;
   padding: 0 1rem;
-  color: seashell;
+  color: snow;
   letter-spacing: 2px;
   font-weight: 500;
 }
@@ -970,16 +970,16 @@ body.warm .answer p {
 }
 
 .accordion-item {
-  background-color:rgba(243, 210, 20, 0.726);
+  background-color:rgb(176, 207, 228);
   border-radius: 0.4rem;
   margin-bottom: 1rem;
   padding: 0.2rem 1rem;
-  box-shadow: .5rem 2px .5rem rgba(243, 210, 20, 0.726);
+  box-shadow: .5rem 2px .5rem rgb(176, 207, 228);
 }
 
 .accordion-link{
   font-size: 1.2rem;
-  color:hsla(236, 58%, 29%, 0.863);
+  color:rgb(82,63,56);
   font-weight: 600;
   text-decoration: none;
   /*background-color:rgba(243, 210, 20, 0.726);*/
@@ -1014,7 +1014,7 @@ body.warm .answer p {
   max-height: 0; 
   overflow: hidden; 
   position: relative;
-  background-color: rgba(93, 135, 224, 0.466);
+  background-color: rgb(213, 225, 220);
   transition: max-height 650ms;
 }
 
@@ -1023,7 +1023,7 @@ body.warm .answer p {
   position: absolute;
   width: 0.6rem;
   height: 90%;
-  background-color: slateblue;
+  background-color: rgb(155,201,140);
   top: 50%;
   left: 0;
   transform: translateY(-50%);
@@ -1031,7 +1031,7 @@ body.warm .answer p {
 
 .answer p {
   font-size: 1.1rem;
-  color: rgba(255, 252, 236, 0.979);
+  color: rgb(82,63,56);
   padding: 1rem;
 }
 
