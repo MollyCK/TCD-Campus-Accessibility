@@ -5,11 +5,17 @@
 	<meta charset="utf-8">
 	<!-- This is the name that appears on the tab -->
 	<title>TCD Campus Accessibility</title>
+
 	<!-- link statements are like import for style sheets, the first two are getting Trinity's required font fro google -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap"
-		rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+	<!-- Similar font to logo for header buttons -->
+	<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500&display=swap" rel="stylesheet"> 
+
+	<!-- Our CSS stylesheet -->
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css')}}">
+
 	<!-- Below is the favicon which is the icon that appears on the web browser tab beside the site name -->
 	<link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png')}}"/>
 </head>
@@ -295,10 +301,13 @@
 			</form>
 		</div>
 		<div id="filterLocationNames" class="filter-container">
+			<div class="list-title">
+				<h3>Locations:</h3>
+			</div>
 			<div class="accordion">
 				<div class="accordion-item" id="question1">
 					<a class="accordion-link"  href="#question1">
-						Dummy text for location name 1
+						Arts Block
 						<i class="add-icon">+</i>
 						<i class="remove-icon">-</i>
 					</a>
@@ -342,7 +351,6 @@
 
 			</div>
 		</div>
-		<div id="filterLocationInfo"></div>
 <!-- This below div deals with the form for adding a new location-->
 		   <div id="addLocationForm">
 			<form class="form-container">
