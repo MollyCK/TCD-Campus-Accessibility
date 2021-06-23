@@ -381,7 +381,73 @@ body.dyslexic {
 }
 
 body.warm {
-  background-color: rgba(243, 210, 20, 0.726);
+  background-color: #e6dfcb;
+}
+
+body.warm h1 {
+  color: #56483f;
+}
+
+body.warm header {
+  background-color: sienna;
+  border-bottom: 1px solid sienna;
+}
+
+/*
+body.warm .header .dyslexia-font {
+  color: #56483f;
+  border: 1px solid #56483f;
+  font-weight: 500;
+}
+
+body.warm .header .warm-background {
+  color: #56483f;
+  border: 1px solid #56483f;
+  font-weight: 500;
+}
+
+body.warm .header #addLocation {
+  color: #56483f;
+  border: 1px solid #56483f;
+  font-weight: 500;
+}
+
+body.warm .header #openFilterModal {
+  color: #56483f;
+  border: 1px solid #56483f;
+  font-weight: 500;
+}
+*/
+
+body.warm .filter-container {
+  border: 1px solid sienna;
+}
+
+body.warm .filter-container .list-title {
+  background: sienna;
+  border: 1px solid sienna;
+}
+
+body.warm .accordion-item {
+  background-color:#b05c52;
+  box-shadow: .5rem 2px .5rem #b05c52;
+}
+
+body.warm .accordion-link {
+  color:snow;
+}
+
+body.warm .answer {
+  background-color: #e6dfcb;
+  color: #56483f;
+}
+
+body.warm .answer::before {
+  background-color: gray;
+}
+
+body.warm .answer p {
+  color: #56483f;
 }
 
 .wrapper {
