@@ -158,12 +158,10 @@ function closeFilterModal() {
 
 $('.filterform input[type="submit"]').click(function(e){
 	e.preventDefault();
-	myfunct();
+	submitFilterValues();
 });
 
-//This is for the filter list (?) submitting it's filter's values and getting the appropriate JSON (just one JSON at the moment)
-function myfunct(){
-	//console.log("submitted");
+function submitFilterValues(){
 	// var noiserating=$("#noise1").val(); with jQuery
 	var noiserating=document.getElementById("noise1").value;
 	var lightrating=document.getElementById("light1").value;
