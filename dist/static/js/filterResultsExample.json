@@ -55,5 +55,43 @@
         "floorUneven": 1,
         "seatsHard": 4,
         "texturesRough": 4
+    },
+    {
+        "id": 95,
+        "placeName": "Áras an Phiarsaigh",
+        "people": 1,
+        "movement": 4,
+        "talking": 2,
+        "noise": 3,
+        "noiseType": "Voices",
+        "light": 2,
+        "lightBright": 1,
+        "lightFlickering": 2,
+        "lightColourPeculiar": 4,
+        "smells": 4,
+        "smellType": "Food",
+        "floorSticky": 1,
+        "floorUneven": 1,
+        "seatsHard": 4,
+        "texturesRough": 4
+    },
+    {
+        "id": 84,
+        "placeName": "Zoology Building",
+        "people": 1,
+        "movement": 4,
+        "talking": 2,
+        "noise": 3,
+        "noiseType": "Voices",
+        "light": 2,
+        "lightBright": 1,
+        "lightFlickering": 2,
+        "lightColourPeculiar": 4,
+        "smells": 4,
+        "smellType": "Food",
+        "floorSticky": 1,
+        "floorUneven": 1,
+        "seatsHard": 4,
+        "texturesRough": 4
     }
 ]
