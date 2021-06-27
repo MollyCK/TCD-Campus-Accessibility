@@ -167,28 +167,138 @@ function submitFilterValues(){
 	var lightrating=document.getElementById("light1").value;
 	var smellrating=document.getElementById("smells1").value;
 	var scores =""+noiserating+lightrating+smellrating;
-	/*send string to server*/
 	$.ajax({
-		type: "GET",
-		url: "http://127.0.0.1:5000/filter/"+scores,	
-		contentType: "application/json",
-		dataType: "jsonp"
+		//type: "GET",
+		url: "static/js/filterResultsExample.json",	//"http://127.0.0.1:5000/filter/"+scores,	
+		//contentType: "application/json",
+		dataType: "json" //"jsonp"
 	}).done(function(data){
-		cleardata();
-		cleardata2();
-		/*data.location.forEach(location){};					HAVE TO LOOP*/
-		var test =document.getElementById("filterLocationNames");
-		var para = document.createElement("BUTTON");
-		para.setAttribute("onclick","displaydata(this)");
-		para.setAttribute("id",data.id);
-		console.log($(para).attr("id"));
-		var node = document.createTextNode(data.placeName);
-		para.appendChild(node);
-		test.appendChild(para);
-		document.getElementById("filterLocationInfo").style.display="none";
-		setText(data);
-		
+		appendData(data);
 	});
+}
+
+function appendData(data) {
+	//Location 1
+	var location1 = document.getElementById("location1-name")
+	location1.innerHTML =
+		"<p> " + data[0].placeName + " </p>" +
+		"<i class='add-icon'>+</i>" +
+		"<i class='remove-icon'>-</i>";
+	document.getElementById("location1-info").innerHTML =
+		"<p>Lots of people: " + getScoreWord(data[0].people) + "<br>" +
+		"People moving chaotically: " + getScoreWord(data[0].movement) + "<br>" +
+		"People talking: " + getScoreWord(data[0].talking) + "<br>" +
+		"Background noise: " + getScoreWord(data[0].noise) + "<br>" +
+		"Lots of light: " + getScoreWord(data[0].light) + "<br>" +
+		"Bright light: " + getScoreWord(data[0].lightBright) + "<br>" +
+		"Flickering light: " + getScoreWord(data[0].lightFlickering) + "<br>" +
+		"Peculiar light colour: " + getScoreWord(data[0].lightColourPeculiar) + "<br>" +
+		"Strong smells: " + getScoreWord(data[0].smells) + "<br>" +
+		"Sticky floor: " + getScoreWord(data[0].floorSticky) + "<br>" +
+		"Uneven floor: " + getScoreWord(data[0].floorUneven) + "<br>" +
+		"Seats: " + getSeatsScoreWord(data[0].seatsHard) + "<br>" +
+		"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "</p>";
+		location1.style.display = "flex";
+	//Location 2
+	document.getElementById("location2-name").innerHTML =
+		"<p> " + data[1].placeName + "</p>" +
+		"<i class='add-icon'>+</i>" +
+		"<i class='remove-icon'>-</i>";
+	document.getElementById("location2-info").innerHTML =
+		"<p>Lots of people: " + getScoreWord(data[1].people) + "<br>" +
+		"People moving chaotically: " + getScoreWord(data[1].movement) + "<br>" +
+		"People talking: " + getScoreWord(data[1].talking) + "<br>" +
+		"Background noise: " + getScoreWord(data[1].noise) + "<br>" +
+		"Lots of light: " + getScoreWord(data[1].light) + "<br>" +
+		"Bright light: " + getScoreWord(data[1].lightBright) + "<br>" +
+		"Flickering light: " + getScoreWord(data[1].lightFlickering) + "<br>" +
+		"Peculiar light colour: " + getScoreWord(data[1].lightColourPeculiar) + "<br>" +
+		"Strong smells: " + getScoreWord(data[1].smells) + "<br>" +
+		"Sticky floor: " + getScoreWord(data[1].floorSticky) + "<br>" +
+		"Uneven floor: " + getScoreWord(data[1].floorUneven) + "<br>" +
+		"Seats: " + getSeatsScoreWord(data[1].seatsHard) + "<br>" +
+		"Textures: " + getTexturesScoreWord(data[1].texturesRough) + "</p>";
+	//Location 3
+	document.getElementById("location3-name").innerHTML =
+		"<p> " + data[2].placeName + " </p>" +
+		"<i class='add-icon'>+</i>" +
+		"<i class='remove-icon'>-</i>";
+	document.getElementById("location3-info").innerHTML =
+		"<p>Lots of people: " + getScoreWord(data[2].people) + "<br>" +
+		"People moving chaotically: " + getScoreWord(data[2].movement) + "<br>" +
+		"People talking: " + getScoreWord(data[2].talking) + "<br>" +
+		"Background noise: " + getScoreWord(data[2].noise) + "<br>" +
+		"Lots of light: " + getScoreWord(data[2].light) + "<br>" +
+		"Bright light: " + getScoreWord(data[2].lightBright) + "<br>" +
+		"Flickering light: " + getScoreWord(data[2].lightFlickering) + "<br>" +
+		"Peculiar light colour: " + getScoreWord(data[2].lightColourPeculiar) + "<br>" +
+		"Strong smells: " + getScoreWord(data[2].smells) + "<br>" +
+		"Sticky floor: " + getScoreWord(data[2].floorSticky) + "<br>" +
+		"Uneven floor: " + getScoreWord(data[2].floorUneven) + "<br>" +
+		"Seats: " + getSeatsScoreWord(data[2].seatsHard) + "<br>" +
+		"Textures: " + getTexturesScoreWord(data[2].texturesRough) + "</p>";
+	//Location 4
+	document.getElementById("location4-name").innerHTML =
+		"<p> " + data[3].placeName + " </p>" +
+		"<i class='add-icon'>+</i>" +
+		"<i class='remove-icon'>-</i>";
+	document.getElementById("location4-info").innerHTML =
+		"<p>Lots of people: " + getScoreWord(data[3].people) + "<br>" +
+		"People moving chaotically: " + getScoreWord(data[3].movement) + "<br>" +
+		"People talking: " + getScoreWord(data[3].talking) + "<br>" +
+		"Background noise: " + getScoreWord(data[3].noise) + "<br>" +
+		"Lots of light: " + getScoreWord(data[3].light) + "<br>" +
+		"Bright light: " + getScoreWord(data[3].lightBright) + "<br>" +
+		"Flickering light: " + getScoreWord(data[3].lightFlickering) + "<br>" +
+		"Peculiar light colour: " + getScoreWord(data[3].lightColourPeculiar) + "<br>" +
+		"Strong smells: " + getScoreWord(data[3].smells) + "<br>" +
+		"Sticky floor: " + getScoreWord(data[3].floorSticky) + "<br>" +
+		"Uneven floor: " + getScoreWord(data[3].floorUneven) + "<br>" +
+		"Seats: " + getSeatsScoreWord(data[3].seatsHard) + "<br>" +
+		"Textures: " + getTexturesScoreWord(data[3].texturesRough) + "</p>";
+	//Location 5
+	document.getElementById("location5-name").innerHTML =
+		"<p> " + data[4].placeName + " </p>" +
+		"<i class='add-icon'>+</i>" +
+		"<i class='remove-icon'>-</i>";
+	document.getElementById("location5-info").innerHTML =
+		"<p>Lots of people: " + getScoreWord(data[4].people) + "<br>" +
+		"People moving chaotically: " + getScoreWord(data[4].movement) + "<br>" +
+		"People talking: " + getScoreWord(data[4].talking) + "<br>" +
+		"Background noise: " + getScoreWord(data[4].noise) + "<br>" +
+		"Lots of light: " + getScoreWord(data[4].light) + "<br>" +
+		"Bright light: " + getScoreWord(data[4].lightBright) + "<br>" +
+		"Flickering light: " + getScoreWord(data[4].lightFlickering) + "<br>" +
+		"Peculiar light colour: " + getScoreWord(data[4].lightColourPeculiar) + "<br>" +
+		"Strong smells: " + getScoreWord(data[4].smells) + "<br>" +
+		"Sticky floor: " + getScoreWord(data[4].floorSticky) + "<br>" +
+		"Uneven floor: " + getScoreWord(data[4].floorUneven) + "<br>" +
+		"Seats: " + getSeatsScoreWord(data[4].seatsHard) + "<br>" +
+		"Textures: " + getTexturesScoreWord(data[4].texturesRough) + "</p>";
+}
+
+function getScoreWord(score) {
+	if(score == 1)
+		return "No";
+	else if(score == 2)
+		return "Rarely";
+	else if(score == 3)
+		return "Sometimes";
+	else if(score == 4)
+		return "Yes";
+	else return "ERROR";
+}
+
+function getSeatsScoreWord(score) {
+	if(score <= 3)
+		return "Soft";
+	else return "hard";
+}
+
+function getTexturesScoreWord(score) {
+	if(score <= 3)
+		return "Smooth";
+	else return "Rough";
 }
 
 function displaydata(btn){
@@ -203,16 +313,6 @@ function displaydata(btn){
 	show.style.display="block";
 }
 
-function cleardata(){
-	document.getElementById("filterLocationInfo").innerHTML="";
-	console.log("cleared");
-}
-
-function cleardata2(){
-	document.getElementById("filterLocationNames").innerHTML="";
-	console.log("cleared2");
-}
-
 function setText(data) {
 	var item1 = document.getElementById("filterLocationInfo");
 	var item = document.createElement("P");
@@ -225,8 +325,6 @@ function setText(data) {
 	item.appendChild(nameplace);
 
 	console.log(data);
-
-
 	/*
 	data.forEach(function(d,i){
 
@@ -238,7 +336,6 @@ function setText(data) {
 
 	})
 	*/
-
 	if (data.score.people == 1) {
 		answer = "No";
 	} else if (data.score.people == 2) {
