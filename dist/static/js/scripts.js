@@ -14,7 +14,7 @@ function openModal() {
 			}).done(function(data) { //fills the modal with the location's data from database
 				$("#modal .title h2, #modal div.scores, #modal p.description, #modal ul.comments").html("");
 				$("#modal .title h2").html(data.placeName);
-				$("#modal div.scores").html("Light: "+data['average light score'] + "Noise: "+data['average sound score'] + "Smell: "+data['average smells score']);
+				$("#modal div.scores").html("Light: "+data['average light score'] + " Noise: "+data['average sound score'] + " Smell: "+data['average smells score']);
 				$("#modal p.description").html(data.placeDescription);
 				$("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
 				// data.opinions.forEach(function(opinion){

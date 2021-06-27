@@ -380,6 +380,30 @@ body.dyslexic {
   font-size:0.8em;
 }
 
+body.dyslexic .filter-container h3 {
+  font-family: 'OpenDyslexicMono', sans-serif;
+}
+
+body.dyslexic .header .dyslexia-font {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size: 1.1em;
+}
+
+body.dyslexic .header .warm-background {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size: 1.1em;
+}
+
+body.dyslexic .header #addLocation {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size: 1.1em;
+}
+
+body.dyslexic .header #openFilterModal {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size: 1.1em;
+}
+
 body.warm {
   background-color: #e6dfcb;
 }
@@ -418,6 +442,27 @@ body.warm .header #openFilterModal {
   font-weight: 500;
 }
 */
+
+body.warm #map #modal {
+  background: sienna;
+}
+
+body.warm .form-container {
+  background: sienna;
+}
+
+body.warm #filterModal { 
+  background: sienna;
+  box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem rgb(97, 53, 32);
+}
+
+body.warm .filterform {
+  background: sienna;
+}
+
+body.warm #filterModal fieldset {
+  background-color: sienna;
+}
 
 body.warm .filter-container {
   border: 1px solid sienna;
@@ -700,6 +745,7 @@ body.warm .answer p {
   border-radius: .8rem; 
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
 }
+
 #map #modal .title h2 {
   float: left;
   margin: 0 10px 0 0;
@@ -826,7 +872,7 @@ body.warm .answer p {
 #filterModal{
   position: absolute;
   display: none;
-  top:0%;
+  top:20%;
   left:35%;
   width:275px;
   background: rgb(61, 132, 173);
