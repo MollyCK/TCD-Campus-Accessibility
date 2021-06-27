@@ -522,48 +522,48 @@ $("#addLocation").click(function(e){
 function submitNewLocation(){
 	$(".submitNewLocation").click(function (e) {
 		e.preventDefault();
-		var placeName = $("#placeName").val();
-		var peopleRating = $("#people").val();
-		var movementRating = $("#movement").val();
-		var talkRating = $("#talking").val();
-		var noiseRating = $("#noise").val();
+		var placeName = $("#newplaceName").val();
+		var peopleRating = $("#newpeople").val();
+		var movementRating = $("#newmovement").val();
+		var talkRating = $("#newtalking").val();
+		var noiseRating = $("#newnoise").val();
 		//noise tick boxes
 		var noiseTypes = new Array(" ", " ", " ", " ", " ");
-		if ($("#noiseType-voices").is(":checked")) {
+		if ($("#newnoiseType-voices").is(":checked")) {
 			noiseTypes[0] = 'Voices';
-		} if ($("#noiseType-cutlery-furniture").is(":checked")) {
+		} if ($("#newnoiseType-cutlery-furniture").is(":checked")) {
 			noiseTypes[1] = "CutleryFurniture";
-		} if ($("#noiseType-media-music").is(":checked")) {
+		} if ($("#newnoiseType-media-music").is(":checked")) {
 			noiseTypes[2] = "MediaMusic";
-		} if ($("#noiseType-traffic-machinery").is(":checked")) {
+		} if ($("#newnoiseType-traffic-machinery").is(":checked")) {
 			noiseTypes[3] = "TrafficHeavy machinery";
-		} if ($("#noiseType-other").is(":checked")) {
+		} if ($("#newnoiseType-other").is(":checked")) {
 			noiseTypes[4] = "Other";
 		}
-		var lightRating = $("#light").val();
-		var brightRating = $("#lightBright").val();
-		var flickerRating = $("#lightFlickering").val();
-		var colourRating = $("#lightColourPeculiar").val();
-		var smellRating = $("#smells").val();
+		var lightRating = $("#newlight").val();
+		var brightRating = $("#newlightBright").val();
+		var flickerRating = $("#newlightFlickering").val();
+		var colourRating = $("#newlightColourPeculiar").val();
+		var smellRating = $("#newsmells").val();
 		// smell tick boxes
 		var smellTypes = new Array(" ", " ", " ", " ", " ");
-		if ($("#smellType-chemical").is(":checked")) {
+		if ($("#newsmellType-chemical").is(":checked")) {
 			smellTypes[0] = 'Chemical';
-		} if ($("#smellType-food").is(":checked")) {
+		} if ($("#newsmellType-food").is(":checked")) {
 			smellTypes[1] = "Food";
-		} if ($("#smellType-cosmetic").is(":checked")) {
+		} if ($("#newsmellType-cosmetic").is(":checked")) {
 			smellTypes[2] = "Cosmetic";
-		} if ($("#smellType-natural").is(":checked")) {
+		} if ($("#newsmellType-natural").is(":checked")) {
 			smellTypes[3] = "Natural";
-		} if ($("#smellType-other").is(":checked")) {
+		} if ($("#newsmellType-other").is(":checked")) {
 			smellTypes[4] = "Other";
 		}
-		var stickyRating = $("#floorSticky").val();
-		var unevenRating = $("#floorUneven").val();
-		var seatsRating = $("#seatsHard").val();
-		var texturesRating = $("#texturesRough").val();
-		var directions = $("#directions").val();
-		var comment = $("#comments").val();
+		var stickyRating = $("#newfloorSticky").val();
+		var unevenRating = $("#newfloorUneven").val();
+		var seatsRating = $("#newseatsHard").val();
+		var texturesRating = $("#newtexturesRough").val();
+		var directions = $("#newdirections").val();
+		var comment = $("#newcomments").val();
 
 		var newLocationData = JSON.stringify({
 			"placeName": placeName,
