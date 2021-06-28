@@ -169,7 +169,7 @@ function submitFilterValues(){
 	var scores =""+noiserating+lightrating+smellrating;
 	$.ajax({
 		//type: "GET",
-		url: "static/js/filterResultsExample.json",	//"http://127.0.0.1:5000/filter/"+scores,	
+		url: "http://127.0.0.1:5000/filter/"+scores,	
 		//contentType: "application/json",
 		dataType: "json" //"jsonp"
 	}).done(function(data){
