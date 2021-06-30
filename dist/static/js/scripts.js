@@ -9,7 +9,7 @@ function openModal() {
 			$("#modal").hide();
 			var id = $(this).attr("id"); 
 			$.ajax({
-			  	url: "http://127.0.0.1:5000/place/"+id,	//Needs to be replaced with server url 
+			  	url: "http://127.0.0.1:5000/place/"+id,	//Needs to be replaced with website-hosting server url 
 			  	dataType:"json"
 			}).done(function(data) { //fills the modal with the location's data from database
 				$("#modal .title h2, #modal div.scores, #modal p.description, #modal ul.comments").html("");
