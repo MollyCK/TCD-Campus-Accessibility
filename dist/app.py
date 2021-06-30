@@ -134,7 +134,7 @@ def filter_submit(vals):
         count = count + 1
        
         
-    return(json.loads(document))
+    return(json.dumps(document))
 
 #-----------------------------------------------------------------------------------------
 #                  Map Modal: Survey Data Processing
