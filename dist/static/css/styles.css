@@ -423,32 +423,6 @@ body.warm header {
   border-bottom: 1px solid sienna;
 }
 
-/*
-body.warm .header .dyslexia-font {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-
-body.warm .header .warm-background {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-
-body.warm .header #addLocation {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-
-body.warm .header #openFilterModal {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-*/
-
 body.warm #map #modal {
   background: sienna;
 }
@@ -462,7 +436,7 @@ body.warm #filterModal {
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem #b05c52;
 }
 
-body.warm .filterform {
+body.warm #filterModal .filterform {
   background: sienna;
 }
 
@@ -477,6 +451,18 @@ body.warm .filter-container {
 body.warm .filter-container .list-title {
   background: sienna;
   border: 1px solid sienna;
+}
+
+body.warm .filter-container .help-tip {
+  background-color: #b05c52;
+}
+
+body.warm .filter-container .help-tip p {
+  background-color: gray;
+}
+
+body.warm .filter-container .help-tip p:before {
+  border-bottom-color: gray;
 }
 
 body.warm .accordion-item {
@@ -926,8 +912,7 @@ body.warm .answer p {
   transform: translateY(-0.2rem);
 }
 
-#filterModal
-.filterform {
+#filterModal .filterform {
   background: rgb(61, 132, 173);
   color: hsl(0, 0%, 100%);
   border-radius: .8rem; 
@@ -1056,6 +1041,70 @@ body.warm .answer p {
   font-weight: 500;
 }
 
+.filter-container .help-tip{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  text-align: center;
+  background-color: #BCDBEA;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  cursor: default;
+  z-index: 1;
+}
+
+.filter-container .help-tip:before {
+  content:'?';
+  font-weight: bold;
+  color:#fff;
+}
+
+.filter-container .help-tip:hover p {
+  display:block;
+  transform-origin: 100% 0%;
+
+  -webkit-animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.filter-container .help-tip p {
+  display: none;
+  text-align: left;
+  background-color: rgb(155,201,140);
+  padding: 20px;
+  width: 300px;
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  right: -4px;
+  color: #FFF;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.filter-container .help-tip p:before{ /* The pointer of the tooltip */
+  position: absolute;
+  content: '';
+  width:0;
+  height: 0;
+  border:6px solid transparent;
+  border-bottom-color:rgb(155,201,140);
+  right:10px;
+  top:-12px;
+}
+
+.filter-container .help-tip p:after{ /* Prevents the tooltip from being hidden */
+  width:100%;
+  height:40px;
+  content:'';
+  position: absolute;
+  top:-40px;
+  left:0;
+}
+
 .accordion {
   padding: 1rem 1rem;
 }
@@ -1136,4 +1185,25 @@ body.warm .answer p {
 
 .accordion-item:target .accordion-link .remove-icon {
   display: flex;
+}
+
+/*=============================================================================================================================
+                                  CSS Animation from https://tutorialzine.com/2014/07/css-inline-help-tips
+  =============================================================================================================================*/
+
+@-webkit-keyframes fadeIn {
+  0% { 
+      opacity:0; 
+      transform: scale(0.6);
+  }
+
+  100% {
+      opacity:100%;
+      transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity:0; }
+  100% { opacity:100%; }
 }
