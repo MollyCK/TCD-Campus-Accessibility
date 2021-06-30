@@ -661,18 +661,25 @@ function submitNewLocation(){
 			"directions": directions,
 			"comments": comment,
 		});
+		
+		
+		if(placeName == "") {
+			alert("Uh oh! New locations must be given a name, please scroll back up and fill in a name for this new location.");
+		} else {
+			location.reload();
+			$.ajax({
+				type: "GET",
+				url: "http://127.0.0.1:5000/newLocation/" + newLocationData,
+				contentType: "application/json",
+				dataType: "jsonp"
+			}).done(function (data) {
+				//maybe reset form values here?
+			});
+			close1();
+		}
 
-		location.reload();
-
-		$.ajax({
-			type: "GET",
-			url: "http://127.0.0.1:5000/newLocation/"+newLocationData,
-			contentType: "application/json",
-			dataType: "jsonp"
-		}).done(function (data) {
-			
-		});
-		close1();
+		
+		
 	});
 }
 
