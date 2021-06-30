@@ -2,9 +2,8 @@ import collections
 from re import S
 from flask import Flask, render_template, url_for, jsonify, request
 import os, json
-import numpy as np
 from pymongo import MongoClient, database
-import pprint
+import random
 from bson import Binary, Code, BSON
 from bson.json_util import dumps
 #from flask_cors import CORS, cross_origin
@@ -44,7 +43,29 @@ def index():
 
 @app.route('/place/<id>')
 def click_place_id(id):
-    return dumps(collection.find_one({"id":int(id)}))
+    template = ('dist/static/data/templateDocumentForMapModal.json')
+    document = json.loads(template.read())
+    serverDoc = collection.find_one({"id":int(id)})
+    commentDoc = commentCollection.find_one({"id":int(id)})
+    document["id"] = serverDoc["id"]
+    document["placeName"] = serverDoc["placeName"]
+    document["placeDescription"] = serverDoc["placeDescription"]
+    document["average light score"] = serverDoc["average light score"]
+    document["average sound score"] = serverDoc["average sound score"]
+    document["average smells score"] = serverDoc["average smells score"]
+
+    index = commentDoc["comments"].length()
+
+    document["comments"][0]["user"] = commentDoc["comments"][index-1]["user"]
+    document["comments"][0]["content"] = commentDoc["comments"][index-1]["content"]
+    if(index > 1):
+        document["comments"][1]["user"] = commentDoc["comments"][index-2]["user"]
+        document["comments"][1]["content"] = commentDoc["comments"][index-2]["content"]
+    if(index > 2):
+        document["comments"][2]["user"] = commentDoc["comments"][index-3]["user"]
+        document["comments"][2]["content"] = commentDoc["comments"][index-3]["content"]
+    
+    return dumps(document)
 
 #-----------------------------------------------------------------------------------------
 #                  Filter List: Location(s) Data Request
@@ -57,88 +78,89 @@ def filter_submit(vals):
     averageSmellScore = int(vals[2])
     
     count = 0
-    document = [{"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
+    document = [{"placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
     "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
-    {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
+    {"placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
     "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
-    {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
+    {"placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
     "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
-    {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
+    {"placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
     "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
-    {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
+    {"placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
     "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} }]
     
     categoryList = ['people', 'movement', 'talking', 'noise', 'light' ,'lightBright' ,'lightFlickering' ,
     'lightColourPeculiar' ,'smells' , 'floorSticky' ,'floorUneven']
 
     for results in collection.find({"average sound score": averageNoiseScore, "average light score": averageLightScore, "average smells score": averageSmellScore }):
-        document[count]["id"] = results["id"]
-        document[count]["placeName"] = results["placeName"]
-        catCount = 0
-        for category in categoryList:
-            key = categoryList[catCount]
-            categoryScoreNo = results[key][0]["No"]
-            categoryScoreRarely = results[key][1]["Rarely"]
-            categoryScoreSometimes = results[key][2]["Sometimes"]
-            categoryScoreYes = results[key][3]["Yes"]
-            categoryScoreList = {categoryScoreNo, categoryScoreRarely, categoryScoreSometimes, categoryScoreYes}
-            if(max(categoryScoreList)) == categoryScoreNo:
-                document[count][category] = 1
-            if(max(categoryScoreList)) == categoryScoreRarely:
-                document[count][category] = 2
-            if(max(categoryScoreList)) == categoryScoreSometimes:
-                document[count][category] = 3
-            if(max(categoryScoreList)) == categoryScoreYes:
-                document[count][category] = 4
+        if count < 5:
+            document[count]["placeName"] = results["placeName"]
+            catCount = 0
+            for category in categoryList:
+                key = categoryList[catCount]
+                categoryScoreNo = results[key][0]["No"]
+                categoryScoreRarely = results[key][1]["Rarely"]
+                categoryScoreSometimes = results[key][2]["Sometimes"]
+                categoryScoreYes = results[key][3]["Yes"]
+                categoryScoreList = {categoryScoreNo, categoryScoreRarely, categoryScoreSometimes, categoryScoreYes}
+                if(max(categoryScoreList)) == categoryScoreNo:
+                    document[count][category] = 1
+                if(max(categoryScoreList)) == categoryScoreRarely:
+                    document[count][category] = 2
+                if(max(categoryScoreList)) == categoryScoreSometimes:
+                    document[count][category] = 3
+                if(max(categoryScoreList)) == categoryScoreYes:
+                    document[count][category] = 4
 
-            catCount = catCount +1
+                catCount = catCount +1
         
-        noiseTypeVoices = results["noiseType"][0]["Voices"]
-        noiseTypeCutlery = results["noiseType"][1]["Cutlery/Furniture"]
-        noiseTypeMM = results["noiseType"][2]["Media/Music"]
-        noiseTypeTraffic = results["noiseType"][3]["Traffic/Heavy machinery"]
-        noiseScoreList = {noiseTypeVoices, noiseTypeCutlery, noiseTypeMM, noiseTypeTraffic}
-        if(max(noiseScoreList)) == noiseTypeVoices:
+            noiseTypeVoices = results["noiseType"][0]["Voices"]
+            noiseTypeCutlery = results["noiseType"][1]["Cutlery/Furniture"]
+            noiseTypeMM = results["noiseType"][2]["Media/Music"]
+            noiseTypeTraffic = results["noiseType"][3]["Traffic/Heavy machinery"]
+            noiseScoreList = {noiseTypeVoices, noiseTypeCutlery, noiseTypeMM, noiseTypeTraffic}
+            if(max(noiseScoreList)) == noiseTypeVoices:
                 document[count]["noiseType"] = "Voices"
-        elif(max(noiseScoreList)) == noiseTypeCutlery:
+            elif(max(noiseScoreList)) == noiseTypeCutlery:
                 document[count]["noiseType"] = "Cutlery/Furniture"
-        elif(max(noiseScoreList)) == noiseTypeTraffic:
+            elif(max(noiseScoreList)) == noiseTypeTraffic:
                 document[count]["noiseType"] = "Traffic/Heavy machinery"
-        elif (max(noiseScoreList)) == noiseTypeMM:
-            document[count]["noiseType"] = "Media/Music"
+            elif (max(noiseScoreList)) == noiseTypeMM:
+                document[count]["noiseType"] = "Media/Music"
 
-        smellTypeChemical = results["smellType"][0]["Chemical"]
-        smellTypeFood = results["smellType"][1]["Food"]
-        smellTypeCosmetic = results["smellType"][2]["Cosmetic"]
-        smellTypeNatural = results["smellType"][3]["Natural"]
-        smellTypeList = {smellTypeChemical, smellTypeFood, smellTypeCosmetic, smellTypeNatural}
-        if(max(smellTypeList)) == smellTypeChemical:
+            smellTypeChemical = results["smellType"][0]["Chemical"]
+            smellTypeFood = results["smellType"][1]["Food"]
+            smellTypeCosmetic = results["smellType"][2]["Cosmetic"]
+            smellTypeNatural = results["smellType"][3]["Natural"]
+            smellTypeList = {smellTypeChemical, smellTypeFood, smellTypeCosmetic, smellTypeNatural}
+            if(max(smellTypeList)) == smellTypeChemical:
                 document[count]["smellType"] = "Chemical"
-        elif(max(smellTypeList)) == smellTypeFood:
+            elif(max(smellTypeList)) == smellTypeFood:
                 document[count]["smellType"] = "Food"
-        elif(max(smellTypeList)) == smellTypeCosmetic:
+            elif(max(smellTypeList)) == smellTypeCosmetic:
                 document[count]["smellType"] = "Cosmetic"
-        elif (max(smellTypeList)) == smellTypeNatural:
-            document[count]["smellType"] = "Natural"
+            elif (max(smellTypeList)) == smellTypeNatural:
+                document[count]["smellType"] = "Natural"
 
-        if results["seatsHard"][0]["Soft"]>=results["seatsHard"][1]["Hard"]:
-            document[count]["seatsHard"] = 1
-        else:
-            document[count]["seatsHard"] = 4
+            if results["seatsHard"][0]["Soft"]>=results["seatsHard"][1]["Hard"]:
+                document[count]["seatsHard"] = 1
+            else:
+                document[count]["seatsHard"] = 4
 
-        if results["texturesRough"][0]["Smooth"]>results["texturesRough"][1]["Rough"]:
-            document[count]["texturesRough"] = 1
-        else:
-            document[count]["texturesRough"] = 4
+            if results["texturesRough"][0]["Smooth"]>results["texturesRough"][1]["Rough"]:
+                document[count]["texturesRough"] = 1
+            else:
+                document[count]["texturesRough"] = 4
         
-        if "directions" in results:
-            document[count]["directions"] = results["directions"]
+            if "directions" in results:
+                document[count]["directions"] = results["directions"]
 
-        count = count + 1
+            count = count + 1
+       
    
        
-        
-    return(json.dumps(document))
+    
+        return(json.dumps(document))
 
 #-----------------------------------------------------------------------------------------
 #                  Map Modal: Survey Data Processing
@@ -256,7 +278,11 @@ def submit_survey(results):
         collection.update_one({"id":placeID},{"$set": {"average smells score": 2}})    
     if(max(smellScoreList) == smellScoreYes):
         collection.update_one({"id":placeID},{"$set": {"average smells score": 3}})
-    
+
+    if data["comments"]:
+        newComment = {"user":data["userName"], "content": data["comments"]}
+        commentCollection.update_one({"id": placeID},{"$push":{"comments": newComment} })
+    print(data)
     return("done")
 
 #-----------------------------------------------------------------------------------------
