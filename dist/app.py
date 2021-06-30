@@ -43,7 +43,7 @@ def index():
 
 @app.route('/place/<id>')
 def click_place_id(id):
-    template = ('dist/static/data/templateDocumentForMapModal.json')
+    template = open('dist/static/data/templateForMapModal.json')
     document = json.loads(template.read())
     serverDoc = collection.find_one({"id":int(id)})
     commentDoc = commentCollection.find_one({"id":int(id)})
@@ -54,7 +54,7 @@ def click_place_id(id):
     document["average sound score"] = serverDoc["average sound score"]
     document["average smells score"] = serverDoc["average smells score"]
 
-    index = commentDoc["comments"].length()
+    index = len(commentDoc["comments"])
 
     document["comments"][0]["user"] = commentDoc["comments"][index-1]["user"]
     document["comments"][0]["content"] = commentDoc["comments"][index-1]["content"]
@@ -160,7 +160,8 @@ def filter_submit(vals):
    
        
     
-        return(json.dumps(document))
+        
+    return(json.dumps(document))
 
 #-----------------------------------------------------------------------------------------
 #                  Map Modal: Survey Data Processing
