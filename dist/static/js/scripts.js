@@ -32,6 +32,10 @@ function openModal() {
 function closeModal() {
 	$("#modal .close").click(function(e){
 		e.preventDefault();
+		//reset the modal to be on the information page when next opened
+		$("#modal form").hide();
+		$("#modal .info").show();
+		//hide the whole modal
 		$("#modal").hide(100);
 	});
 }
