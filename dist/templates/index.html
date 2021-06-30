@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<!-- This is the name that appears on the tab -->
-	<title>Sensory TCD</title>
+	<title>Sensory Map TCD</title>
 
 	<!-- link statements are like import for style sheets, the first two are getting Trinity's required font fro google -->
 	<link rel="preconnect" href="https://fonts.gstatic.com">
@@ -26,7 +26,7 @@
 	<!-- Header needs more added to it, colours and styles can be altered in styles.css-->
 <header class="header">
 	<div class="site-identity">
-		<img src="{{ url_for('static', filename='img/imgonline-com-ua-resize-QMym051OCVEk9G.png')}}" alt="logo">
+		<img src="{{ url_for('static', filename='img/sensorymaptcd.png')}}" alt="logo">
 	</div>
 	<!-- Same font as logo -->
 	<nav class="header-right">
@@ -288,21 +288,24 @@
 				<fieldset>
 					<legend>Filter Locations By:</legend>
 					<p>Noise:</p>
-					<label for="noise"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					<label for="noise"><span>low</span><span>medium</span><span>high</span></label>
 					 <input type="range" name="noise" id="noise1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
 					 <p>Light:</p>
-					 <br><br><label for="light"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <label for="light"><span>low</span><span>medium</span><span>high</span></label>
 					 <input type="range" name="light" id="light1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
 					 <p>Smell:</p>
-					 <br><br><label for="smell"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <label for="smell"><span>low</span><span>medium</span><span>high</span></label>
 					 <input type="range" name="smell" id="smells1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
-					 <input type="submit" value="Submit">
+					 <button id="filter-submit">Submit</button>
 				</fieldset>
 			</form>
 		</div>
 		<div id="filterLocationNames" class="filter-container">
 			<div class="list-title">
 				<h3>Locations:</h3>
+				<div class="help-tip">
+					<p>Use the FILTER LOCATIONS button above to search for locations best suited to your stimulus needs!</p>
+				</div>
 			</div>
 			<div class="accordion">
 				<div class="accordion-item" id="location1">
@@ -355,10 +358,9 @@
 		   <div id="addLocationForm">
 			<form class="form-container">
 				<a href="#" id="close1">X</a>
-				<h2>Add a new location: </h2> <!-- span gets filled in with the location name from the data retrieved by the javascript code -->
-				<p>Please enter the name of this location:</p>
+				<h2>Add a New Location </h2> 
 				<input type="hidden" name="id" value="">
-				<label for="placeName">Location</label> <!-- This could be removed if the clients don't want names -->
+				<label for="placeName">Please enter the name of this location:</label> <!-- This could be removed if the clients don't want names -->
 				<input type="text" name="placeName" id="newplaceName">
 				<fieldset>
 					<legend>Are there usually a lot of people in this space?</legend>
@@ -465,7 +467,7 @@
 				<textarea name="directions" id="newdirections" placeholder="Add directions to this location"></textarea>
 				<label for="comments">Comments</label>
 				<textarea name="comments" id="newcomments" placeholder="Add a comment about this location here (optional)"></textarea>
-				<button class="submitNewLocation" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+				<button class="submitNewLocation">Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
 			</form>
 		   </div>  
 	  </div>

@@ -404,6 +404,12 @@ body.dyslexic .header #openFilterModal {
   font-size: 1.1em;
 }
 
+body.dyslexic .accordion-item .answer p {
+  font-family: 'OpenDyslexicMono', sans-serif;
+  font-size:1em;
+  line-height: 1.6;
+}
+
 body.warm {
   background-color: #e6dfcb;
 }
@@ -417,32 +423,6 @@ body.warm header {
   border-bottom: 1px solid sienna;
 }
 
-/*
-body.warm .header .dyslexia-font {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-
-body.warm .header .warm-background {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-
-body.warm .header #addLocation {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-
-body.warm .header #openFilterModal {
-  color: #56483f;
-  border: 1px solid #56483f;
-  font-weight: 500;
-}
-*/
-
 body.warm #map #modal {
   background: sienna;
 }
@@ -453,10 +433,10 @@ body.warm .form-container {
 
 body.warm #filterModal { 
   background: sienna;
-  box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem rgb(97, 53, 32);
+  box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem #b05c52;
 }
 
-body.warm .filterform {
+body.warm #filterModal .filterform {
   background: sienna;
 }
 
@@ -471,6 +451,18 @@ body.warm .filter-container {
 body.warm .filter-container .list-title {
   background: sienna;
   border: 1px solid sienna;
+}
+
+body.warm .filter-container .help-tip {
+  background-color: #b05c52;
+}
+
+body.warm .filter-container .help-tip p {
+  background-color: gray;
+}
+
+body.warm .filter-container .help-tip p:before {
+  border-bottom-color: gray;
 }
 
 body.warm .accordion-item {
@@ -634,6 +626,7 @@ body.warm .answer p {
   margin: auto;
   padding: 20px;
   width: 500px;
+  color:hsl(0, 0%, 100%);
 }
 
 .form-container #close1 {
@@ -641,7 +634,7 @@ body.warm .answer p {
   height: 3rem;
   border: 1px solid hsla(0, 0%, 100%, 0.4);
   border-radius: 100rem;
-  color:inherit;
+  color: inherit;
 
   float: right;
   font-weight: bold;
@@ -653,6 +646,22 @@ body.warm .answer p {
 }
 
 .form-container #close1:hover, #close1:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
+}
+
+.form-container .submitNewLocation {
+  padding: 1rem 1.6rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+  background-color:hsla(0, 100%, 99%, 0.205);
+  font-weight: 600;
+  color: inherit;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.form-container .submitNewLocation:hover .submitNewLocation.focus {
   border-color: hsla(0, 0%, 100%, 0.6);
   transform: translateY(-0.2rem);
 }
@@ -903,11 +912,32 @@ body.warm .answer p {
   transform: translateY(-0.2rem);
 }
 
-.filterform{
+#filterModal .filterform {
   background: rgb(61, 132, 173);
   color: hsl(0, 0%, 100%);
   border-radius: .8rem; 
   box-shadow: 0.4rem 0.4rem 2.4rem 0.2rem hsla(236, 50%, 50%, 0.3);
+}
+
+.filterform p {
+  font-weight: bold;
+  color: rgb(224, 203, 154);
+}
+
+.filterform #filter-submit {
+  padding: 1rem 1.6rem;
+  border: 1px solid hsla(0, 0%, 100%, 0.4);
+  border-radius: 100rem;
+
+  color: inherit;
+  background: transparent;
+  transition: .2s;
+  cursor: pointer;
+}
+
+.filterform  #filter-submit:hover, #filter-submit:focus {
+  border-color: hsla(0, 0%, 100%, 0.6);
+  transform: translateY(-0.2rem);
 }
 
 #filterModal fieldset {
@@ -1011,6 +1041,70 @@ body.warm .answer p {
   font-weight: 500;
 }
 
+.filter-container .help-tip{
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  text-align: center;
+  background-color: #BCDBEA;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  line-height: 30px;
+  cursor: default;
+  z-index: 1;
+}
+
+.filter-container .help-tip:before {
+  content:'?';
+  font-weight: bold;
+  color:#fff;
+}
+
+.filter-container .help-tip:hover p {
+  display:block;
+  transform-origin: 100% 0%;
+
+  -webkit-animation: fadeIn 0.3s ease-in-out;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.filter-container .help-tip p {
+  display: none;
+  text-align: left;
+  background-color: rgb(155,201,140);
+  padding: 20px;
+  width: 300px;
+  position: absolute;
+  border-radius: 3px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  right: -4px;
+  color: #FFF;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.filter-container .help-tip p:before{ /* The pointer of the tooltip */
+  position: absolute;
+  content: '';
+  width:0;
+  height: 0;
+  border:6px solid transparent;
+  border-bottom-color:rgb(155,201,140);
+  right:10px;
+  top:-12px;
+}
+
+.filter-container .help-tip p:after{ /* Prevents the tooltip from being hidden */
+  width:100%;
+  height:40px;
+  content:'';
+  position: absolute;
+  top:-40px;
+  left:0;
+}
+
 .accordion {
   padding: 1rem 1rem;
 }
@@ -1082,7 +1176,7 @@ body.warm .answer p {
 }
 
 .accordion-item:target .answer {
-  max-height: 20rem;
+  max-height: 25rem;
 }
 
 .accordion-item:target .accordion-link .add-icon {
@@ -1091,4 +1185,25 @@ body.warm .answer p {
 
 .accordion-item:target .accordion-link .remove-icon {
   display: flex;
+}
+
+/*=============================================================================================================================
+                                  CSS Animation from https://tutorialzine.com/2014/07/css-inline-help-tips
+  =============================================================================================================================*/
+
+@-webkit-keyframes fadeIn {
+  0% { 
+      opacity:0; 
+      transform: scale(0.6);
+  }
+
+  100% {
+      opacity:100%;
+      transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  0% { opacity:0; }
+  100% { opacity:100%; }
 }
