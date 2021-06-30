@@ -292,7 +292,7 @@ def submit_survey(results):
 @app.route('/newLocation/<information>', methods=['GET'])
 def submit_newLocation(information):
     data = json.loads(information)
-    f = open('dist/static/data/templateDocumentForNewLocation.json')
+    f = open('static/data/templateDocumentForNewLocation.json')
     document = json.loads(f.read())
     placeName = data["placeName"]
     

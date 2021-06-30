@@ -16,10 +16,10 @@ function openModal() {
 				$("#modal .title h2").html(data.placeName);
 				$("#modal div.scores").html("Light: "+data['average light score'] + " Noise: "+data['average sound score'] + " Smell: "+data['average smells score']);
 				$("#modal p.description").html(data.placeDescription);
-				$("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
-				// data.opinions.forEach(function(opinion){
-				// 	$("#modal ul.comments").append('<li><p>'+opinion.comments+'</p><p class="signature">'+opinion.userName+'</p></li>') //format how the specific part to each comment are displayed with the appropriate data
-				// });
+				// $("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
+				//  data.comments.forEach(function(comment){
+				//  	$("#modal ul.comments").append('<li><p>'+comment.content+'</p><p class="signature">'+comment.username+'</p></li>') //format how the specific part to each comment are displayed with the appropriate data
+				//  });
 				$("#modal").show(100);
 				openForm(data);
 			}).fail(function(xhr){
@@ -133,13 +133,14 @@ function submitSurvey(locationData) {
 
 		$("#modal form").hide();
 		$("#modal .info").show();
+		location.reload();
 		$.ajax({
 			type: "GET",
 			url: "http://127.0.0.1:5000/survey/"+surveydata,
 			contentType: "application/json",
 			dataType: "jsonp"
-		}).done(function (data) {
-			//maybe reset all survey values here?
+		}).done(function () {
+			//maybe reset survey values here?
 		}); 
 	});
 }
@@ -173,7 +174,7 @@ function submitFilterValues(){
 	var scores =""+noiserating+lightrating+smellrating;
 	$.ajax({
 		//type: "GET",
-		url: "http://127.0.0.1:5000/filter/"+scores,	
+		url: "http://127.0.0.1:5000/filter/"+scores,
 		contentType: "application/json",
 		dataType: "json" //"jsonp"
 	}).done(function(data){
@@ -204,7 +205,8 @@ function appendData(data) {
 			"Sticky floor: " + getScoreWord(data[0].floorSticky) + "<br>" +
 			"Uneven floor: " + getScoreWord(data[0].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[0].seatsHard) + "<br>" +
-			"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "</p>";
+			"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "<br>" +
+			 (getDirections(data[0])) + "</p>";
 		location1.style.display = "flex";
 	} else {
 		console.log("Object 0 is empty");
@@ -233,7 +235,8 @@ function appendData(data) {
 			"Sticky floor: " + getScoreWord(data[1].floorSticky) + "<br>" +
 			"Uneven floor: " + getScoreWord(data[1].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[1].seatsHard) + "<br>" +
-			"Textures: " + getTexturesScoreWord(data[1].texturesRough) + "</p>";
+			"Textures: " + getTexturesScoreWord(data[1].texturesRough)  + "<br>" +
+			(getDirections(data[1])) + "</p>";
 	} else {
 		console.log("Object 1 is empty");
 		document.getElementById("location2-name").innerHTML = " ";
@@ -259,7 +262,8 @@ function appendData(data) {
 			"Sticky floor: " + getScoreWord(data[2].floorSticky) + "<br>" +
 			"Uneven floor: " + getScoreWord(data[2].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[2].seatsHard) + "<br>" +
-			"Textures: " + getTexturesScoreWord(data[2].texturesRough) + "</p>";
+			"Textures: " + getTexturesScoreWord(data[2].texturesRough)  + "<br>" +
+			(getDirections(data[2])) + "</p>";
 	} else {
 		console.log("Object 2 is empty");
 		document.getElementById("location3-name").innerHTML = " ";
@@ -285,7 +289,8 @@ function appendData(data) {
 			"Sticky floor: " + getScoreWord(data[3].floorSticky) + "<br>" +
 			"Uneven floor: " + getScoreWord(data[3].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[3].seatsHard) + "<br>" +
-			"Textures: " + getTexturesScoreWord(data[3].texturesRough) + "</p>";
+			"Textures: " + getTexturesScoreWord(data[3].texturesRough)  + "<br>" +
+			(getDirections(data[3])) + "</p>";
 
 	} else {
 		console.log("Object 3 is empty");
@@ -311,7 +316,8 @@ function appendData(data) {
 			"Sticky floor: " + getScoreWord(data[4].floorSticky) + "<br>" +
 			"Uneven floor: " + getScoreWord(data[4].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[4].seatsHard) + "<br>" +
-			"Textures: " + getTexturesScoreWord(data[4].texturesRough) + "</p>";
+			"Textures: " + getTexturesScoreWord(data[4].texturesRough)  + "<br>" +
+			(getDirections(data[4])) + "</p>";
 	} else {
 		console.log("Object 4 is empty");
 		document.getElementById("location5-name").innerHTML = " ";
@@ -341,6 +347,16 @@ function getTexturesScoreWord(score) {
 	if(score <= 3)
 		return "Smooth";
 	else return "Rough";
+}
+
+function getDirections(location) {
+	var returningString = " ";
+	console.log(location);
+	console.log(location.directions);
+	if(location.directions.length > 1) { 
+		returningString = "Directions: " + location.directions.toString();
+	} 
+	return returningString;
 }
 
 //Unused old functions
@@ -629,7 +645,7 @@ function submitNewLocation(){
 			"comments": comment,
 		});
 
-		console.log(newLocationData);
+		location.reload();
 
 		$.ajax({
 			type: "GET",
