@@ -180,125 +180,121 @@ function submitFilterValues(){
 function appendData(data) {
 	console.log(data);
 	//Location 1
-	if(JSON.stringify(data[0].id) !== '{}') //making sure the object isn't empty before trying to access its attributes
+	if (JSON.stringify(data[0].id) !== '{}') //making sure the object isn't empty before trying to access its attributes
 	{
 		var location1 = document.getElementById("location1-name")
-	location1.innerHTML =
-		"<p> " + data[0].placeName + " </p>" +
-		"<i class='add-icon'>+</i>" +
-		"<i class='remove-icon'>-</i>";
-	document.getElementById("location1-info").innerHTML =
-		"<p>Lots of people: " + getScoreWord(data[0].people) + "<br>" +
-		"People moving chaotically: " + getScoreWord(data[0].movement) + "<br>" +
-		"People talking: " + getScoreWord(data[0].talking) + "<br>" +
-		"Background noise: " + getScoreWord(data[0].noise) + "<br>" +
-		"Lots of light: " + getScoreWord(data[0].light) + "<br>" +
-		"Bright light: " + getScoreWord(data[0].lightBright) + "<br>" +
-		"Flickering light: " + getScoreWord(data[0].lightFlickering) + "<br>" +
-		"Peculiar light colour: " + getScoreWord(data[0].lightColourPeculiar) + "<br>" +
-		"Strong smells: " + getScoreWord(data[0].smells) + "<br>" +
-		"Sticky floor: " + getScoreWord(data[0].floorSticky) + "<br>" +
-		"Uneven floor: " + getScoreWord(data[0].floorUneven) + "<br>" +
-		"Seats: " + getSeatsScoreWord(data[0].seatsHard) + "<br>" +
-		"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "</p>";
+		location1.innerHTML =
+			"<p> " + data[0].placeName + " </p>" +
+			"<i class='add-icon'>+</i>" +
+			"<i class='remove-icon'>-</i>";
+		document.getElementById("location1-info").innerHTML =
+			"<p>Lots of people: " + getScoreWord(data[0].people) + "<br>" +
+			"People moving chaotically: " + getScoreWord(data[0].movement) + "<br>" +
+			"People talking: " + getScoreWord(data[0].talking) + "<br>" +
+			"Background noise: " + getScoreWord(data[0].noise) + "<br>" +
+			"Lots of light: " + getScoreWord(data[0].light) + "<br>" +
+			"Bright light: " + getScoreWord(data[0].lightBright) + "<br>" +
+			"Flickering light: " + getScoreWord(data[0].lightFlickering) + "<br>" +
+			"Peculiar light colour: " + getScoreWord(data[0].lightColourPeculiar) + "<br>" +
+			"Strong smells: " + getScoreWord(data[0].smells) + "<br>" +
+			"Sticky floor: " + getScoreWord(data[0].floorSticky) + "<br>" +
+			"Uneven floor: " + getScoreWord(data[0].floorUneven) + "<br>" +
+			"Seats: " + getSeatsScoreWord(data[0].seatsHard) + "<br>" +
+			"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "</p>";
 		location1.style.display = "flex";
 	} else {
-		console.log("Object 0 is empty");	
+		console.log("Object 0 is empty");
 		//if the first object is empty then they will all be empty. Must notify user
 		alert("Oops! There are currently no locations with those stimulus scores. Try again with different stimulus levels.");
 	}
-	
+
 	//Location 2
-	if(JSON.stringify(data[1].id) !== '{}')
-	{
+	if (JSON.stringify(data[1].id) !== '{}') {
 		document.getElementById("location2-name").innerHTML =
-		"<p> " + data[1].placeName + "</p>" +
-		"<i class='add-icon'>+</i>" +
-		"<i class='remove-icon'>-</i>";
-	document.getElementById("location2-info").innerHTML =
-		"<p>Lots of people: " + getScoreWord(data[1].people) + "<br>" +
-		"People moving chaotically: " + getScoreWord(data[1].movement) + "<br>" +
-		"People talking: " + getScoreWord(data[1].talking) + "<br>" +
-		"Background noise: " + getScoreWord(data[1].noise) + "<br>" +
-		"Lots of light: " + getScoreWord(data[1].light) + "<br>" +
-		"Bright light: " + getScoreWord(data[1].lightBright) + "<br>" +
-		"Flickering light: " + getScoreWord(data[1].lightFlickering) + "<br>" +
-		"Peculiar light colour: " + getScoreWord(data[1].lightColourPeculiar) + "<br>" +
-		"Strong smells: " + getScoreWord(data[1].smells) + "<br>" +
-		"Sticky floor: " + getScoreWord(data[1].floorSticky) + "<br>" +
-		"Uneven floor: " + getScoreWord(data[1].floorUneven) + "<br>" +
-		"Seats: " + getSeatsScoreWord(data[1].seatsHard) + "<br>" +
-		"Textures: " + getTexturesScoreWord(data[1].texturesRough) + "</p>";
-	} else console.log("Object 1 is empty");	
-	
+			"<p> " + data[1].placeName + "</p>" +
+			"<i class='add-icon'>+</i>" +
+			"<i class='remove-icon'>-</i>";
+		document.getElementById("location2-info").innerHTML =
+			"<p>Lots of people: " + getScoreWord(data[1].people) + "<br>" +
+			"People moving chaotically: " + getScoreWord(data[1].movement) + "<br>" +
+			"People talking: " + getScoreWord(data[1].talking) + "<br>" +
+			"Background noise: " + getScoreWord(data[1].noise) + "<br>" +
+			"Lots of light: " + getScoreWord(data[1].light) + "<br>" +
+			"Bright light: " + getScoreWord(data[1].lightBright) + "<br>" +
+			"Flickering light: " + getScoreWord(data[1].lightFlickering) + "<br>" +
+			"Peculiar light colour: " + getScoreWord(data[1].lightColourPeculiar) + "<br>" +
+			"Strong smells: " + getScoreWord(data[1].smells) + "<br>" +
+			"Sticky floor: " + getScoreWord(data[1].floorSticky) + "<br>" +
+			"Uneven floor: " + getScoreWord(data[1].floorUneven) + "<br>" +
+			"Seats: " + getSeatsScoreWord(data[1].seatsHard) + "<br>" +
+			"Textures: " + getTexturesScoreWord(data[1].texturesRough) + "</p>";
+	} else console.log("Object 1 is empty");
+
 	//Location 3
-	if(JSON.stringify(data[2].id) !== '{}')
-	{
+	if (JSON.stringify(data[2].id) !== '{}') {
 		document.getElementById("location3-name").innerHTML =
-		"<p> " + data[2].placeName + " </p>" +
-		"<i class='add-icon'>+</i>" +
-		"<i class='remove-icon'>-</i>";
-	document.getElementById("location3-info").innerHTML =
-		"<p>Lots of people: " + getScoreWord(data[2].people) + "<br>" +
-		"People moving chaotically: " + getScoreWord(data[2].movement) + "<br>" +
-		"People talking: " + getScoreWord(data[2].talking) + "<br>" +
-		"Background noise: " + getScoreWord(data[2].noise) + "<br>" +
-		"Lots of light: " + getScoreWord(data[2].light) + "<br>" +
-		"Bright light: " + getScoreWord(data[2].lightBright) + "<br>" +
-		"Flickering light: " + getScoreWord(data[2].lightFlickering) + "<br>" +
-		"Peculiar light colour: " + getScoreWord(data[2].lightColourPeculiar) + "<br>" +
-		"Strong smells: " + getScoreWord(data[2].smells) + "<br>" +
-		"Sticky floor: " + getScoreWord(data[2].floorSticky) + "<br>" +
-		"Uneven floor: " + getScoreWord(data[2].floorUneven) + "<br>" +
-		"Seats: " + getSeatsScoreWord(data[2].seatsHard) + "<br>" +
-		"Textures: " + getTexturesScoreWord(data[2].texturesRough) + "</p>";
-	} else console.log("Object 2 is empty");	
-	
+			"<p> " + data[2].placeName + " </p>" +
+			"<i class='add-icon'>+</i>" +
+			"<i class='remove-icon'>-</i>";
+		document.getElementById("location3-info").innerHTML =
+			"<p>Lots of people: " + getScoreWord(data[2].people) + "<br>" +
+			"People moving chaotically: " + getScoreWord(data[2].movement) + "<br>" +
+			"People talking: " + getScoreWord(data[2].talking) + "<br>" +
+			"Background noise: " + getScoreWord(data[2].noise) + "<br>" +
+			"Lots of light: " + getScoreWord(data[2].light) + "<br>" +
+			"Bright light: " + getScoreWord(data[2].lightBright) + "<br>" +
+			"Flickering light: " + getScoreWord(data[2].lightFlickering) + "<br>" +
+			"Peculiar light colour: " + getScoreWord(data[2].lightColourPeculiar) + "<br>" +
+			"Strong smells: " + getScoreWord(data[2].smells) + "<br>" +
+			"Sticky floor: " + getScoreWord(data[2].floorSticky) + "<br>" +
+			"Uneven floor: " + getScoreWord(data[2].floorUneven) + "<br>" +
+			"Seats: " + getSeatsScoreWord(data[2].seatsHard) + "<br>" +
+			"Textures: " + getTexturesScoreWord(data[2].texturesRough) + "</p>";
+	} else console.log("Object 2 is empty");
+
 	//Location 4
-	if(JSON.stringify(data[3].id) !== '{}')
-	{
+	if (JSON.stringify(data[3].id) !== '{}') {
 		document.getElementById("location4-name").innerHTML =
-		"<p> " + data[3].placeName + " </p>" +
-		"<i class='add-icon'>+</i>" +
-		"<i class='remove-icon'>-</i>";
-	document.getElementById("location4-info").innerHTML =
-		"<p>Lots of people: " + getScoreWord(data[3].people) + "<br>" +
-		"People moving chaotically: " + getScoreWord(data[3].movement) + "<br>" +
-		"People talking: " + getScoreWord(data[3].talking) + "<br>" +
-		"Background noise: " + getScoreWord(data[3].noise) + "<br>" +
-		"Lots of light: " + getScoreWord(data[3].light) + "<br>" +
-		"Bright light: " + getScoreWord(data[3].lightBright) + "<br>" +
-		"Flickering light: " + getScoreWord(data[3].lightFlickering) + "<br>" +
-		"Peculiar light colour: " + getScoreWord(data[3].lightColourPeculiar) + "<br>" +
-		"Strong smells: " + getScoreWord(data[3].smells) + "<br>" +
-		"Sticky floor: " + getScoreWord(data[3].floorSticky) + "<br>" +
-		"Uneven floor: " + getScoreWord(data[3].floorUneven) + "<br>" +
-		"Seats: " + getSeatsScoreWord(data[3].seatsHard) + "<br>" +
-		"Textures: " + getTexturesScoreWord(data[3].texturesRough) + "</p>";
-		
-	} else console.log("Object 3 is empty");	
+			"<p> " + data[3].placeName + " </p>" +
+			"<i class='add-icon'>+</i>" +
+			"<i class='remove-icon'>-</i>";
+		document.getElementById("location4-info").innerHTML =
+			"<p>Lots of people: " + getScoreWord(data[3].people) + "<br>" +
+			"People moving chaotically: " + getScoreWord(data[3].movement) + "<br>" +
+			"People talking: " + getScoreWord(data[3].talking) + "<br>" +
+			"Background noise: " + getScoreWord(data[3].noise) + "<br>" +
+			"Lots of light: " + getScoreWord(data[3].light) + "<br>" +
+			"Bright light: " + getScoreWord(data[3].lightBright) + "<br>" +
+			"Flickering light: " + getScoreWord(data[3].lightFlickering) + "<br>" +
+			"Peculiar light colour: " + getScoreWord(data[3].lightColourPeculiar) + "<br>" +
+			"Strong smells: " + getScoreWord(data[3].smells) + "<br>" +
+			"Sticky floor: " + getScoreWord(data[3].floorSticky) + "<br>" +
+			"Uneven floor: " + getScoreWord(data[3].floorUneven) + "<br>" +
+			"Seats: " + getSeatsScoreWord(data[3].seatsHard) + "<br>" +
+			"Textures: " + getTexturesScoreWord(data[3].texturesRough) + "</p>";
+
+	} else console.log("Object 3 is empty");
 	//Location 5
-	if(JSON.stringify(data[4].id) !== '{}')
-	{
+	if (JSON.stringify(data[4].id) !== '{}') {
 		document.getElementById("location5-name").innerHTML =
-		"<p> " + data[4].placeName + " </p>" +
-		"<i class='add-icon'>+</i>" +
-		"<i class='remove-icon'>-</i>";
-	document.getElementById("location5-info").innerHTML =
-		"<p>Lots of people: " + getScoreWord(data[4].people) + "<br>" +
-		"People moving chaotically: " + getScoreWord(data[4].movement) + "<br>" +
-		"People talking: " + getScoreWord(data[4].talking) + "<br>" +
-		"Background noise: " + getScoreWord(data[4].noise) + "<br>" +
-		"Lots of light: " + getScoreWord(data[4].light) + "<br>" +
-		"Bright light: " + getScoreWord(data[4].lightBright) + "<br>" +
-		"Flickering light: " + getScoreWord(data[4].lightFlickering) + "<br>" +
-		"Peculiar light colour: " + getScoreWord(data[4].lightColourPeculiar) + "<br>" +
-		"Strong smells: " + getScoreWord(data[4].smells) + "<br>" +
-		"Sticky floor: " + getScoreWord(data[4].floorSticky) + "<br>" +
-		"Uneven floor: " + getScoreWord(data[4].floorUneven) + "<br>" +
-		"Seats: " + getSeatsScoreWord(data[4].seatsHard) + "<br>" +
-		"Textures: " + getTexturesScoreWord(data[4].texturesRough) + "</p>";
-	} else console.log("Object 4 is empty");	
+			"<p> " + data[4].placeName + " </p>" +
+			"<i class='add-icon'>+</i>" +
+			"<i class='remove-icon'>-</i>";
+		document.getElementById("location5-info").innerHTML =
+			"<p>Lots of people: " + getScoreWord(data[4].people) + "<br>" +
+			"People moving chaotically: " + getScoreWord(data[4].movement) + "<br>" +
+			"People talking: " + getScoreWord(data[4].talking) + "<br>" +
+			"Background noise: " + getScoreWord(data[4].noise) + "<br>" +
+			"Lots of light: " + getScoreWord(data[4].light) + "<br>" +
+			"Bright light: " + getScoreWord(data[4].lightBright) + "<br>" +
+			"Flickering light: " + getScoreWord(data[4].lightFlickering) + "<br>" +
+			"Peculiar light colour: " + getScoreWord(data[4].lightColourPeculiar) + "<br>" +
+			"Strong smells: " + getScoreWord(data[4].smells) + "<br>" +
+			"Sticky floor: " + getScoreWord(data[4].floorSticky) + "<br>" +
+			"Uneven floor: " + getScoreWord(data[4].floorUneven) + "<br>" +
+			"Seats: " + getSeatsScoreWord(data[4].seatsHard) + "<br>" +
+			"Textures: " + getTexturesScoreWord(data[4].texturesRough) + "</p>";
+	} else console.log("Object 4 is empty");
 }
 
 function getScoreWord(score) {
