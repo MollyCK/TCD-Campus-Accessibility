@@ -264,11 +264,7 @@ def submit_survey(results):
 @app.route('/newLocation/<information>', methods=['GET'])
 def submit_newLocation(information):
     data = json.loads(information)
-<<<<<<< HEAD
     f = open('dist/static/data/templateDocumentForNewLocation.json')
-=======
-    f = open('static/data/templateDocumentForNewLocation.json')
->>>>>>> 2d56ff2dacd768e172612001a77b1f50ca8f4caf
     document = json.loads(f.read())
     placeName = data["placeName"]
     
@@ -299,7 +295,6 @@ def submit_newLocation(information):
     for value in answersArray:
         key = scoreKeys[count]
         if value == '1':
-<<<<<<< HEAD
              document[key][0]["No"] = 1
         elif value == '2':
              document[key][1]["Rarely"] = 2
@@ -307,21 +302,11 @@ def submit_newLocation(information):
              document[key][2]["Sometimes"] = 3
         elif value == '4':
              document[key][3]["Yes"] = 4
-=======
-            document[key][0]["No"] = 1
-        elif value == '2':
-            document[key][1]["Rarely"] = 2
-        elif value == '3':
-            document[key][2]["Sometimes"] = 3
-        elif value == '4':
-            document[key][3]["Yes"] = 4
->>>>>>> 2d56ff2dacd768e172612001a77b1f50ca8f4caf
 
         count = count + 1
     
 
     if seatsHardAnswer == '1': 
-<<<<<<< HEAD
          document["seatsHard"][0]["Soft"] = 1
     else: 
          document["seatsHard"][1]["Hard"] = 1
@@ -353,39 +338,6 @@ def submit_newLocation(information):
          document["smellType"][3]["Natural"] = 1         
     if smellTypeAnswer[4] == "Other":
          document["smellType"][4]["Other"] = 1   
-=======
-        document["seatsHard"][0]["Soft"] = 1
-    else: 
-        document["seatsHard"][1]["Hard"] = 1
-        
-
-    if texturesAnswer == '1': 
-        document["texturesRough"][0]["Smooth"] = 1
-    else: 
-         document["texturesRough"][1]["Hard"] = 1
-    
-    if noiseTypeAnswer[0] == "Voices":
-        document["noiseType"][0]["Voices"] = 1
-    if noiseTypeAnswer[1] == "CutleryFurniture":
-        document["noiseType"][1]["Cutlery/Furniture"] = 1
-    if noiseTypeAnswer[2] == "MediaMusic":
-        document["noiseType"][2]["Media/Music"] = 1
-    if noiseTypeAnswer[3] == "TrafficHeavy machinery":
-        document["noiseType"][3]["Traffic/Heavy machinery"] = 1
-    if noiseTypeAnswer[4] == "Other":
-        document["noiseType"][4]["Other"] = 1
-
-    if smellTypeAnswer[0] == "Chemical":
-        document["smellType"][0]["Chemical"] = 1
-    if smellTypeAnswer[1] == "Food":
-        document["smellType"][1]["Food"] = 1
-    if smellTypeAnswer[2] == "Cosmetic":
-        document["smellType"][2]["Cosmetic"] = 1
-    if smellTypeAnswer[3] == "Natural":
-        document["smellType"][3]["Natural"] = 1         
-    if smellTypeAnswer[4] == "Other":
-        document["smellType"][4]["Other"] = 1   
->>>>>>> 2d56ff2dacd768e172612001a77b1f50ca8f4caf
 
     noiseScoreNo  = document["noise"][0]["No"]
     noiseScoreRarely  = document["noise"][1]["Rarely"]
@@ -393,7 +345,6 @@ def submit_newLocation(information):
     noiseScoreYes  = document["noise"][3]["Yes"]            
     
     if(noiseScoreNo == 1):
-<<<<<<< HEAD
          document["average sound score"] = 1 
     if(noiseScoreRarely == 1):
          document["average sound score"] = 1   
@@ -401,15 +352,6 @@ def submit_newLocation(information):
          document["average sound score"] = 2 
     if(noiseScoreYes == 1):
          document["average sound score"] = 3
-=======
-        document["average sound score"] = 1 
-    if(noiseScoreRarely == 1):
-        document["average sound score"] = 1   
-    if(noiseScoreSometimes == 1):
-        document["average sound score"] = 2 
-    if(noiseScoreYes == 1):
-        document["average sound score"] = 3
->>>>>>> 2d56ff2dacd768e172612001a77b1f50ca8f4caf
 
     lightScoreNo  = document["light"][0]["No"]
     lightScoreRarely  = document["light"][1]["Rarely"]
@@ -417,7 +359,6 @@ def submit_newLocation(information):
     lightScoreYes  = document["light"][3]["Yes"]
 
     if(lightScoreNo == 1):
-<<<<<<< HEAD
          document["average light score"] = 1
     if(lightScoreRarely == 1):
          document["average light score"] = 1    
@@ -425,22 +366,12 @@ def submit_newLocation(information):
          document["average light score"] = 2
     if(lightScoreYes == 1):
          document["average light score"] = 3
-=======
-        document["average light score"] = 1
-    if(lightScoreRarely == 1):
-        document["average light score"] = 1    
-    if(lightScoreSometimes == 1):
-        document["average light score"] = 2
-    if(lightScoreYes == 1):
-        document["average light score"] = 3
->>>>>>> 2d56ff2dacd768e172612001a77b1f50ca8f4caf
 
     smellScoreNo  = document["smells"][0]["No"]
     smellScoreRarely  = document["smells"][1]["Rarely"]
     smellScoreSometimes  = document["smells"][2]["Sometimes"]
     smellScoreYes  = document["smells"][3]["Yes"]
     if(smellScoreNo == 1):
-<<<<<<< HEAD
          document["average smells score"] = 1
     if(smellScoreRarely == 1):
          document["average smells score"] = 1
@@ -454,21 +385,6 @@ def submit_newLocation(information):
 
     collection.insert_one(document)
     print(data)
-=======
-        document["average smells score"] = 1
-    if(smellScoreRarely == 1):
-        document["average smells score"] = 1
-    if(smellScoreSometimes == 1):
-        document["average smells score"] = 2
-    if(smellScoreYes == 1):
-        document["average smells score"] = 3
-
-    collection.insert_one(document)
-    print(data)
-
-    #generate a placeID for this new location
-    #create a new space in the database for this new location
->>>>>>> 2d56ff2dacd768e172612001a77b1f50ca8f4caf
 
     return("done")
 
