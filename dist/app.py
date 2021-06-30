@@ -43,7 +43,7 @@ def index():
 
 @app.route('/place/<id>')
 def click_place_id(id):
-    template = open('dist/static/data/templateForMapModal.json')
+    template = open('static/data/templateForMapModal.json')
     document = json.loads(template.read())
     serverDoc = collection.find_one({"id":int(id)})
     commentDoc = commentCollection.find_one({"id":int(id)})

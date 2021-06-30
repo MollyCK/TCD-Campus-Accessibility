@@ -12,14 +12,15 @@ function openModal() {
 			  	url: "http://127.0.0.1:5000/place/"+id,	//Needs to be replaced with website-hosting server url 
 			  	dataType:"json"
 			}).done(function(data) { //fills the modal with the location's data from database
+				console.log(data);
 				$("#modal .title h2, #modal div.scores, #modal p.description, #modal ul.comments").html("");
 				$("#modal .title h2").html(data.placeName);
-				$("#modal div.scores").html("Light: "+data['average light score'] + " Noise: "+data['average sound score'] + " Smell: "+data['average smells score']);
+				$("#modal div.scores").html("Light: " + data['average light score'] + " Noise: " + data['average sound score'] + " Smell: " + data['average smells score']);
 				$("#modal p.description").html(data.placeDescription);
-				// $("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
-				//  data.comments.forEach(function(comment){
-				//  	$("#modal ul.comments").append('<li><p>'+comment.content+'</p><p class="signature">'+comment.username+'</p></li>') //format how the specific part to each comment are displayed with the appropriate data
-				//  });
+				$("#modal button.openform").attr("data-id", id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
+				data.comments.forEach(function (comment) {
+					$("#modal ul.comments").append('<li><p>' + comment.content + '</p><p class="signature">' + comment.username + '</p></li>') //format how the specific part to each comment are displayed with the appropriate data
+				});
 				$("#modal").show(100);
 				openForm(data);
 			}).fail(function(xhr){
@@ -27,6 +28,21 @@ function openModal() {
 			});
 		});
 	});
+}
+
+function displayComments(comments) {
+	var c0isEmpty = true;
+	var c1isEmpty = true;
+	var c2isEmpty = true;
+	var c3isEmpty = true;
+	var c4isEmpty = true;
+	comments[0];
+	comments[1];
+	comments[2];
+}
+
+function isEmptyC(comment) {
+
 }
 
 function closeModal() {
@@ -351,8 +367,6 @@ function getTexturesScoreWord(score) {
 
 function getDirections(location) {
 	var returningString = " ";
-	console.log(location);
-	console.log(location.directions);
 	if(location.directions.length > 1) { 
 		returningString = "Directions: " + location.directions.toString();
 	} 
