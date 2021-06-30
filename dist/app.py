@@ -56,13 +56,13 @@ def click_place_id(id):
 
     index = len(commentDoc["comments"])
 
-    document["comments"][0]["user"] = commentDoc["comments"][index-1]["user"]
+    document["comments"][0]["username"] = commentDoc["comments"][index-1]["user"]
     document["comments"][0]["content"] = commentDoc["comments"][index-1]["content"]
     if(index > 1):
-        document["comments"][1]["user"] = commentDoc["comments"][index-2]["user"]
+        document["comments"][1]["username"] = commentDoc["comments"][index-2]["user"]
         document["comments"][1]["content"] = commentDoc["comments"][index-2]["content"]
     if(index > 2):
-        document["comments"][2]["user"] = commentDoc["comments"][index-3]["user"]
+        document["comments"][2]["username"] = commentDoc["comments"][index-3]["user"]
         document["comments"][2]["content"] = commentDoc["comments"][index-3]["content"]
     
     return dumps(document)
