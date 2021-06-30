@@ -178,8 +178,11 @@ function submitFilterValues(){
 }
 
 function appendData(data) {
+	console.log(data);
 	//Location 1
-	var location1 = document.getElementById("location1-name")
+	if(JSON.stringify(data[0].id) !== '{}')
+	{
+		var location1 = document.getElementById("location1-name")
 	location1.innerHTML =
 		"<p> " + data[0].placeName + " </p>" +
 		"<i class='add-icon'>+</i>" +
@@ -199,8 +202,12 @@ function appendData(data) {
 		"Seats: " + getSeatsScoreWord(data[0].seatsHard) + "<br>" +
 		"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "</p>";
 		location1.style.display = "flex";
+	} else console.log("Object 0 is empty");	
+	
 	//Location 2
-	document.getElementById("location2-name").innerHTML =
+	if(JSON.stringify(data[1].id) !== '{}')
+	{
+		document.getElementById("location2-name").innerHTML =
 		"<p> " + data[1].placeName + "</p>" +
 		"<i class='add-icon'>+</i>" +
 		"<i class='remove-icon'>-</i>";
@@ -218,8 +225,12 @@ function appendData(data) {
 		"Uneven floor: " + getScoreWord(data[1].floorUneven) + "<br>" +
 		"Seats: " + getSeatsScoreWord(data[1].seatsHard) + "<br>" +
 		"Textures: " + getTexturesScoreWord(data[1].texturesRough) + "</p>";
+	} else console.log("Object 1 is empty");	
+	
 	//Location 3
-	document.getElementById("location3-name").innerHTML =
+	if(JSON.stringify(data[2].id) !== '{}')
+	{
+		document.getElementById("location3-name").innerHTML =
 		"<p> " + data[2].placeName + " </p>" +
 		"<i class='add-icon'>+</i>" +
 		"<i class='remove-icon'>-</i>";
@@ -237,8 +248,12 @@ function appendData(data) {
 		"Uneven floor: " + getScoreWord(data[2].floorUneven) + "<br>" +
 		"Seats: " + getSeatsScoreWord(data[2].seatsHard) + "<br>" +
 		"Textures: " + getTexturesScoreWord(data[2].texturesRough) + "</p>";
+	} else console.log("Object 2 is empty");	
+	
 	//Location 4
-	document.getElementById("location4-name").innerHTML =
+	if(JSON.stringify(data[3].id) !== '{}')
+	{
+		document.getElementById("location4-name").innerHTML =
 		"<p> " + data[3].placeName + " </p>" +
 		"<i class='add-icon'>+</i>" +
 		"<i class='remove-icon'>-</i>";
@@ -256,8 +271,12 @@ function appendData(data) {
 		"Uneven floor: " + getScoreWord(data[3].floorUneven) + "<br>" +
 		"Seats: " + getSeatsScoreWord(data[3].seatsHard) + "<br>" +
 		"Textures: " + getTexturesScoreWord(data[3].texturesRough) + "</p>";
+		
+	} else console.log("Object 3 is empty");	
 	//Location 5
-	document.getElementById("location5-name").innerHTML =
+	if(JSON.stringify(data[4].id) !== '{}')
+	{
+		document.getElementById("location5-name").innerHTML =
 		"<p> " + data[4].placeName + " </p>" +
 		"<i class='add-icon'>+</i>" +
 		"<i class='remove-icon'>-</i>";
@@ -275,6 +294,7 @@ function appendData(data) {
 		"Uneven floor: " + getScoreWord(data[4].floorUneven) + "<br>" +
 		"Seats: " + getSeatsScoreWord(data[4].seatsHard) + "<br>" +
 		"Textures: " + getTexturesScoreWord(data[4].texturesRough) + "</p>";
+	} else console.log("Object 4 is empty");	
 }
 
 function getScoreWord(score) {
