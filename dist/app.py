@@ -130,10 +130,12 @@ def filter_submit(vals):
             document[count]["texturesRough"] = 1
         else:
             document[count]["texturesRough"] = 4
+        
+        if "directions" in results:
+            document[count]["directions"] = results["directions"]
 
         count = count + 1
-    if "directions" in results:
-        document["directions"] = results["directions"]
+   
        
         
     return(json.dumps(document))
