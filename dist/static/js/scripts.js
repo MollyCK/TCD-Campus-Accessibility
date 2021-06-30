@@ -160,7 +160,7 @@ function closeFilterModal() {
 	});
 }
 
-$('.filterform input[type="submit"]').click(function(e){
+$('.filterform #filter-submit').click(function(e){
 	e.preventDefault();
 	submitFilterValues();
 });
@@ -208,6 +208,8 @@ function appendData(data) {
 		location1.style.display = "flex";
 	} else {
 		console.log("Object 0 is empty");
+		document.getElementById("location1-name").innerHTML = " ";
+		document.getElementById("location1-info").innerHTML = " ";
 		//if the first object is empty then they will all be empty. Must notify user
 		alert("Oops! There are currently no locations with those stimulus scores. Try again with different stimulus levels.");
 	}
@@ -232,7 +234,11 @@ function appendData(data) {
 			"Uneven floor: " + getScoreWord(data[1].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[1].seatsHard) + "<br>" +
 			"Textures: " + getTexturesScoreWord(data[1].texturesRough) + "</p>";
-	} else console.log("Object 1 is empty");
+	} else {
+		console.log("Object 1 is empty");
+		document.getElementById("location2-name").innerHTML = " ";
+		document.getElementById("location2-info").innerHTML = " ";
+	}
 
 	//Location 3
 	if (JSON.stringify(data[2].id) !== '{}') {
@@ -254,7 +260,11 @@ function appendData(data) {
 			"Uneven floor: " + getScoreWord(data[2].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[2].seatsHard) + "<br>" +
 			"Textures: " + getTexturesScoreWord(data[2].texturesRough) + "</p>";
-	} else console.log("Object 2 is empty");
+	} else {
+		console.log("Object 2 is empty");
+		document.getElementById("location3-name").innerHTML = " ";
+		document.getElementById("location3-info").innerHTML = " ";
+	}
 
 	//Location 4
 	if (JSON.stringify(data[3].id) !== '{}') {
@@ -277,7 +287,11 @@ function appendData(data) {
 			"Seats: " + getSeatsScoreWord(data[3].seatsHard) + "<br>" +
 			"Textures: " + getTexturesScoreWord(data[3].texturesRough) + "</p>";
 
-	} else console.log("Object 3 is empty");
+	} else {
+		console.log("Object 3 is empty");
+		document.getElementById("location4-name").innerHTML = " ";
+		document.getElementById("location4-info").innerHTML = " ";
+	}
 	//Location 5
 	if (JSON.stringify(data[4].id) !== '{}') {
 		document.getElementById("location5-name").innerHTML =
@@ -298,7 +312,11 @@ function appendData(data) {
 			"Uneven floor: " + getScoreWord(data[4].floorUneven) + "<br>" +
 			"Seats: " + getSeatsScoreWord(data[4].seatsHard) + "<br>" +
 			"Textures: " + getTexturesScoreWord(data[4].texturesRough) + "</p>";
-	} else console.log("Object 4 is empty");
+	} else {
+		console.log("Object 4 is empty");
+		document.getElementById("location5-name").innerHTML = " ";
+		document.getElementById("location5-info").innerHTML = " ";
+	}
 }
 
 function getScoreWord(score) {
@@ -325,6 +343,7 @@ function getTexturesScoreWord(score) {
 	else return "Rough";
 }
 
+//Unused old functions
 function displaydata(btn){
 	var id = btn.getAttribute('id');
 	document.getElementById("filterLocationInfo").style.display="block";

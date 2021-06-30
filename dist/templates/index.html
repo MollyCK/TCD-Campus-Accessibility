@@ -288,15 +288,15 @@
 				<fieldset>
 					<legend>Filter Locations By:</legend>
 					<p>Noise:</p>
-					<label for="noise"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					<label for="noise"><span>low</span><span>medium</span><span>high</span></label>
 					 <input type="range" name="noise" id="noise1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
 					 <p>Light:</p>
-					 <br><br><label for="light"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <label for="light"><span>low</span><span>medium</span><span>high</span></label>
 					 <input type="range" name="light" id="light1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
 					 <p>Smell:</p>
-					 <br><br><label for="smell"><span>low</span><span>medium</span><span>high</span></label><br><br>
+					 <label for="smell"><span>low</span><span>medium</span><span>high</span></label>
 					 <input type="range" name="smell" id="smells1" min="1" max="3" value="1"> <!-- the pointer starts at "No" -->
-					 <input type="submit" value="Submit">
+					 <button id="filter-submit">Submit</button>
 				</fieldset>
 			</form>
 		</div>
@@ -355,10 +355,9 @@
 		   <div id="addLocationForm">
 			<form class="form-container">
 				<a href="#" id="close1">X</a>
-				<h2>Add a new location: </h2> <!-- span gets filled in with the location name from the data retrieved by the javascript code -->
-				<p>Please enter the name of this location:</p>
+				<h2>Add a New Location </h2> 
 				<input type="hidden" name="id" value="">
-				<label for="placeName">Location</label> <!-- This could be removed if the clients don't want names -->
+				<label for="placeName">Please enter the name of this location:</label> <!-- This could be removed if the clients don't want names -->
 				<input type="text" name="placeName" id="newplaceName">
 				<fieldset>
 					<legend>Are there usually a lot of people in this space?</legend>
@@ -465,7 +464,7 @@
 				<textarea name="directions" id="newdirections" placeholder="Add directions to this location"></textarea>
 				<label for="comments">Comments</label>
 				<textarea name="comments" id="newcomments" placeholder="Add a comment about this location here (optional)"></textarea>
-				<button class="submitNewLocation" >Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
+				<button class="submitNewLocation">Submit</button> <!-- needs to be configured to send the inputted values as a JSON to the server and also reset all default values once submitted -->
 			</form>
 		   </div>  
 	  </div>
