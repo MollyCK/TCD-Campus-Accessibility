@@ -204,7 +204,7 @@ function submitFilterValues(){
 function appendData(data) {
 	console.log(data);
 	//Location 1
-	if (JSON.stringify(data[0].id) !== '{}') //making sure the object isn't empty before trying to access its attributes
+	if (JSON.stringify(data[0].placeName) !== '{}') //making sure the object isn't empty before trying to access its attributes
 	{
 		var location1 = document.getElementById("location1-name")
 		location1.innerHTML =
@@ -236,7 +236,7 @@ function appendData(data) {
 	}
 
 	//Location 2
-	if (JSON.stringify(data[1].id) !== '{}') {
+	if (JSON.stringify(data[1].placeName) !== '{}') {
 		document.getElementById("location2-name").innerHTML =
 			"<p> " + data[1].placeName + "</p>" +
 			"<i class='add-icon'>+</i>" +
@@ -263,7 +263,7 @@ function appendData(data) {
 	}
 
 	//Location 3
-	if (JSON.stringify(data[2].id) !== '{}') {
+	if (JSON.stringify(data[2].placeName) !== '{}') {
 		document.getElementById("location3-name").innerHTML =
 			"<p> " + data[2].placeName + " </p>" +
 			"<i class='add-icon'>+</i>" +
@@ -290,7 +290,7 @@ function appendData(data) {
 	}
 
 	//Location 4
-	if (JSON.stringify(data[3].id) !== '{}') {
+	if (JSON.stringify(data[3].placeName) !== '{}') {
 		document.getElementById("location4-name").innerHTML =
 			"<p> " + data[3].placeName + " </p>" +
 			"<i class='add-icon'>+</i>" +
@@ -317,7 +317,7 @@ function appendData(data) {
 		document.getElementById("location4-info").innerHTML = " ";
 	}
 	//Location 5
-	if (JSON.stringify(data[4].id) !== '{}') {
+	if (JSON.stringify(data[4].placeName) !== '{}') {
 		document.getElementById("location5-name").innerHTML =
 			"<p> " + data[4].placeName + " </p>" +
 			"<i class='add-icon'>+</i>" +
