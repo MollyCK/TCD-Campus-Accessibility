@@ -16,10 +16,10 @@ function openModal() {
 				$("#modal .title h2").html(data.placeName);
 				$("#modal div.scores").html("Light: "+data['average light score'] + " Noise: "+data['average sound score'] + " Smell: "+data['average smells score']);
 				$("#modal p.description").html(data.placeDescription);
-				$("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
-				// data.opinions.forEach(function(opinion){
-				// 	$("#modal ul.comments").append('<li><p>'+opinion.comments+'</p><p class="signature">'+opinion.userName+'</p></li>') //format how the specific part to each comment are displayed with the appropriate data
-				// });
+				// $("#modal button.openform").attr("data-id",id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
+				//  data.comments.forEach(function(comment){
+				//  	$("#modal ul.comments").append('<li><p>'+comment.content+'</p><p class="signature">'+comment.username+'</p></li>') //format how the specific part to each comment are displayed with the appropriate data
+				//  });
 				$("#modal").show(100);
 				openForm(data);
 			}).fail(function(xhr){
@@ -133,13 +133,14 @@ function submitSurvey(locationData) {
 
 		$("#modal form").hide();
 		$("#modal .info").show();
+		location.reload();
 		$.ajax({
 			type: "GET",
 			url: "http://127.0.0.1:5000/survey/"+surveydata,
 			contentType: "application/json",
 			dataType: "jsonp"
-		}).done(function (data) {
-			//maybe reset all survey values here?
+		}).done(function () {
+			//maybe reset survey values here?
 		}); 
 	});
 }
@@ -644,7 +645,7 @@ function submitNewLocation(){
 			"comments": comment,
 		});
 
-		console.log(newLocationData);
+		location.reload();
 
 		$.ajax({
 			type: "GET",
