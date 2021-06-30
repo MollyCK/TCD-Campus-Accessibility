@@ -9,7 +9,7 @@ from bson import Binary, Code, BSON
 from bson.json_util import dumps
 #from flask_cors import CORS, cross_origin
 
-client = MongoClient('mongodb://rer:rer@123.56.68.67:7017/School')
+client = MongoClient('mongodb://rer:rer@123.57.194.245:8070/School')
 db = client['School']
 collection = db['Campus']
 commentCollection = db['Comments']
@@ -58,15 +58,15 @@ def filter_submit(vals):
     
     count = 0
     document = [{"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
-    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{} },
+    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
     {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
-    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{} },
+    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
     {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
-    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{} },
+    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
     {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
-    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{} },
+    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} },
     {"id": {}, "placeName":{} , "people":{} ,"movement": {}, "talking": {}, "noise":{},"noiseType":{}, "Voices":{},"light":{} ,"lightBright":{} ,"lightFlickering": {},
-    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{} }]
+    "lightColourPeculiar": {},"smells": {},"smellType":{}, "floorSticky":{} ,"floorUneven": {},"seatsHard":{} ,"texturesRough":{}, "directions": {} }]
     
     categoryList = ['people', 'movement', 'talking', 'noise', 'light' ,'lightBright' ,'lightFlickering' ,
     'lightColourPeculiar' ,'smells' , 'floorSticky' ,'floorUneven']
@@ -132,6 +132,8 @@ def filter_submit(vals):
             document[count]["texturesRough"] = 4
 
         count = count + 1
+    if "directions" in results:
+        document["directions"] = results["directions"]
        
         
     return(json.dumps(document))
@@ -261,128 +263,128 @@ def submit_survey(results):
 
 @app.route('/newLocation/<information>', methods=['GET'])
 def submit_newLocation(information):
-    # data = json.loads(information)
-    # f = open('dist/static/data/templateDocumentForNewLocation.json')
-    # document = json.loads(f.read())
-    # placeName = data["placeName"]
+    data = json.loads(information)
+    f = open('dist/static/data/templateDocumentForNewLocation.json')
+    document = json.loads(f.read())
+    placeName = data["placeName"]
     
-    # document["placeName"] = placeName
+    document["placeName"] = placeName
 
-    # peopleAnswer = data["people"]
-    # movementAnswer = data["movement"]
-    # talkingAnswer = data["talking"]
-    # noiseAnswer = data["noise"]
-    # noiseTypeAnswer = data["noiseType"]
-    # lightAnswer = data["light"]
-    # lightBrightAnswer = data["lightBright"]
-    # lightFlickeringAnswer = data["lightFlickering"]
-    # lightColourPeculiarAnswer = data["lightColourPeculiar"]
-    # smellsAnswer = data["smells"]
-    # smellTypeAnswer = data["smellType"]
-    # floorStickyAnswer = data["floorSticky"]
-    # floorUnevenAnswer = data["floorUneven"]
-    # seatsHardAnswer = data["seatsHardBinary"]
-    # texturesAnswer = data["texturesRoughBinary"]
+    peopleAnswer = data["people"]
+    movementAnswer = data["movement"]
+    talkingAnswer = data["talking"]
+    noiseAnswer = data["noise"]
+    noiseTypeAnswer = data["noiseType"]
+    lightAnswer = data["light"]
+    lightBrightAnswer = data["lightBright"]
+    lightFlickeringAnswer = data["lightFlickering"]
+    lightColourPeculiarAnswer = data["lightColourPeculiar"]
+    smellsAnswer = data["smells"]
+    smellTypeAnswer = data["smellType"]
+    floorStickyAnswer = data["floorSticky"]
+    floorUnevenAnswer = data["floorUneven"]
+    seatsHardAnswer = data["seatsHardBinary"]
+    texturesAnswer = data["texturesRoughBinary"]
 
-    # answersArray = [peopleAnswer, movementAnswer, talkingAnswer, noiseAnswer, lightAnswer, lightBrightAnswer, lightFlickeringAnswer, lightColourPeculiarAnswer, smellsAnswer, 
-    # floorStickyAnswer, floorUnevenAnswer]
+    answersArray = [peopleAnswer, movementAnswer, talkingAnswer, noiseAnswer, lightAnswer, lightBrightAnswer, lightFlickeringAnswer, lightColourPeculiarAnswer, smellsAnswer, 
+    floorStickyAnswer, floorUnevenAnswer]
    
-    # scoreKeys =  ['people', 'movement', 'talking', 'noise', 'light', 'lightBright', 'lightFlickering', 'lightColourPeculiar', 'smells', 'floorSticky', 'floorUneven',]
+    scoreKeys =  ['people', 'movement', 'talking', 'noise', 'light', 'lightBright', 'lightFlickering', 'lightColourPeculiar', 'smells', 'floorSticky', 'floorUneven',]
 
-    # count = 0
-    # for value in answersArray:
-    #     key = scoreKeys[count]
-    #     if value == '1':
-    #         document[key][0]["No"] = 1
-    #     elif value == '2':
-    #         document[key][1]["Rarely"] = 2
-    #     elif value == '3':
-    #         document[key][2]["Sometimes"] = 3
-    #     elif value == '4':
-    #         document[key][3]["Yes"] = 4
+    count = 0
+    for value in answersArray:
+        key = scoreKeys[count]
+        if value == '1':
+             document[key][0]["No"] = 1
+        elif value == '2':
+             document[key][1]["Rarely"] = 2
+        elif value == '3':
+             document[key][2]["Sometimes"] = 3
+        elif value == '4':
+             document[key][3]["Yes"] = 4
 
-    #     count = count + 1
+        count = count + 1
     
 
-    # if seatsHardAnswer == '1': 
-    #     document["seatsHard"][0]["Soft"] = 1
-    # else: 
-    #     document["seatsHard"][1]["Hard"] = 1
+    if seatsHardAnswer == '1': 
+         document["seatsHard"][0]["Soft"] = 1
+    else: 
+         document["seatsHard"][1]["Hard"] = 1
         
 
-    # if texturesAnswer == '1': 
-    #     document["texturesRough"][0]["Smooth"] = 1
-    # else: 
-    #      document["texturesRough"][1]["Hard"] = 1
+    if texturesAnswer == '1': 
+         document["texturesRough"][0]["Smooth"] = 1
+    else: 
+          document["texturesRough"][1]["Hard"] = 1
     
-    # if noiseTypeAnswer[0] == "Voices":
-    #     document["noiseType"][0]["Voices"] = 1
-    # if noiseTypeAnswer[1] == "CutleryFurniture":
-    #     document["noiseType"][1]["Cutlery/Furniture"] = 1
-    # if noiseTypeAnswer[2] == "MediaMusic":
-    #     document["noiseType"][2]["Media/Music"] = 1
-    # if noiseTypeAnswer[3] == "TrafficHeavy machinery":
-    #     document["noiseType"][3]["Traffic/Heavy machinery"] = 1
-    # if noiseTypeAnswer[4] == "Other":
-    #     document["noiseType"][4]["Other"] = 1
+    if noiseTypeAnswer[0] == "Voices":
+         document["noiseType"][0]["Voices"] = 1
+    if noiseTypeAnswer[1] == "CutleryFurniture":
+         document["noiseType"][1]["Cutlery/Furniture"] = 1
+    if noiseTypeAnswer[2] == "MediaMusic":
+         document["noiseType"][2]["Media/Music"] = 1
+    if noiseTypeAnswer[3] == "TrafficHeavy machinery":
+         document["noiseType"][3]["Traffic/Heavy machinery"] = 1
+    if noiseTypeAnswer[4] == "Other":
+         document["noiseType"][4]["Other"] = 1
 
-    # if smellTypeAnswer[0] == "Chemical":
-    #     document["smellType"][0]["Chemical"] = 1
-    # if smellTypeAnswer[1] == "Food":
-    #     document["smellType"][1]["Food"] = 1
-    # if smellTypeAnswer[2] == "Cosmetic":
-    #     document["smellType"][2]["Cosmetic"] = 1
-    # if smellTypeAnswer[3] == "Natural":
-    #     document["smellType"][3]["Natural"] = 1         
-    # if smellTypeAnswer[4] == "Other":
-    #     document["smellType"][4]["Other"] = 1   
+    if smellTypeAnswer[0] == "Chemical":
+         document["smellType"][0]["Chemical"] = 1
+    if smellTypeAnswer[1] == "Food":
+         document["smellType"][1]["Food"] = 1
+    if smellTypeAnswer[2] == "Cosmetic":
+         document["smellType"][2]["Cosmetic"] = 1
+    if smellTypeAnswer[3] == "Natural":
+         document["smellType"][3]["Natural"] = 1         
+    if smellTypeAnswer[4] == "Other":
+         document["smellType"][4]["Other"] = 1   
 
-    # noiseScoreNo  = document["noise"][0]["No"]
-    # noiseScoreRarely  = document["noise"][1]["Rarely"]
-    # noiseScoreSometimes  = document["noise"][2]["Sometimes"]
-    # noiseScoreYes  = document["noise"][3]["Yes"]            
+    noiseScoreNo  = document["noise"][0]["No"]
+    noiseScoreRarely  = document["noise"][1]["Rarely"]
+    noiseScoreSometimes  = document["noise"][2]["Sometimes"]
+    noiseScoreYes  = document["noise"][3]["Yes"]            
     
-    # if(noiseScoreNo == 1):
-    #     document["average sound score"] = 1 
-    # if(noiseScoreRarely == 1):
-    #     document["average sound score"] = 1   
-    # if(noiseScoreSometimes == 1):
-    #     document["average sound score"] = 2 
-    # if(noiseScoreYes == 1):
-    #     document["average sound score"] = 3
+    if(noiseScoreNo == 1):
+         document["average sound score"] = 1 
+    if(noiseScoreRarely == 1):
+         document["average sound score"] = 1   
+    if(noiseScoreSometimes == 1):
+         document["average sound score"] = 2 
+    if(noiseScoreYes == 1):
+         document["average sound score"] = 3
 
-    # lightScoreNo  = document["light"][0]["No"]
-    # lightScoreRarely  = document["light"][1]["Rarely"]
-    # lightScoreSometimes  = document["light"][2]["Sometimes"]
-    # lightScoreYes  = document["light"][3]["Yes"]
+    lightScoreNo  = document["light"][0]["No"]
+    lightScoreRarely  = document["light"][1]["Rarely"]
+    lightScoreSometimes  = document["light"][2]["Sometimes"]
+    lightScoreYes  = document["light"][3]["Yes"]
 
-    # if(lightScoreNo == 1):
-    #     document["average light score"] = 1
-    # if(lightScoreRarely == 1):
-    #     document["average light score"] = 1    
-    # if(lightScoreSometimes == 1):
-    #     document["average light score"] = 2
-    # if(lightScoreYes == 1):
-    #     document["average light score"] = 3
+    if(lightScoreNo == 1):
+         document["average light score"] = 1
+    if(lightScoreRarely == 1):
+         document["average light score"] = 1    
+    if(lightScoreSometimes == 1):
+         document["average light score"] = 2
+    if(lightScoreYes == 1):
+         document["average light score"] = 3
 
-    # smellScoreNo  = document["smells"][0]["No"]
-    # smellScoreRarely  = document["smells"][1]["Rarely"]
-    # smellScoreSometimes  = document["smells"][2]["Sometimes"]
-    # smellScoreYes  = document["smells"][3]["Yes"]
-    # if(smellScoreNo == 1):
-    #     document["average smells score"] = 1
-    # if(smellScoreRarely == 1):
-    #     document["average smells score"] = 1
-    # if(smellScoreSometimes == 1):
-    #     document["average smells score"] = 2
-    # if(smellScoreYes == 1):
-    #     document["average smells score"] = 3
+    smellScoreNo  = document["smells"][0]["No"]
+    smellScoreRarely  = document["smells"][1]["Rarely"]
+    smellScoreSometimes  = document["smells"][2]["Sometimes"]
+    smellScoreYes  = document["smells"][3]["Yes"]
+    if(smellScoreNo == 1):
+         document["average smells score"] = 1
+    if(smellScoreRarely == 1):
+         document["average smells score"] = 1
+    if(smellScoreSometimes == 1):
+         document["average smells score"] = 2
+    if(smellScoreYes == 1):
+         document["average smells score"] = 3
 
-    #collection.insert_one(document)
-    #print(data)
+    if(data["directions"]!= {}):
+        document["directions"] = data["directions"]
 
-    #generate a placeID for this new location
-    #create a new space in the database for this new location
+    collection.insert_one(document)
+    print(data)
 
     return("done")
 
