@@ -16,7 +16,8 @@
         "floorSticky": 1,
         "floorUneven": 1,
         "seatsHard": 4,
-        "texturesRough": 4
+        "texturesRough": 4,
+        "directions":"Take a left blah blah blah"
     },
     {
         "id": 45,
@@ -35,7 +36,8 @@
         "floorSticky": 1,
         "floorUneven": 1,
         "seatsHard": 4,
-        "texturesRough": 4
+        "texturesRough": 4,
+        "directions":"Take a right blah blah blah"
     },
     {
         "id": 91,
@@ -54,7 +56,8 @@
         "floorSticky": 1,
         "floorUneven": 1,
         "seatsHard": 4,
-        "texturesRough": 4
+        "texturesRough": 4,
+        "directions":"Take a left blah blah blah"
     },
     {
         "id": 95,
@@ -73,7 +76,8 @@
         "floorSticky": 1,
         "floorUneven": 1,
         "seatsHard": 4,
-        "texturesRough": 4
+        "texturesRough": 4,
+        "directions":"Take a left blah blah blah"
     },
     {
         "id": 84,
@@ -92,6 +96,7 @@
         "floorSticky": 1,
         "floorUneven": 1,
         "seatsHard": 4,
-        "texturesRough": 4
+        "texturesRough": 4,
+        "directions":"Take a left blah blah blah"
     }
 ]
