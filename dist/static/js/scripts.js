@@ -170,7 +170,7 @@ function submitFilterValues(){
 	$.ajax({
 		//type: "GET",
 		url: "http://127.0.0.1:5000/filter/"+scores,	
-		//contentType: "application/json",
+		contentType: "application/json",
 		dataType: "json" //"jsonp"
 	}).done(function(data){
 		appendData(data);
