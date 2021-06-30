@@ -180,7 +180,7 @@ function submitFilterValues(){
 function appendData(data) {
 	console.log(data);
 	//Location 1
-	if(JSON.stringify(data[0].id) !== '{}')
+	if(JSON.stringify(data[0].id) !== '{}') //making sure the object isn't empty before trying to access its attributes
 	{
 		var location1 = document.getElementById("location1-name")
 	location1.innerHTML =
@@ -202,7 +202,11 @@ function appendData(data) {
 		"Seats: " + getSeatsScoreWord(data[0].seatsHard) + "<br>" +
 		"Textures: " + getTexturesScoreWord(data[0].texturesRough) + "</p>";
 		location1.style.display = "flex";
-	} else console.log("Object 0 is empty");	
+	} else {
+		console.log("Object 0 is empty");	
+		//if the first object is empty then they will all be empty. Must notify user
+		alert("Oops! There are currently no locations with those stimulus scores. Try again with different stimulus levels.");
+	}
 	
 	//Location 2
 	if(JSON.stringify(data[1].id) !== '{}')
