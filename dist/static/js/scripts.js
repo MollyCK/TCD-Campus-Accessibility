@@ -18,9 +18,7 @@ function openModal() {
 				$("#modal div.scores").html("Light: " + data['average light score'] + " Noise: " + data['average sound score'] + " Smell: " + data['average smells score']);
 				$("#modal p.description").html(data.placeDescription);
 				$("#modal button.openform").attr("data-id", id); 	//the button operates the openform function which takes a location id as a parameter, so we pass the appropriate id in here
-				data.comments.forEach(function (comment) {
-					$("#modal ul.comments").append('<li><p>' + comment.content + '</p><p class="signature">' + comment.username + '</p></li>') //format how the specific part to each comment are displayed with the appropriate data
-				});
+				displayComments(data.comments);
 				$("#modal").show(100);
 				openForm(data);
 			}).fail(function(xhr){
@@ -31,18 +29,23 @@ function openModal() {
 }
 
 function displayComments(comments) {
-	var c0isEmpty = true;
-	var c1isEmpty = true;
-	var c2isEmpty = true;
-	var c3isEmpty = true;
-	var c4isEmpty = true;
-	comments[0];
-	comments[1];
-	comments[2];
+	var noEmpty = 0;
+	for( var i = 0 ; i < comments.length ; i++) {
+		if(!isEmptyC(comments[i])) {
+			$("#modal ul.comments").append('<li><p>' + comments[i].content + '</p><p class="signature">~ ' + comments[i].username + '</p></li>'); 
+		} else {
+			noEmpty++;
+		}
+	}
+	if(noEmpty === comments.length) {
+		$("#modal ul.comments").append('<li><p class="emptyMessage">Nothing here yet! Fill out the survey on this location to give your opinion and leave a comment!</p></li>'); 
+	}
 }
 
 function isEmptyC(comment) {
-
+	if(comment.content === "" && comment.username === "")
+		return true;
+	else return false;
 }
 
 function closeModal() {
